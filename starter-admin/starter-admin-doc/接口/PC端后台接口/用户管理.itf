@@ -1,0 +1,256 @@
+{
+    name:获取分页列表
+    url:/admin/user/query
+    contentType:application/json
+    type:post
+    //传参例子
+    post-example:{
+        {
+            "page":{
+                "current": 1,
+                "size": 10
+            }
+        }
+    }
+    //返回接口例子
+    response-example:{
+
+    }
+    //注入参数
+    model-example:{
+
+    }
+    //错误码
+    status-item:{
+
+    }
+}
+
+{
+    name:新增或修改用户
+    url:/admin/user/create_update
+    contentType:application/json
+    type:post
+    //传参例子
+    post-example:{
+        新增：
+        {
+            "avatar": 647,//头像附件id
+            "account": "testCreate",//登录时账号名
+            "password": "3ef7164d1f6167cb9f2658c07d3c2f0a",
+            "userName": "测试新增的账号",
+            "birthday": "2017-05-05 00:00:00",
+            "sex": "100502",
+            "email": "810797860@qq.com",
+            "phone": "13652288353"
+        }
+        修改：
+        {
+            "id": 47,
+            "avatar": 648,
+            "account": "testCreate2333",
+            "password": "admin",
+            "userName": "测试新增的账号2333",
+            "birthday": "2017-02-23 00:00:00",
+            "sex": "100502",
+            "email": "810792333@qq.com",
+            "phone": "13652282333"
+        }
+    }
+    //返回接口例子
+    response-example:{
+
+    }
+    //注入参数
+    model-example:{
+
+    }
+    //错误码
+    status-item:{
+
+    }
+}
+
+{
+    name:假删除用户
+    url:/admin/user/delete
+    contentType:application/json
+    type:post
+    //传参例子
+    post-example:{
+        47
+    }
+    //返回接口例子
+    response-example:{
+
+    }
+    //注入参数
+    model-example:{
+
+    }
+    //错误码
+    status-item:{
+
+    }
+}
+
+{
+    name:批量假删除用户
+    url:/admin/user/batch_delete
+    contentType:application/json
+    type:post
+    //传参例子
+    post-example:{
+        [45 ,46]
+    }
+    //返回接口例子
+    response-example:{
+
+    }
+    //注入参数
+    model-example:{
+
+    }
+    //错误码
+    status-item:{
+
+    }
+}
+
+
+{
+    name:查看自己用户所拥有的角色
+    url:/admin/userRole/query
+    contentType:application/json
+    type:post
+    //传参例子
+    post-example:{
+        {
+            "userId": 1,
+            "page":{
+                "current": 1,
+                "size": 10
+            }
+        }
+    }
+    //返回接口例子
+    response-example:{
+
+    }
+    //注入参数
+    model-example:{
+
+    }
+    //错误码
+    status-item:{
+
+    }
+}
+
+{
+    name:查看自己能加的角色
+    url:/admin/userRole/query_enable_create
+    contentType:application/json
+    type:post
+    //传参例子
+    post-example:{
+        {
+            "userId": 1,
+            "page":{
+                "current": 1,
+                "size": 10
+            }
+        }
+    }
+    //返回接口例子
+    response-example:{
+
+    }
+    //注入参数
+    model-example:{
+
+    }
+    //错误码
+    status-item:{
+
+    }
+}
+
+{
+    name:分配角色给用户
+    url:/admin/userRole/create_update
+    contentType:application/json
+    type:post
+    //传参例子
+    post-example:{
+        {
+        	"userId": 7,
+        	"roleId": 77
+        }
+    }
+    //返回接口例子
+    response-example:{
+
+    }
+    //注入参数
+    model-example:{
+
+    }
+    //错误码
+    status-item:{
+
+    }
+}
+
+{
+    name:假删除用户的角色
+    url:/admin/userRole/delete
+    contentType:application/json
+    type:put
+    //传参例子
+    post-example:{
+        {
+        	"userId": 1,
+        	"roleId": 1
+        }
+    }
+    //返回接口例子
+    response-example:{
+
+    }
+    //注入参数
+    model-example:{
+
+    }
+    //错误码
+    status-item:{
+
+    }
+}
+
+
+{
+    name:批量假删除用户的角色
+    url:/admin/userRole/batch_delete
+    contentType:application/json
+    type:put
+    //传参例子
+    post-example:{
+        {
+        	"userId": 1,
+        	"roleIds": [1]
+        }
+    }
+    //返回接口例子
+    response-example:{
+
+    }
+    //注入参数
+    model-example:{
+
+    }
+    //错误码
+    status-item:{
+
+    }
+}
