@@ -1,9 +1,9 @@
 package com.otoko.startergecco.downloader;
 
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
-import com.secondhand.tradingplatformgeccocontroller.response.HttpResponse;
-import com.secondhand.tradingplatformgeccocontroller.spider.SpiderBeanContext;
-import com.secondhand.tradingplatformgeccocontroller.spider.SpiderThreadLocal;
+import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.response.HttpResponse;
+import com.otoko.startergeccocontroller.spider.SpiderBeanContext;
+import com.otoko.startergeccocontroller.spider.SpiderThreadLocal;
 
 /**
  * 获得当前线程，正在抓取的SpiderBean的下载器

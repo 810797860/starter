@@ -1,7 +1,7 @@
 package com.otoko.starteradminmapper.mapper.admin.business;
 
-import com.secondhand.tradingplatformadminentity.entity.admin.business.SocketMessage;
-import com.secondhand.tradingplatformcommon.base.BaseDao.BaseDao;
+import com.otoko.starteradminentity.entity.admin.business.SocketMessage;
+import com.otoko.startercommon.base.BaseDao.BaseDao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

@@ -1,11 +1,11 @@
 package com.otoko.starteradmincontroller.shiro;
 
-import com.secondhand.tradingplatformadminentity.entity.admin.shiro.Resources;
-import com.secondhand.tradingplatformadminentity.entity.admin.shiro.User;
-import com.secondhand.tradingplatformadminservice.service.admin.shiro.ResourcesService;
-import com.secondhand.tradingplatformadminservice.service.admin.shiro.UserRoleService;
-import com.secondhand.tradingplatformadminservice.service.admin.shiro.UserService;
-import com.secondhand.tradingplatformcommon.pojo.MagicalValue;
+import com.otoko.starteradminentity.entity.admin.shiro.Resources;
+import com.otoko.starteradminentity.entity.admin.shiro.User;
+import com.otoko.starteradminservice.service.admin.shiro.ResourcesService;
+import com.otoko.starteradminservice.service.admin.shiro.UserRoleService;
+import com.otoko.starteradminservice.service.admin.shiro.UserService;
+import com.otoko.startercommon.pojo.MagicalValue;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

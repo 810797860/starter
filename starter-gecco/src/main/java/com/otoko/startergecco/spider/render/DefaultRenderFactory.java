@@ -1,7 +1,7 @@
 package com.otoko.startergecco.spider.render;
 
-import com.secondhand.tradingplatformgeccocontroller.spider.render.html.HtmlRender;
-import com.secondhand.tradingplatformgeccocontroller.spider.render.json.JsonRender;
+import com.otoko.startergeccocontroller.spider.render.html.HtmlRender;
+import com.otoko.startergeccocontroller.spider.render.json.JsonRender;
 import org.reflections.Reflections;
 
 public class DefaultRenderFactory extends RenderFactory {

@@ -1,7 +1,7 @@
 package com.otoko.startergecco.monitor;
 
 import com.alibaba.fastjson.JSON;
-import com.secondhand.tradingplatformgeccocontroller.annotation.MBean;
+import com.otoko.startergeccocontroller.annotation.MBean;
 import org.weakref.jmx.Managed;
 
 import java.util.Set;

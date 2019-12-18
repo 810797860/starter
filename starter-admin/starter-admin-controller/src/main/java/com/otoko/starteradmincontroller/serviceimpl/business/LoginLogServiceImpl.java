@@ -1,9 +1,9 @@
 package com.otoko.starteradmincontroller.serviceimpl.business;
 
-import com.secondhand.tradingplatformadminentity.entity.admin.business.LoginLog;
-import com.secondhand.tradingplatformadminmapper.mapper.admin.business.LoginLogMapper;
-import com.secondhand.tradingplatformadminservice.service.admin.business.LoginLogService;
-import com.secondhand.tradingplatformcommon.base.BaseServiceImpl.BaseServiceImpl;
+import com.otoko.starteradminentity.entity.admin.business.LoginLog;
+import com.otoko.starteradminmapper.mapper.admin.business.LoginLogMapper;
+import com.otoko.starteradminservice.service.admin.business.LoginLogService;
+import com.otoko.startercommon.base.BaseServiceImpl.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

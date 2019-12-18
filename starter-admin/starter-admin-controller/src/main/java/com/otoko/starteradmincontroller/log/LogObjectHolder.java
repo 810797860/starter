@@ -1,6 +1,6 @@
 package com.otoko.starteradmincontroller.log;
 
-import com.secondhand.tradingplatformcommon.util.ApplicationContextHolder;
+import com.otoko.startercommon.util.ApplicationContextHolder;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;

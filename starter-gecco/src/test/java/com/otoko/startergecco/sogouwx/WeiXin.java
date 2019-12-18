@@ -1,9 +1,9 @@
 package com.otoko.startergecco.sogouwx;
 
-import com.secondhand.tradingplatformgeccocontroller.annotation.Href;
-import com.secondhand.tradingplatformgeccocontroller.annotation.HtmlField;
-import com.secondhand.tradingplatformgeccocontroller.annotation.Text;
-import com.secondhand.tradingplatformgeccocontroller.spider.HtmlBean;
+import com.otoko.startergeccocontroller.annotation.Href;
+import com.otoko.startergeccocontroller.annotation.HtmlField;
+import com.otoko.startergeccocontroller.annotation.Text;
+import com.otoko.startergeccocontroller.spider.HtmlBean;
 
 public class WeiXin implements HtmlBean {
 

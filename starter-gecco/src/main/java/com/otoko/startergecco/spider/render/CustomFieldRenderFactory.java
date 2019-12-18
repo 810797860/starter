@@ -1,6 +1,6 @@
 package com.otoko.startergecco.spider.render;
 
-import com.secondhand.tradingplatformgeccocontroller.annotation.FieldRenderName;
+import com.otoko.startergeccocontroller.annotation.FieldRenderName;
 import org.reflections.Reflections;
 
 import java.util.HashMap;

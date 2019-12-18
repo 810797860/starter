@@ -2,8 +2,8 @@ package com.otoko.starteradmincontroller.schedule;
 
 import com.aliyuncs.exceptions.ClientException;
 import com.google.gson.Gson;
-import com.secondhand.tradingplatformadminservice.service.admin.business.ShortMessageService;
-import com.secondhand.tradingplatformcommon.util.ToolUtil;
+import com.otoko.starteradminservice.service.admin.business.ShortMessageService;
+import com.otoko.startercommon.util.ToolUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.scheduling.annotation.Async;

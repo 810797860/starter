@@ -1,13 +1,13 @@
 package com.otoko.starteradmincontroller.controller.admin.business;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.secondhand.tradingplatformadminentity.entity.admin.business.Annex;
-import com.secondhand.tradingplatformadminservice.service.admin.business.AnnexService;
-import com.secondhand.tradingplatformcommon.base.BaseController.BaseController;
-import com.secondhand.tradingplatformcommon.jsonResult.JsonResult;
-import com.secondhand.tradingplatformcommon.jsonResult.TableJson;
-import com.secondhand.tradingplatformcommon.pojo.CustomizeException;
-import com.secondhand.tradingplatformcommon.pojo.MagicalValue;
+import com.otoko.starteradminentity.entity.admin.business.Annex;
+import com.otoko.starteradminservice.service.admin.business.AnnexService;
+import com.otoko.startercommon.base.BaseController.BaseController;
+import com.otoko.startercommon.jsonResult.JsonResult;
+import com.otoko.startercommon.jsonResult.TableJson;
+import com.otoko.startercommon.pojo.CustomizeException;
+import com.otoko.startercommon.pojo.MagicalValue;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

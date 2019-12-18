@@ -1,12 +1,12 @@
 package com.otoko.starteradmincontroller.controller.admin.shiro;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.secondhand.tradingplatformadminentity.entity.admin.shiro.Menu;
-import com.secondhand.tradingplatformadminentity.entity.admin.shiro.User;
-import com.secondhand.tradingplatformadminservice.service.admin.shiro.RoleMenuService;
-import com.secondhand.tradingplatformadminservice.service.admin.shiro.UserService;
-import com.secondhand.tradingplatformcommon.jsonResult.TableJson;
-import com.secondhand.tradingplatformcommon.pojo.MagicalValue;
+import com.otoko.starteradminentity.entity.admin.shiro.Menu;
+import com.otoko.starteradminentity.entity.admin.shiro.User;
+import com.otoko.starteradminservice.service.admin.shiro.RoleMenuService;
+import com.otoko.starteradminservice.service.admin.shiro.UserService;
+import com.otoko.startercommon.jsonResult.TableJson;
+import com.otoko.startercommon.pojo.MagicalValue;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

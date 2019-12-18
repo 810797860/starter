@@ -1,6 +1,6 @@
 package com.otoko.startergecco.monitor;
 
-import com.secondhand.tradingplatformgeccocontroller.GeccoEngine;
+import com.otoko.startergeccocontroller.GeccoEngine;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
 public class GeccoMonitor {

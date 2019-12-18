@@ -19,8 +19,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.secondhand</groupId>
-			<artifactId>tradingplatform-admin-entity</artifactId>
+			<groupId>com.otoko</groupId>
+			<artifactId>starter-admin-entity</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

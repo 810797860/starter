@@ -2,8 +2,8 @@ package com.otoko.starteradminservice.service.admin.system;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.secondhand.tradingplatformadminentity.entity.admin.system.SelectItem;
-import com.secondhand.tradingplatformcommon.base.BaseService.BaseService;
+import com.otoko.starteradminentity.entity.admin.system.SelectItem;
+import com.otoko.startercommon.base.BaseService.BaseService;
 
 import java.io.Serializable;
 import java.util.Collection;

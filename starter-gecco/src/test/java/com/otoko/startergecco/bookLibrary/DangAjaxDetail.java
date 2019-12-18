@@ -1,7 +1,7 @@
 package com.otoko.startergecco.bookLibrary;
 
-import com.secondhand.tradingplatformgeccocontroller.annotation.JSONPath;
-import com.secondhand.tradingplatformgeccocontroller.spider.JsonBean;
+import com.otoko.startergeccocontroller.annotation.JSONPath;
+import com.otoko.startergeccocontroller.spider.JsonBean;
 
 public class DangAjaxDetail implements JsonBean{
 

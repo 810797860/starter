@@ -1,11 +1,11 @@
 package com.otoko.startergenerator.example.controller;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.secondhand.tradingplatformcommon.jsonResult.JsonResult;
-import com.secondhand.tradingplatformcommon.jsonResult.TableJson;
-import com.secondhand.tradingplatformcommon.base.BaseController.BaseController;
-import com.secondhand.tradingplatformgenerator.example.entity.User;
-import com.secondhand.tradingplatformgenerator.example.service.UserService;
+import com.otoko.startercommon.jsonResult.JsonResult;
+import com.otoko.startercommon.jsonResult.TableJson;
+import com.otoko.startercommon.base.BaseController.BaseController;
+import com.otoko.startergenerator.example.entity.User;
+import com.otoko.startergenerator.example.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

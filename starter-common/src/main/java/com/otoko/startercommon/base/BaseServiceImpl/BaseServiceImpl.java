@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.secondhand.tradingplatformcommon.base.BaseDao.BaseDao;
-import com.secondhand.tradingplatformcommon.base.BaseService.BaseService;
+import com.otoko.startercommon.base.BaseDao.BaseDao;
+import com.otoko.startercommon.base.BaseService.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;

@@ -1,12 +1,12 @@
 package com.otoko.startergecco.digitalSquare;
 
-import com.secondhand.tradingplatformgeccocontroller.GeccoEngine;
-import com.secondhand.tradingplatformgeccocontroller.annotation.Gecco;
-import com.secondhand.tradingplatformgeccocontroller.annotation.HtmlField;
-import com.secondhand.tradingplatformgeccocontroller.annotation.Request;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpGetRequest;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
-import com.secondhand.tradingplatformgeccocontroller.spider.HtmlBean;
+import com.otoko.startergeccocontroller.GeccoEngine;
+import com.otoko.startergeccocontroller.annotation.Gecco;
+import com.otoko.startergeccocontroller.annotation.HtmlField;
+import com.otoko.startergeccocontroller.annotation.Request;
+import com.otoko.startergeccocontroller.request.HttpGetRequest;
+import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.spider.HtmlBean;
 
 import java.util.List;
 
@@ -43,14 +43,14 @@ public class DangPage implements HtmlBean{
         HttpGetRequest httpGetRequest = new HttpGetRequest("http://category.dangdang.com/cid4001136.html");
         httpGetRequest.setCharset("GBK");
         GeccoEngine.create()
-                .classpath("com.secondhand.tradingplatformgeccocontroller.digitalSquare")
+                .classpath("com.otoko.startergeccocontroller.digitalSquare")
                 .start(httpGetRequest)
                 .thread(1)
                 .interval(4000)
                 .run();
 
         GeccoEngine.create()
-                .classpath("com.secondhand.tradingplatformgeccocontroller.digitalSquare")
+                .classpath("com.otoko.startergeccocontroller.digitalSquare")
                 .start(DangListPipeline.httpRequests)
                 .thread(1)
                 .interval(4000)

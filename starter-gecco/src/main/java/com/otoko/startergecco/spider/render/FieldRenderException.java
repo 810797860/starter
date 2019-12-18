@@ -1,6 +1,6 @@
 package com.otoko.startergecco.spider.render;
 
-import com.secondhand.tradingplatformgeccocontroller.spider.SpiderThreadLocal;
+import com.otoko.startergeccocontroller.spider.SpiderThreadLocal;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

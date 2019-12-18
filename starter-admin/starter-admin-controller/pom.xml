@@ -45,19 +45,19 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.secondhand</groupId>
-			<artifactId>tradingplatform-admin-entity</artifactId>
+			<groupId>com.otoko</groupId>
+			<artifactId>starter-admin-entity</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
-			<groupId>com.secondhand</groupId>
-			<artifactId>tradingplatform-admin-service</artifactId>
+			<groupId>com.otoko</groupId>
+			<artifactId>starter-admin-service</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>com.secondhand</groupId>
-			<artifactId>tradingplatform-admin-mapper</artifactId>
+			<groupId>com.otoko</groupId>
+			<artifactId>starter-admin-mapper</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
@@ -248,7 +248,7 @@
 
 		<filters>
 			<filter>
-				../tradingplatform-admin-controller/src/main/resources/application-${environmental-configuration-name}.properties
+				../starter-admin-controller/src/main/resources/application-${environmental-configuration-name}.properties
 			</filter>
 		</filters>
 	</build>

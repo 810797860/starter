@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.secondhand.tradingplatformadminmapper.mapper.admin.system.FormMapper">
+<mapper namespace="com.otoko.starteradminmapper.mapper.admin.system.FormMapper">
 
-    <cache type="com.secondhand.tradingplatformcommon.redisCache.RedisCache"></cache>
+    <cache type="com.otoko.startercommon.redisCache.RedisCache"></cache>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="formMap" type="com.secondhand.tradingplatformadminentity.entity.admin.system.Form"
-               extends="com.secondhand.tradingplatformadminmapper.mapper.BaseEntityMapper.baseEntityMapper">
+    <resultMap id="formMap" type="com.otoko.starteradminentity.entity.admin.system.Form"
+               extends="com.otoko.starteradminmapper.mapper.BaseEntityMapper.baseEntityMapper">
 
         <result column="title" property="title" jdbcType="VARCHAR"/>
         <result column="collection" property="collection" jdbcType="VARCHAR"/>
@@ -14,7 +14,7 @@
     </resultMap>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="formMapSimple" type="com.secondhand.tradingplatformadminentity.entity.admin.system.Form">
+    <resultMap id="formMapSimple" type="com.otoko.starteradminentity.entity.admin.system.Form">
 
 
         <result column="title" property="title" jdbcType="VARCHAR"/>

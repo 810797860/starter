@@ -1,7 +1,7 @@
 package com.otoko.startergecco.digitalSquare;
 
-import com.secondhand.tradingplatformgeccocontroller.annotation.*;
-import com.secondhand.tradingplatformgeccocontroller.spider.HtmlBean;
+import com.otoko.startergeccocontroller.annotation.*;
+import com.otoko.startergeccocontroller.spider.HtmlBean;
 
 @Gecco(matchUrl = "http://product.dangdang.com/{id}.html", pipelines = {"consolePipeline", "digitalSquareDetailPipeline"})
 public class DangDetail implements HtmlBean{
@@ -19,7 +19,7 @@ public class DangDetail implements HtmlBean{
     @HtmlField(cssPath = "#dd-price")
     private String price;
 
-    @Image(download = "G:/data/file/tradingplatform/2019-03-27")
+    @Image(download = "G:/data/file/starter/2019-03-27")
     @HtmlField(cssPath = "#largePic")
     private String cover;
 

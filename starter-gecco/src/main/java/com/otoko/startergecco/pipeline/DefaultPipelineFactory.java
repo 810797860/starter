@@ -1,7 +1,7 @@
 package com.otoko.startergecco.pipeline;
 
-import com.secondhand.tradingplatformgeccocontroller.annotation.PipelineName;
-import com.secondhand.tradingplatformgeccocontroller.spider.SpiderBean;
+import com.otoko.startergeccocontroller.annotation.PipelineName;
+import com.otoko.startergeccocontroller.spider.SpiderBean;
 import org.reflections.Reflections;
 
 import java.util.HashMap;

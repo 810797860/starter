@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.secondhand.tradingplatformadminmapper.mapper.admin.shiro.MenuButtonMapper">
+<mapper namespace="com.otoko.starteradminmapper.mapper.admin.shiro.MenuButtonMapper">
 
-    <cache type="com.secondhand.tradingplatformcommon.redisCache.RedisCache"></cache>
+    <cache type="com.otoko.startercommon.redisCache.RedisCache"></cache>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="menuButtonMap" type="com.secondhand.tradingplatformadminentity.entity.admin.shiro.MenuButton"
-               extends="com.secondhand.tradingplatformadminmapper.mapper.BaseEntityMapper.baseEntityMapper">
+    <resultMap id="menuButtonMap" type="com.otoko.starteradminentity.entity.admin.shiro.MenuButton"
+               extends="com.otoko.starteradminmapper.mapper.BaseEntityMapper.baseEntityMapper">
         <result column="button_id" property="buttonId" jdbcType="INTEGER"/>
 
     </resultMap>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="menuButtonMapSimple" type="com.secondhand.tradingplatformadminentity.entity.admin.shiro.MenuButton">
+    <resultMap id="menuButtonMapSimple" type="com.otoko.starteradminentity.entity.admin.shiro.MenuButton">
         <result column="button_id" property="buttonId" jdbcType="INTEGER"/>
 
     </resultMap>

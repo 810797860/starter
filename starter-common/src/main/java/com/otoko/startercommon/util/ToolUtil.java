@@ -1,6 +1,6 @@
 package com.otoko.startercommon.util;
 
-import com.secondhand.tradingplatformcommon.pojo.MagicalValue;
+import com.otoko.startercommon.pojo.MagicalValue;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

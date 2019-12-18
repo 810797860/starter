@@ -1,8 +1,8 @@
 package com.otoko.starteradmincontroller.shiro;
 
-import com.secondhand.tradingplatformadminentity.entity.admin.shiro.Resources;
-import com.secondhand.tradingplatformadminservice.service.admin.shiro.ResourcesService;
-import com.secondhand.tradingplatformcommon.util.ToolUtil;
+import com.otoko.starteradminentity.entity.admin.shiro.Resources;
+import com.otoko.starteradminservice.service.admin.shiro.ResourcesService;
+import com.otoko.startercommon.util.ToolUtil;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.filter.mgt.DefaultFilterChainManager;
 import org.apache.shiro.web.filter.mgt.PathMatchingFilterChainResolver;

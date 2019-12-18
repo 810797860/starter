@@ -3,7 +3,7 @@ package com.otoko.starteradminentity.entity.admin.shiro;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
-import com.secondhand.tradingplatformcommon.base.BaseEntity.BaseEntity;
+import com.otoko.startercommon.base.BaseEntity.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 
 /**

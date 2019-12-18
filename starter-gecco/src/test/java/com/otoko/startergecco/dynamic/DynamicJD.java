@@ -1,8 +1,8 @@
 package com.otoko.startergecco.dynamic;
 
 import com.alibaba.fastjson.JSONObject;
-import com.secondhand.tradingplatformgeccocontroller.GeccoEngine;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpGetRequest;
+import com.otoko.startergeccocontroller.GeccoEngine;
+import com.otoko.startergeccocontroller.request.HttpGetRequest;
 
 /**
  * 京东全部商品的动态配置方式，这里没有任何Bean的定义
@@ -78,7 +78,7 @@ public class DynamicJD {
 		HttpGetRequest start = new HttpGetRequest("http://www.jd.com/allSort.aspx");
 		start.setCharset("GBK");
 		GeccoEngine.create()
-		.classpath("com.secondhand.tradingplatformgeccocontroller.demo.dynamic")
+		.classpath("com.otoko.startergeccocontroller.demo.dynamic")
 		.start(start)
 		.interval(2000)
 		.run();

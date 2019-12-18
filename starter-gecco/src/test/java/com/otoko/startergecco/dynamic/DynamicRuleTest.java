@@ -1,7 +1,7 @@
 package com.otoko.startergecco.dynamic;
 
-import com.secondhand.tradingplatformgeccocontroller.GeccoEngine;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpGetRequest;
+import com.otoko.startergeccocontroller.GeccoEngine;
+import com.otoko.startergeccocontroller.request.HttpGetRequest;
 
 /**
  * 本demo是一个在线修改抓取规则的例子，DyncmicGecco支持规则类的重新加载，不需要重启应用
@@ -14,7 +14,7 @@ public class DynamicRuleTest {
 	public static void main(String[] args) throws Exception {
 		
 		//初始化爬虫引擎，此时由于没有初始请求，爬虫引擎会阻塞初始队列，直到获取到初始请求
-		GeccoEngine ge = GeccoEngine.create("com.secondhand.tradingplatformgeccocontroller.demo.dynamic")
+		GeccoEngine ge = GeccoEngine.create("com.otoko.startergeccocontroller.demo.dynamic")
 		.interval(5000)
 		.loop(true)
 		.engineStart();

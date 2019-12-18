@@ -1,7 +1,7 @@
 package com.otoko.startergecco.jd;
 
-import com.secondhand.tradingplatformgeccocontroller.annotation.*;
-import com.secondhand.tradingplatformgeccocontroller.spider.HtmlBean;
+import com.otoko.startergeccocontroller.annotation.*;
+import com.otoko.startergeccocontroller.spider.HtmlBean;
 
 //@Gecco(matchUrl="https://item.jd.com/{code}.html", pipelines="consolePipeline")
 public class ProductDetail implements HtmlBean {

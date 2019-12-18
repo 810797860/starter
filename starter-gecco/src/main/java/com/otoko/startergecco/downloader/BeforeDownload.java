@@ -1,6 +1,6 @@
 package com.otoko.startergecco.downloader;
 
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.request.HttpRequest;
 
 public interface BeforeDownload {
 	

@@ -1,6 +1,6 @@
 package com.otoko.starteradmincontroller.handler;
 
-import com.secondhand.tradingplatformcommon.pojo.MagicalValue;
+import com.otoko.startercommon.pojo.MagicalValue;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

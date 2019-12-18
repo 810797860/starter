@@ -1,8 +1,11 @@
 package com.otoko.starteradmincontroller.config;
 
-import com.secondhand.tradingplatformadminentity.entity.admin.shiro.Resources;
-import com.secondhand.tradingplatformadminservice.service.admin.shiro.ResourcesService;
-import com.secondhand.tradingplatformcommon.util.ToolUtil;
+import com.otoko.starteradmincontroller.shiro.DesCredentialsMatcher;
+import com.otoko.starteradmincontroller.shiro.FilterChainDefinitionMapBuilder;
+import com.otoko.starteradmincontroller.shiro.MyShiroRealm;
+import com.otoko.starteradminentity.entity.admin.shiro.Resources;
+import com.otoko.starteradminservice.service.admin.shiro.ResourcesService;
+import com.otoko.startercommon.util.ToolUtil;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.mgt.SecurityManager;

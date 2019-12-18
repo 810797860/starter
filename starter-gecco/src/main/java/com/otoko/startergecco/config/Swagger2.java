@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-@ComponentScan(basePackages = {"com.secondhand.tradingplatformgeccocontroller.controller"})
+@ComponentScan(basePackages = {"com.otoko.startergeccocontroller.controller"})
 public class Swagger2 {
 
     /**

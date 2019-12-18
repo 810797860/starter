@@ -1,8 +1,8 @@
 
 package com.otoko.starteradminmapper.mapper.admin.business;
 
-import com.secondhand.tradingplatformadminentity.entity.admin.business.LoginLog;
-import com.secondhand.tradingplatformcommon.base.BaseDao.BaseDao;
+import com.otoko.starteradminentity.entity.admin.business.LoginLog;
+import com.otoko.startercommon.base.BaseDao.BaseDao;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;

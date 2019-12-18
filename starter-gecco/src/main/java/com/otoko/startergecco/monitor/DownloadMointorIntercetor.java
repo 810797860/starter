@@ -1,8 +1,8 @@
 package com.otoko.startergecco.monitor;
 
-import com.secondhand.tradingplatformgeccocontroller.downloader.DownloadException;
-import com.secondhand.tradingplatformgeccocontroller.downloader.DownloadServerException;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.downloader.DownloadException;
+import com.otoko.startergeccocontroller.downloader.DownloadServerException;
+import com.otoko.startergeccocontroller.request.HttpRequest;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 

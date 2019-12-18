@@ -1,6 +1,6 @@
 package com.otoko.startergecco.pipeline;
 
-import com.secondhand.tradingplatformgeccocontroller.spider.SpiderBean;
+import com.otoko.startergeccocontroller.spider.SpiderBean;
 
 public interface PipelineFactory {
 	

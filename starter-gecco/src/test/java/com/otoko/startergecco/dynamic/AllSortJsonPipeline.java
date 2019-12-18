@@ -2,11 +2,11 @@ package com.otoko.startergecco.dynamic;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.secondhand.tradingplatformgeccocontroller.annotation.PipelineName;
-import com.secondhand.tradingplatformgeccocontroller.pipeline.JsonPipeline;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpGetRequest;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
-import com.secondhand.tradingplatformgeccocontroller.scheduler.SchedulerContext;
+import com.otoko.startergeccocontroller.annotation.PipelineName;
+import com.otoko.startergeccocontroller.pipeline.JsonPipeline;
+import com.otoko.startergeccocontroller.request.HttpGetRequest;
+import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.scheduler.SchedulerContext;
 
 import java.util.ArrayList;
 import java.util.List;

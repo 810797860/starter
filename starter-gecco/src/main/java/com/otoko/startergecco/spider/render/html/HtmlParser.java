@@ -1,14 +1,14 @@
 package com.otoko.startergecco.spider.render.html;
 
-import com.secondhand.tradingplatformgeccocontroller.annotation.*;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
-import com.secondhand.tradingplatformgeccocontroller.response.HttpResponse;
-import com.secondhand.tradingplatformgeccocontroller.spider.SpiderBean;
-import com.secondhand.tradingplatformgeccocontroller.spider.SpiderThreadLocal;
-import com.secondhand.tradingplatformgeccocontroller.spider.conversion.Conversion;
-import com.secondhand.tradingplatformgeccocontroller.spider.render.Render;
-import com.secondhand.tradingplatformgeccocontroller.spider.render.RenderContext;
-import com.secondhand.tradingplatformgeccocontroller.spider.render.RenderType;
+import com.otoko.startergeccocontroller.annotation.*;
+import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.response.HttpResponse;
+import com.otoko.startergeccocontroller.spider.SpiderBean;
+import com.otoko.startergeccocontroller.spider.SpiderThreadLocal;
+import com.otoko.startergeccocontroller.spider.conversion.Conversion;
+import com.otoko.startergeccocontroller.spider.render.Render;
+import com.otoko.startergeccocontroller.spider.render.RenderContext;
+import com.otoko.startergeccocontroller.spider.render.RenderType;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

@@ -1,9 +1,9 @@
 package com.otoko.startergenerator.example.service.impl;
 
-import com.secondhand.tradingplatformcommon.base.BaseServiceImpl.BaseServiceImpl;
-import com.secondhand.tradingplatformgenerator.example.entity.User;
-import com.secondhand.tradingplatformgenerator.example.mapper.UserMapper;
-import com.secondhand.tradingplatformgenerator.example.service.UserService;
+import com.otoko.startercommon.base.BaseServiceImpl.BaseServiceImpl;
+import com.otoko.startergenerator.example.entity.User;
+import com.otoko.startergenerator.example.mapper.UserMapper;
+import com.otoko.startergenerator.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

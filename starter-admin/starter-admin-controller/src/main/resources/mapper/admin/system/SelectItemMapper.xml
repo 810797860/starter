@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.secondhand.tradingplatformadminmapper.mapper.admin.system.SelectItemMapper">
+<mapper namespace="com.otoko.starteradminmapper.mapper.admin.system.SelectItemMapper">
 
-    <cache type="com.secondhand.tradingplatformcommon.redisCache.RedisCache"></cache>
+    <cache type="com.otoko.startercommon.redisCache.RedisCache"></cache>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="selectItemMap" type="com.secondhand.tradingplatformadminentity.entity.admin.system.SelectItem"
-               extends="com.secondhand.tradingplatformadminmapper.mapper.BaseEntityMapper.baseEntityMapper">
+    <resultMap id="selectItemMap" type="com.otoko.starteradminentity.entity.admin.system.SelectItem"
+               extends="com.otoko.starteradminmapper.mapper.BaseEntityMapper.baseEntityMapper">
 
         <result column="title" property="title" jdbcType="VARCHAR"/>
         <result column="pid" property="pid" jdbcType="INTEGER"/>
@@ -16,7 +16,7 @@
     </resultMap>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="selectItemMapSimple" type="com.secondhand.tradingplatformadminentity.entity.admin.system.SelectItem">
+    <resultMap id="selectItemMapSimple" type="com.otoko.starteradminentity.entity.admin.system.SelectItem">
 
         <result column="title" property="title" jdbcType="VARCHAR"/>
         <result column="pid" property="pid" jdbcType="INTEGER"/>

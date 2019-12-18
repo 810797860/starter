@@ -1,11 +1,11 @@
 package com.otoko.startergecco;
 
-import com.secondhand.tradingplatformgeccocontroller.annotation.Gecco;
-import com.secondhand.tradingplatformgeccocontroller.annotation.HtmlField;
-import com.secondhand.tradingplatformgeccocontroller.annotation.Request;
-import com.secondhand.tradingplatformgeccocontroller.annotation.Text;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
-import com.secondhand.tradingplatformgeccocontroller.spider.HtmlBean;
+import com.otoko.startergeccocontroller.annotation.Gecco;
+import com.otoko.startergeccocontroller.annotation.HtmlField;
+import com.otoko.startergeccocontroller.annotation.Request;
+import com.otoko.startergeccocontroller.annotation.Text;
+import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.spider.HtmlBean;
 
 @Gecco(pipelines="consolePipeline")
 public class CommonCrawler implements HtmlBean {
@@ -37,7 +37,7 @@ public class CommonCrawler implements HtmlBean {
 	
 	public static void main(String[] args) {
 		GeccoEngine.create()
-		.classpath("com.secondhand.tradingplatformgeccocontroller.demo")
+		.classpath("com.otoko.startergeccocontroller.demo")
 		.start("https://www.baidu.com/")
 		.interval(2000)
 		.start();

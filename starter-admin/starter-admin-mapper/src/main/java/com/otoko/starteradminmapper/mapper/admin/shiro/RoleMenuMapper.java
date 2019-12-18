@@ -1,7 +1,7 @@
 package com.otoko.starteradminmapper.mapper.admin.shiro;
 
-import com.secondhand.tradingplatformadminentity.entity.admin.shiro.RoleMenu;
-import com.secondhand.tradingplatformcommon.base.BaseDao.BaseDao;
+import com.otoko.starteradminentity.entity.admin.shiro.RoleMenu;
+import com.otoko.startercommon.base.BaseDao.BaseDao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.secondhand.tradingplatformadminmapper.mapper.admin.business.OperationLogMapper">
+<mapper namespace="com.otoko.starteradminmapper.mapper.admin.business.OperationLogMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="operationLogMap" type="com.secondhand.tradingplatformadminentity.entity.admin.business.OperationLog"
-               extends="com.secondhand.tradingplatformadminmapper.mapper.BaseEntityMapper.baseEntityMapper">
+    <resultMap id="operationLogMap" type="com.otoko.starteradminentity.entity.admin.business.OperationLog"
+               extends="com.otoko.starteradminmapper.mapper.BaseEntityMapper.baseEntityMapper">
 
         <result column="logtype" property="logtype" jdbcType="VARCHAR"/>
         <result column="logname" property="logname" jdbcType="VARCHAR"/>
@@ -19,7 +19,7 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="operationLogMapSimple"
-               type="com.secondhand.tradingplatformadminentity.entity.admin.business.OperationLog">
+               type="com.otoko.starteradminentity.entity.admin.business.OperationLog">
 
         <result column="logtype" property="logtype" jdbcType="VARCHAR"/>
         <result column="logname" property="logname" jdbcType="VARCHAR"/>

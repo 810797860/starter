@@ -1,6 +1,7 @@
 package com.otoko.starteradmincontroller.config;
 
-import com.secondhand.tradingplatformcommon.util.ApplicationContextHolder;
+import com.otoko.starteradmincontroller.handler.ShiroOriginFilter;
+import com.otoko.startercommon.util.ApplicationContextHolder;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,8 +1,8 @@
 package com.otoko.startergenerator.generator;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.secondhand.tradingplatformgenerator.select.Select;
-import com.secondhand.tradingplatformgenerator.select.SelectEnum;
+import com.otoko.startergenerator.select.Select;
+import com.otoko.startergenerator.select.SelectEnum;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -19,7 +19,7 @@ public class SelectSqlGenerator {
 
     {
         dataSource = new DruidDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/myshtp?useUnicode=true&characterEncoding=utf-8");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/starter??useUnicode=true&characterEncoding=utf-8");
         dataSource.setUsername("root");
         dataSource.setPassword("123456");
     }

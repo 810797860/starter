@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.secondhand.tradingplatformadminmapper.mapper.admin.shiro.RoleMapper">
+<mapper namespace="com.otoko.starteradminmapper.mapper.admin.shiro.RoleMapper">
 
-    <cache type="com.secondhand.tradingplatformcommon.redisCache.RedisCache"></cache>
+    <cache type="com.otoko.startercommon.redisCache.RedisCache"></cache>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="roleMap" type="com.secondhand.tradingplatformadminentity.entity.admin.shiro.Role"
-               extends="com.secondhand.tradingplatformadminmapper.mapper.BaseEntityMapper.baseEntityMapper">
+    <resultMap id="roleMap" type="com.otoko.starteradminentity.entity.admin.shiro.Role"
+               extends="com.otoko.starteradminmapper.mapper.BaseEntityMapper.baseEntityMapper">
 
         <result column="role_desc" property="roleDesc" jdbcType="VARCHAR"/>
         <result column="pid" property="pid" jdbcType="INTEGER"/>
@@ -14,7 +14,7 @@
     </resultMap>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="roleMapSimple" type="com.secondhand.tradingplatformadminentity.entity.admin.shiro.Role">
+    <resultMap id="roleMapSimple" type="com.otoko.starteradminentity.entity.admin.shiro.Role">
 
         <result column="role_desc" property="roleDesc" jdbcType="VARCHAR"/>
         <result column="pid" property="pid" jdbcType="INTEGER"/>

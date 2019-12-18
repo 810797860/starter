@@ -1,9 +1,9 @@
 package com.otoko.starteradmincontroller.log.factory;
 
-import com.secondhand.tradingplatformadminentity.entity.admin.business.LoginLog;
-import com.secondhand.tradingplatformadminentity.entity.admin.business.OperationLog;
-import com.secondhand.tradingplatformcommon.state.LogSucceed;
-import com.secondhand.tradingplatformcommon.state.LogType;
+import com.otoko.starteradminentity.entity.admin.business.LoginLog;
+import com.otoko.starteradminentity.entity.admin.business.OperationLog;
+import com.otoko.startercommon.state.LogSucceed;
+import com.otoko.startercommon.state.LogType;
 
 import java.util.Date;
 

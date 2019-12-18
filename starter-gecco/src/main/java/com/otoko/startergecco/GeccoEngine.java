@@ -3,22 +3,22 @@ package com.otoko.startergecco;
 import com.alibaba.fastjson.JSON;
 import com.google.common.io.Files;
 import com.google.common.io.Resources;
-import com.secondhand.tradingplatformgeccocontroller.downloader.proxy.FileProxys;
-import com.secondhand.tradingplatformgeccocontroller.downloader.proxy.Proxys;
-import com.secondhand.tradingplatformgeccocontroller.dynamic.DynamicGecco;
-import com.secondhand.tradingplatformgeccocontroller.dynamic.GeccoClassLoader;
-import com.secondhand.tradingplatformgeccocontroller.listener.EventListener;
-import com.secondhand.tradingplatformgeccocontroller.monitor.GeccoJmx;
-import com.secondhand.tradingplatformgeccocontroller.monitor.GeccoMonitor;
-import com.secondhand.tradingplatformgeccocontroller.pipeline.PipelineFactory;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpGetRequest;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
-import com.secondhand.tradingplatformgeccocontroller.request.StartRequestList;
-import com.secondhand.tradingplatformgeccocontroller.scheduler.NoLoopStartScheduler;
-import com.secondhand.tradingplatformgeccocontroller.scheduler.Scheduler;
-import com.secondhand.tradingplatformgeccocontroller.scheduler.StartScheduler;
-import com.secondhand.tradingplatformgeccocontroller.spider.Spider;
-import com.secondhand.tradingplatformgeccocontroller.spider.SpiderBeanFactory;
+import com.otoko.startergeccocontroller.downloader.proxy.FileProxys;
+import com.otoko.startergeccocontroller.downloader.proxy.Proxys;
+import com.otoko.startergeccocontroller.dynamic.DynamicGecco;
+import com.otoko.startergeccocontroller.dynamic.GeccoClassLoader;
+import com.otoko.startergeccocontroller.listener.EventListener;
+import com.otoko.startergeccocontroller.monitor.GeccoJmx;
+import com.otoko.startergeccocontroller.monitor.GeccoMonitor;
+import com.otoko.startergeccocontroller.pipeline.PipelineFactory;
+import com.otoko.startergeccocontroller.request.HttpGetRequest;
+import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.request.StartRequestList;
+import com.otoko.startergeccocontroller.scheduler.NoLoopStartScheduler;
+import com.otoko.startergeccocontroller.scheduler.Scheduler;
+import com.otoko.startergeccocontroller.scheduler.StartScheduler;
+import com.otoko.startergeccocontroller.spider.Spider;
+import com.otoko.startergeccocontroller.spider.SpiderBeanFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -228,7 +228,7 @@ public class GeccoEngine<V> extends Thread implements Callable<V> {
 	@Override
 	public void run() {
 		if (debug) {
-			Logger log = LogManager.getLogger("com.secondhand.tradingplatformgeccocontroller.spider.render");
+			Logger log = LogManager.getLogger("com.otoko.startergeccocontroller.spider.render");
 			log.setLevel(Level.DEBUG);
 		}
 		if(proxysLoader == null) {//默认采用proxys文件代理集合

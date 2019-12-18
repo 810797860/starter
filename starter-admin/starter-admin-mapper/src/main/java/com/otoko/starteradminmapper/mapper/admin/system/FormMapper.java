@@ -1,7 +1,7 @@
 package com.otoko.starteradminmapper.mapper.admin.system;
 
-import com.secondhand.tradingplatformadminentity.entity.admin.system.Form;
-import com.secondhand.tradingplatformcommon.base.BaseDao.BaseDao;
+import com.otoko.starteradminentity.entity.admin.system.Form;
+import com.otoko.startercommon.base.BaseDao.BaseDao;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;

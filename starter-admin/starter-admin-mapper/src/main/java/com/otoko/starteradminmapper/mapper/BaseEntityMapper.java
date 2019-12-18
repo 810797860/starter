@@ -1,6 +1,6 @@
 package com.otoko.starteradminmapper.mapper;
 
-import com.secondhand.tradingplatformcommon.base.BaseDao.BaseDao;
+import com.otoko.startercommon.base.BaseDao.BaseDao;
 import org.springframework.stereotype.Repository;
 
 /**

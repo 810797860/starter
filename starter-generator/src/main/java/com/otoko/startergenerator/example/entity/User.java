@@ -3,7 +3,7 @@ package com.otoko.startergenerator.example.entity;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.secondhand.tradingplatformcommon.base.BaseEntity.BaseEntity;
+import com.otoko.startercommon.base.BaseEntity.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 

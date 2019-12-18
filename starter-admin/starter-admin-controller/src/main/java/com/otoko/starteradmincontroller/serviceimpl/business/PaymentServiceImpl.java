@@ -1,9 +1,9 @@
 package com.otoko.starteradmincontroller.serviceimpl.business;
 
-import com.secondhand.tradingplatformadmincontroller.serviceimpl.admin.shiro.UserServiceImpl;
-import com.secondhand.tradingplatformadminentity.entity.admin.shiro.User;
-import com.secondhand.tradingplatformadminservice.service.admin.business.PaymentService;
-import com.secondhand.tradingplatformcommon.util.ToolUtil;
+import com.otoko.starteradmincontroller.serviceimpl.shiro.UserServiceImpl;
+import com.otoko.starteradminentity.entity.admin.shiro.User;
+import com.otoko.starteradminservice.service.admin.business.PaymentService;
+import com.otoko.startercommon.util.ToolUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -27,19 +27,19 @@ import java.util.Map;
 @Service
 public class PaymentServiceImpl implements PaymentService{
 
-    @Value("${tradingplatform.payment.token}")
+    @Value("${starter.payment.token}")
     private String token;
 
-    @Value("${tradingplatform.payment.codePayId}")
+    @Value("${starter.payment.codePayId}")
     private String codePayId;
 
-    @Value("${tradingplatform.payment.notifyUrl}")
+    @Value("${starter.payment.notifyUrl}")
     private String notifyUrl;
 
-    @Value("${tradingplatform.payment.returnUrl}")
+    @Value("${starter.payment.returnUrl}")
     private String returnUrl;
 
-    @Value("${tradingplatform.payment.key}")
+    @Value("${starter.payment.key}")
     private String key;
 
     @Autowired

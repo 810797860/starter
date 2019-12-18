@@ -1,11 +1,12 @@
 package com.otoko.starteradmincontroller.controller.admin.shiro;
 
-import com.secondhand.tradingplatformcommon.jsonResult.JsonResult;
-import com.secondhand.tradingplatformcommon.pojo.CustomizeException;
-import com.secondhand.tradingplatformcommon.pojo.CustomizeStatus;
-import com.secondhand.tradingplatformcommon.pojo.MagicalValue;
-import com.secondhand.tradingplatformcommon.pojo.SystemSelectItem;
-import com.secondhand.tradingplatformcommon.util.ToolUtil;
+import com.otoko.starteradmincontroller.shiro.DesUserToken;
+import com.otoko.startercommon.jsonResult.JsonResult;
+import com.otoko.startercommon.pojo.CustomizeException;
+import com.otoko.startercommon.pojo.CustomizeStatus;
+import com.otoko.startercommon.pojo.MagicalValue;
+import com.otoko.startercommon.pojo.SystemSelectItem;
+import com.otoko.startercommon.util.ToolUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

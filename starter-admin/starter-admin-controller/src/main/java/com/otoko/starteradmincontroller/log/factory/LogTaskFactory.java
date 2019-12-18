@@ -1,14 +1,14 @@
 package com.otoko.starteradmincontroller.log.factory;
 
-import com.secondhand.tradingplatformadmincontroller.log.LogManager;
-import com.secondhand.tradingplatformadminentity.entity.admin.business.LoginLog;
-import com.secondhand.tradingplatformadminentity.entity.admin.business.OperationLog;
-import com.secondhand.tradingplatformadminmapper.mapper.admin.business.LoginLogMapper;
-import com.secondhand.tradingplatformadminmapper.mapper.admin.business.OperationLogMapper;
-import com.secondhand.tradingplatformcommon.pojo.DataBase;
-import com.secondhand.tradingplatformcommon.state.LogSucceed;
-import com.secondhand.tradingplatformcommon.state.LogType;
-import com.secondhand.tradingplatformcommon.util.ToolUtil;
+import com.otoko.starteradmincontroller.log.LogManager;
+import com.otoko.starteradminentity.entity.admin.business.LoginLog;
+import com.otoko.starteradminentity.entity.admin.business.OperationLog;
+import com.otoko.starteradminmapper.mapper.admin.business.LoginLogMapper;
+import com.otoko.starteradminmapper.mapper.admin.business.OperationLogMapper;
+import com.otoko.startercommon.pojo.DataBase;
+import com.otoko.startercommon.state.LogSucceed;
+import com.otoko.startercommon.state.LogType;
+import com.otoko.startercommon.util.ToolUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

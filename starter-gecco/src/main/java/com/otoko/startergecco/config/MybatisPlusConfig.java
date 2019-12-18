@@ -23,7 +23,7 @@ import java.util.List;
  */
 
 @Configuration
-@MapperScan("com.secondhand.tradingplatformgeccomapper.mapper*")
+@MapperScan("com.otoko.startergeccomapper.mapper*")
 public class MybatisPlusConfig {
 
     /**

@@ -1,7 +1,7 @@
 package com.otoko.startergecco.scheduler;
 
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
-import com.secondhand.tradingplatformgeccocontroller.spider.SpiderThreadLocal;
+import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.spider.SpiderThreadLocal;
 
 /**
  * 派生队列上下文，可以在运行时将请求放入派生队列

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.secondhand.tradingplatformadminmapper.mapper.admin.shiro.RoleMenuMapper">
+<mapper namespace="com.otoko.starteradminmapper.mapper.admin.shiro.RoleMenuMapper">
 
-    <cache type="com.secondhand.tradingplatformcommon.redisCache.RedisCache"></cache>
+    <cache type="com.otoko.startercommon.redisCache.RedisCache"></cache>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="roleMenuMap" type="com.secondhand.tradingplatformadminentity.entity.admin.shiro.RoleMenu"
-               extends="com.secondhand.tradingplatformadminmapper.mapper.BaseEntityMapper.baseEntityMapper">
+    <resultMap id="roleMenuMap" type="com.otoko.starteradminentity.entity.admin.shiro.RoleMenu"
+               extends="com.otoko.starteradminmapper.mapper.BaseEntityMapper.baseEntityMapper">
         <result column="menu_id" property="menuId" jdbcType="INTEGER"/>
 
 
     </resultMap>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="roleMenuMapSimple" type="com.secondhand.tradingplatformadminentity.entity.admin.shiro.RoleMenu">
+    <resultMap id="roleMenuMapSimple" type="com.otoko.starteradminentity.entity.admin.shiro.RoleMenu">
         <result column="menu_id" property="menuId" jdbcType="INTEGER"/>
 
 

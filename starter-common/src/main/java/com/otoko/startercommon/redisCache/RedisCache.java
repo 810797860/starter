@@ -1,6 +1,6 @@
 package com.otoko.startercommon.redisCache;
 
-import com.secondhand.tradingplatformcommon.util.ApplicationContextHolder;
+import com.otoko.startercommon.util.ApplicationContextHolder;
 import org.apache.ibatis.cache.Cache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,13 +1,13 @@
 package com.otoko.startergecco.spider.render.html;
 
-import com.secondhand.tradingplatformgeccocontroller.annotation.Image;
-import com.secondhand.tradingplatformgeccocontroller.downloader.DownloaderContext;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
-import com.secondhand.tradingplatformgeccocontroller.response.HttpResponse;
-import com.secondhand.tradingplatformgeccocontroller.spider.SpiderBean;
-import com.secondhand.tradingplatformgeccocontroller.spider.render.FieldRender;
-import com.secondhand.tradingplatformgeccocontroller.spider.render.FieldRenderException;
-import com.secondhand.tradingplatformgeccocontroller.utils.DownloadImage;
+import com.otoko.startergeccocontroller.annotation.Image;
+import com.otoko.startergeccocontroller.downloader.DownloaderContext;
+import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.response.HttpResponse;
+import com.otoko.startergeccocontroller.spider.SpiderBean;
+import com.otoko.startergeccocontroller.spider.render.FieldRender;
+import com.otoko.startergeccocontroller.spider.render.FieldRenderException;
+import com.otoko.startergeccocontroller.utils.DownloadImage;
 import net.sf.cglib.beans.BeanMap;
 import org.apache.commons.lang3.StringUtils;
 import org.reflections.ReflectionUtils;

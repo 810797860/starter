@@ -9,8 +9,8 @@ import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import com.google.code.kaptcha.Producer;
-import com.secondhand.tradingplatformadminservice.service.admin.business.ShortMessageService;
-import com.secondhand.tradingplatformcommon.pojo.MagicalValue;
+import com.otoko.starteradminservice.service.admin.business.ShortMessageService;
+import com.otoko.startercommon.pojo.MagicalValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -28,16 +28,16 @@ import javax.servlet.http.HttpSession;
 @Service
 public class ShortMessageServiceImpl implements ShortMessageService {
 
-    @Value("${tradingplatform.message.defaultConnectTimeout}")
+    @Value("${starter.message.defaultConnectTimeout}")
     private String defaultConnectTimeout;
 
-    @Value("${tradingplatform.message.defaultReadTimeout}")
+    @Value("${starter.message.defaultReadTimeout}")
     private String defaultReadTimeout;
 
-    @Value("${tradingplatform.message.accessKeyId}")
+    @Value("${starter.message.accessKeyId}")
     private String accessKeyId;
 
-    @Value("${tradingplatform.message.accessKeySecret}")
+    @Value("${starter.message.accessKeySecret}")
     private String accessKeySecret;
 
     @Autowired

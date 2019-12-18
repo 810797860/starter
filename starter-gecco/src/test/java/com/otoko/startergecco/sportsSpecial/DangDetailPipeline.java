@@ -1,14 +1,14 @@
 package com.otoko.startergecco.sportsSpecial;
 
-import com.secondhand.tradingplatformgeccocontroller.TradingplatformGeccoControllerApplicationTests;
-import com.secondhand.tradingplatformgeccocontroller.annotation.PipelineName;
-import com.secondhand.tradingplatformgeccocontroller.pipeline.Pipeline;
+import com.otoko.startergeccocontroller.starterGeccoControllerApplicationTests;
+import com.otoko.startergeccocontroller.annotation.PipelineName;
+import com.otoko.startergeccocontroller.pipeline.Pipeline;
 
 @PipelineName("sportsSpecialDetailPipeline")
 public class DangDetailPipeline implements Pipeline<DangDetail>{
 
     @Override
     public void process(DangDetail dangDetail) {
-        TradingplatformGeccoControllerApplicationTests.insertSportsSpecial(dangDetail);
+        starterGeccoControllerApplicationTests.insertSportsSpecial(dangDetail);
     }
 }

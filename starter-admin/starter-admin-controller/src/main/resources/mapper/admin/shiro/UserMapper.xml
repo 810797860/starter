@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.secondhand.tradingplatformadminmapper.mapper.admin.shiro.UserMapper">
+<mapper namespace="com.otoko.starteradminmapper.mapper.admin.shiro.UserMapper">
 
-    <cache type="com.secondhand.tradingplatformcommon.redisCache.RedisCache"></cache>
+    <cache type="com.otoko.startercommon.redisCache.RedisCache"></cache>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="userMap" type="com.secondhand.tradingplatformadminentity.entity.admin.shiro.User"
-               extends="com.secondhand.tradingplatformadminmapper.mapper.BaseEntityMapper.baseEntityMapper">
+    <resultMap id="userMap" type="com.otoko.starteradminentity.entity.admin.shiro.User"
+               extends="com.otoko.starteradminmapper.mapper.BaseEntityMapper.baseEntityMapper">
 
         <result column="avatar" property="avatar" jdbcType="INTEGER"/>
         <result column="account" property="account" jdbcType="VARCHAR"/>
@@ -22,7 +22,7 @@
     </resultMap>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="userMapSimple" type="com.secondhand.tradingplatformadminentity.entity.admin.shiro.User">
+    <resultMap id="userMapSimple" type="com.otoko.starteradminentity.entity.admin.shiro.User">
 
         <result column="avatar" property="avatar" jdbcType="INTEGER"/>
         <result column="account" property="account" jdbcType="VARCHAR"/>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.secondhand.tradingplatformgenerator.example.mapper.UserMapper">
-    <resultMap id="userMap" type="com.secondhand.tradingplatformgenerator.example.entity.User"
-               extends="com.secondhand.tradingplatformadminmapper.mapper.BaseEntityMapper.baseEntityMapper">
+<mapper namespace="com.otoko.startergenerator.example.mapper.UserMapper">
+    <resultMap id="userMap" type="com.otoko.startergenerator.example.entity.User"
+               extends="com.otoko.starteradminmapper.mapper.BaseEntityMapper.baseEntityMapper">
         <result column="avatar" property="avatar" jdbcType="VARCHAR"></result>
         <result column="account" property="account" jdbcType="VARCHAR"></result>
         <result column="password" property="password" jdbcType="VARCHAR"></result>
@@ -18,7 +18,7 @@
         <result column="version" property="version" jdbcType="INTEGER"></result>
     </resultMap>
 
-    <resultMap id="userMapSimple" type="com.secondhand.tradingplatformgenerator.example.entity.User">
+    <resultMap id="userMapSimple" type="com.otoko.startergenerator.example.entity.User">
         <result column="avatar" property="avatar" jdbcType="VARCHAR"></result>
         <result column="account" property="account" jdbcType="VARCHAR"></result>
         <result column="password" property="password" jdbcType="VARCHAR"></result>

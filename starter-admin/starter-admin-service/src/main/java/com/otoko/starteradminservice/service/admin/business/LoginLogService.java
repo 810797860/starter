@@ -1,7 +1,7 @@
 package com.otoko.starteradminservice.service.admin.business;
 
-import com.secondhand.tradingplatformadminentity.entity.admin.business.LoginLog;
-import com.secondhand.tradingplatformcommon.base.BaseService.BaseService;
+import com.otoko.starteradminentity.entity.admin.business.LoginLog;
+import com.otoko.startercommon.base.BaseService.BaseService;
 
 import java.util.List;
 import java.util.Map;

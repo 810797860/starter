@@ -1,11 +1,11 @@
 package com.otoko.startergecco.sogouwx;
 
-import com.secondhand.tradingplatformgeccocontroller.GeccoEngine;
-import com.secondhand.tradingplatformgeccocontroller.annotation.Gecco;
-import com.secondhand.tradingplatformgeccocontroller.annotation.HtmlField;
-import com.secondhand.tradingplatformgeccocontroller.annotation.RequestParameter;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpGetRequest;
-import com.secondhand.tradingplatformgeccocontroller.spider.HtmlBean;
+import com.otoko.startergeccocontroller.GeccoEngine;
+import com.otoko.startergeccocontroller.annotation.Gecco;
+import com.otoko.startergeccocontroller.annotation.HtmlField;
+import com.otoko.startergeccocontroller.annotation.RequestParameter;
+import com.otoko.startergeccocontroller.request.HttpGetRequest;
+import com.otoko.startergeccocontroller.spider.HtmlBean;
 
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class SogouWX implements HtmlBean {
 		start.addHeader("Accept-Encoding", "gzip, deflate, sdch");
 		start.addHeader("Cache-Control", "max-age=0");
 		GeccoEngine.create()
-		.classpath("com.secondhand.tradingplatformgeccocontroller.demo.sogouwx")
+		.classpath("com.otoko.startergeccocontroller.demo.sogouwx")
 		.start(start)
 		//.start("http://mp.weixin.qq.com/s?__biz=MzAwMjIyODIwNA==&mid=2650194319&idx=7&sn=5fbba7eb7f393508461468ea5c412ba5&3rd=MzA3MDU4NTYzMw==&scene=6")
 		.interval(5000)

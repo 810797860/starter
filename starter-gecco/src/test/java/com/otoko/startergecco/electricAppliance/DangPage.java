@@ -1,10 +1,10 @@
 package com.otoko.startergecco.electricAppliance;
 
-import com.secondhand.tradingplatformgeccocontroller.GeccoEngine;
-import com.secondhand.tradingplatformgeccocontroller.annotation.*;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpGetRequest;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
-import com.secondhand.tradingplatformgeccocontroller.spider.HtmlBean;
+import com.otoko.startergeccocontroller.GeccoEngine;
+import com.otoko.startergeccocontroller.annotation.*;
+import com.otoko.startergeccocontroller.request.HttpGetRequest;
+import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.spider.HtmlBean;
 
 import java.util.List;
 
@@ -41,14 +41,14 @@ public class DangPage implements HtmlBean{
         HttpGetRequest httpGetRequest = new HttpGetRequest("http://3c.dangdang.com/");
         httpGetRequest.setCharset("GBK");
         GeccoEngine.create()
-                .classpath("com.secondhand.tradingplatformgeccocontroller.electricAppliance")
+                .classpath("com.otoko.startergeccocontroller.electricAppliance")
                 .start(httpGetRequest)
                 .thread(1)
                 .interval(4000)
                 .run();
 
         GeccoEngine.create()
-                .classpath("com.secondhand.tradingplatformgeccocontroller.electricAppliance")
+                .classpath("com.otoko.startergeccocontroller.electricAppliance")
                 .start(DangListPipeline.httpRequests)
                 .thread(1)
                 .interval(4000)

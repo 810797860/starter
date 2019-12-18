@@ -1,12 +1,12 @@
 package com.otoko.startergecco.sina;
 
-import com.secondhand.tradingplatformgeccocontroller.GeccoEngine;
-import com.secondhand.tradingplatformgeccocontroller.annotation.Gecco;
-import com.secondhand.tradingplatformgeccocontroller.annotation.HtmlField;
-import com.secondhand.tradingplatformgeccocontroller.annotation.PipelineName;
-import com.secondhand.tradingplatformgeccocontroller.annotation.Text;
-import com.secondhand.tradingplatformgeccocontroller.pipeline.Pipeline;
-import com.secondhand.tradingplatformgeccocontroller.spider.HtmlBean;
+import com.otoko.startergeccocontroller.GeccoEngine;
+import com.otoko.startergeccocontroller.annotation.Gecco;
+import com.otoko.startergeccocontroller.annotation.HtmlField;
+import com.otoko.startergeccocontroller.annotation.PipelineName;
+import com.otoko.startergeccocontroller.annotation.Text;
+import com.otoko.startergeccocontroller.pipeline.Pipeline;
+import com.otoko.startergeccocontroller.spider.HtmlBean;
 
 import java.util.List;
 
@@ -63,7 +63,7 @@ public class SinaList implements HtmlBean, Pipeline<SinaList> {
 
 	public static void main(String[] args) {
 		GeccoEngine.create()
-		.classpath("com.secondhand.tradingplatformgeccocontroller.demo.sina")
+		.classpath("com.otoko.startergeccocontroller.demo.sina")
 		.start("http://news.sina.com.cn/china/")
 		.run();
 	}

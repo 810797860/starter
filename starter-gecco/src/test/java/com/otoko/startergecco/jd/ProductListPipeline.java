@@ -1,9 +1,9 @@
 package com.otoko.startergecco.jd;
 
-import com.secondhand.tradingplatformgeccocontroller.annotation.PipelineName;
-import com.secondhand.tradingplatformgeccocontroller.pipeline.Pipeline;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
-import com.secondhand.tradingplatformgeccocontroller.scheduler.SchedulerContext;
+import com.otoko.startergeccocontroller.annotation.PipelineName;
+import com.otoko.startergeccocontroller.pipeline.Pipeline;
+import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.scheduler.SchedulerContext;
 import org.apache.commons.lang3.StringUtils;
 
 @PipelineName("productListPipeline")

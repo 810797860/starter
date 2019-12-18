@@ -3,17 +3,17 @@
 ##import ${package.Entity}.${entity};
 ##import ${package.Mapper}.${table.mapperName};
 ##import ${package.Service}.${table.serviceName};
-package com.secondhand.tradingplatformadmincontroller.serviceimpl;
+package com.otoko.starteradmincontroller.serviceimpl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.secondhand.tradingplatformadminentity.entity.${entity};
-import com.secondhand.tradingplatformadminmapper.mapper.${entity}Mapper;
-import com.secondhand.tradingplatformadminservice.service.${entity}Service;
-import com.secondhand.tradingplatformcommon.base.BaseEntity.Sort;
+import com.otoko.starteradminentity.entity.${entity};
+import com.otoko.starteradminmapper.mapper.${entity}Mapper;
+import com.otoko.starteradminservice.service.${entity}Service;
+import com.otoko.startercommon.base.BaseEntity.Sort;
 import ${superServiceImplClassPackage};
-import com.secondhand.tradingplatformcommon.util.ToolUtil;
+import com.otoko.startercommon.util.ToolUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;

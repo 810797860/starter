@@ -2,9 +2,9 @@ package com.otoko.starteradminservice.service.admin.shiro;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.secondhand.tradingplatformadminentity.entity.admin.shiro.User;
-import com.secondhand.tradingplatformcommon.base.BaseService.BaseService;
-import com.secondhand.tradingplatformcommon.pojo.CustomizeException;
+import com.otoko.starteradminentity.entity.admin.shiro.User;
+import com.otoko.startercommon.base.BaseService.BaseService;
+import com.otoko.startercommon.pojo.CustomizeException;
 
 import java.io.Serializable;
 import java.util.Collection;

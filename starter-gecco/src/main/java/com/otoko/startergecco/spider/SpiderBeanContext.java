@@ -1,10 +1,10 @@
 package com.otoko.startergecco.spider;
 
-import com.secondhand.tradingplatformgeccocontroller.downloader.AfterDownload;
-import com.secondhand.tradingplatformgeccocontroller.downloader.BeforeDownload;
-import com.secondhand.tradingplatformgeccocontroller.downloader.Downloader;
-import com.secondhand.tradingplatformgeccocontroller.pipeline.Pipeline;
-import com.secondhand.tradingplatformgeccocontroller.spider.render.Render;
+import com.otoko.startergeccocontroller.downloader.AfterDownload;
+import com.otoko.startergeccocontroller.downloader.BeforeDownload;
+import com.otoko.startergeccocontroller.downloader.Downloader;
+import com.otoko.startergeccocontroller.pipeline.Pipeline;
+import com.otoko.startergeccocontroller.spider.render.Render;
 
 import java.util.List;
 

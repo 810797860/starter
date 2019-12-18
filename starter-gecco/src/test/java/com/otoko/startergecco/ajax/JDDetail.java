@@ -1,10 +1,10 @@
 package com.otoko.startergecco.ajax;
 
-import com.secondhand.tradingplatformgeccocontroller.GeccoEngine;
-import com.secondhand.tradingplatformgeccocontroller.annotation.*;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpGetRequest;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
-import com.secondhand.tradingplatformgeccocontroller.spider.HtmlBean;
+import com.otoko.startergeccocontroller.GeccoEngine;
+import com.otoko.startergeccocontroller.annotation.*;
+import com.otoko.startergeccocontroller.request.HttpGetRequest;
+import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.spider.HtmlBean;
 
 @Gecco(matchUrl="https://item.jd.com/{code}.html", pipelines="consolePipeline")
 public class JDDetail implements HtmlBean {
@@ -83,7 +83,7 @@ public class JDDetail implements HtmlBean {
 		HttpRequest request = new HttpGetRequest("https://item.jd.com/1455427.html");
 		request.setCharset("GBK");
 		GeccoEngine.create()
-		.classpath("com.secondhand.tradingplatformgeccocontroller.demo.ajax")
+		.classpath("com.otoko.startergeccocontroller.demo.ajax")
 		//开始抓取的页面地址
 		.start(request)
 		//开启几个爬虫线程

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.secondhand.tradingplatformadminmapper.mapper.admin.shiro.UserRoleMapper">
+<mapper namespace="com.otoko.starteradminmapper.mapper.admin.shiro.UserRoleMapper">
 
-    <cache type="com.secondhand.tradingplatformcommon.redisCache.RedisCache"></cache>
+    <cache type="com.otoko.startercommon.redisCache.RedisCache"></cache>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="userRoleMap" type="com.secondhand.tradingplatformadminentity.entity.admin.shiro.UserRole"
-               extends="com.secondhand.tradingplatformadminmapper.mapper.BaseEntityMapper.baseEntityMapper">
+    <resultMap id="userRoleMap" type="com.otoko.starteradminentity.entity.admin.shiro.UserRole"
+               extends="com.otoko.starteradminmapper.mapper.BaseEntityMapper.baseEntityMapper">
         <result column="user_id" property="userId" jdbcType="INTEGER"/>
         <result column="role_id" property="roleId" jdbcType="INTEGER"/>
 
     </resultMap>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="userRoleMapSimple" type="com.secondhand.tradingplatformadminentity.entity.admin.shiro.UserRole">
+    <resultMap id="userRoleMapSimple" type="com.otoko.starteradminentity.entity.admin.shiro.UserRole">
         <result column="user_id" property="userId" jdbcType="INTEGER"/>
         <result column="role_id" property="roleId" jdbcType="INTEGER"/>
 

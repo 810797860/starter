@@ -1,6 +1,6 @@
 package com.otoko.startergecco.config;
 
-import com.secondhand.tradingplatformcommon.util.ApplicationContextHolder;
+import com.otoko.startercommon.util.ApplicationContextHolder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

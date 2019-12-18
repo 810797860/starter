@@ -2,9 +2,9 @@ package com.otoko.starteradminservice.service.admin.business;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.secondhand.tradingplatformadminentity.entity.admin.business.Annex;
-import com.secondhand.tradingplatformcommon.base.BaseService.BaseService;
-import com.secondhand.tradingplatformcommon.pojo.CustomizeException;
+import com.otoko.starteradminentity.entity.admin.business.Annex;
+import com.otoko.startercommon.base.BaseService.BaseService;
+import com.otoko.startercommon.pojo.CustomizeException;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;

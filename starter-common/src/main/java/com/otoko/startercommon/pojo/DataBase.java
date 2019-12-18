@@ -1,7 +1,7 @@
 package com.otoko.startercommon.pojo;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.secondhand.tradingplatformcommon.util.ApplicationContextHolder;
+import com.otoko.startercommon.util.ApplicationContextHolder;
 
 import java.util.HashMap;
 import java.util.List;

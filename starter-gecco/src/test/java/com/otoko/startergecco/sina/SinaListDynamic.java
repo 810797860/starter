@@ -1,10 +1,10 @@
 package com.otoko.startergecco.sina;
 
 import com.alibaba.fastjson.JSONObject;
-import com.secondhand.tradingplatformgeccocontroller.GeccoEngine;
-import com.secondhand.tradingplatformgeccocontroller.annotation.PipelineName;
-import com.secondhand.tradingplatformgeccocontroller.dynamic.DynamicGecco;
-import com.secondhand.tradingplatformgeccocontroller.pipeline.JsonPipeline;
+import com.otoko.startergeccocontroller.GeccoEngine;
+import com.otoko.startergeccocontroller.annotation.PipelineName;
+import com.otoko.startergeccocontroller.dynamic.DynamicGecco;
+import com.otoko.startergeccocontroller.pipeline.JsonPipeline;
 
 @PipelineName("sinaListDynamicPipeline")
 public class SinaListDynamic extends JsonPipeline {
@@ -27,7 +27,7 @@ public class SinaListDynamic extends JsonPipeline {
 		.register();
 		
 		GeccoEngine.create()
-		.classpath("com.secondhand.tradingplatformgeccocontroller.demo.sina")
+		.classpath("com.otoko.startergeccocontroller.demo.sina")
 		.start("http://news.sina.com.cn/china/")
 		.run();
 	}

@@ -1,8 +1,8 @@
 package com.otoko.startergecco.sogouwx;
 
-import com.secondhand.tradingplatformgeccocontroller.annotation.GeccoClass;
-import com.secondhand.tradingplatformgeccocontroller.downloader.BeforeDownload;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.annotation.GeccoClass;
+import com.otoko.startergeccocontroller.downloader.BeforeDownload;
+import com.otoko.startergeccocontroller.request.HttpRequest;
 
 @GeccoClass(Article.class)
 public class BeforeArticleDownloader implements BeforeDownload {

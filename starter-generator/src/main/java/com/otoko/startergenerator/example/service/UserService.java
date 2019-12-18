@@ -1,7 +1,7 @@
 package com.otoko.startergenerator.example.service;
 
-import com.secondhand.tradingplatformcommon.base.BaseService.BaseService;
-import com.secondhand.tradingplatformgenerator.example.entity.User;
+import com.otoko.startercommon.base.BaseService.BaseService;
+import com.otoko.startergenerator.example.entity.User;
 
 import java.util.List;
 import java.util.Map;

@@ -1,8 +1,8 @@
 package com.otoko.startergecco.pipeline;
 
 import com.alibaba.fastjson.JSON;
-import com.secondhand.tradingplatformgeccocontroller.annotation.PipelineName;
-import com.secondhand.tradingplatformgeccocontroller.spider.SpiderBean;
+import com.otoko.startergeccocontroller.annotation.PipelineName;
+import com.otoko.startergeccocontroller.spider.SpiderBean;
 
 @PipelineName("consolePipeline")
 public class ConsolePipeline implements Pipeline<SpiderBean> {

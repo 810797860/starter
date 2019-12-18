@@ -1,9 +1,9 @@
 package com.otoko.startergecco.jd;
 
-import com.secondhand.tradingplatformgeccocontroller.annotation.HtmlField;
-import com.secondhand.tradingplatformgeccocontroller.annotation.Text;
-import com.secondhand.tradingplatformgeccocontroller.spider.HrefBean;
-import com.secondhand.tradingplatformgeccocontroller.spider.HtmlBean;
+import com.otoko.startergeccocontroller.annotation.HtmlField;
+import com.otoko.startergeccocontroller.annotation.Text;
+import com.otoko.startergeccocontroller.spider.HrefBean;
+import com.otoko.startergeccocontroller.spider.HtmlBean;
 
 import java.util.List;
 

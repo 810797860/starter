@@ -1,8 +1,8 @@
 package com.otoko.starteradmincontroller.handler;
 
-import com.secondhand.tradingplatformcommon.jsonResult.JsonResult;
-import com.secondhand.tradingplatformcommon.pojo.CustomizeException;
-import com.secondhand.tradingplatformcommon.pojo.MagicalValue;
+import com.otoko.startercommon.jsonResult.JsonResult;
+import com.otoko.startercommon.pojo.CustomizeException;
+import com.otoko.startercommon.pojo.MagicalValue;
 import io.swagger.annotations.Api;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;

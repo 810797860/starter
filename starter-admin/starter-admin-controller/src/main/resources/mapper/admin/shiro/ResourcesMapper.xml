@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.secondhand.tradingplatformadminmapper.mapper.admin.shiro.ResourcesMapper">
+<mapper namespace="com.otoko.starteradminmapper.mapper.admin.shiro.ResourcesMapper">
 
-    <cache type="com.secondhand.tradingplatformcommon.redisCache.RedisCache"></cache>
+    <cache type="com.otoko.startercommon.redisCache.RedisCache"></cache>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="resourcesMap" type="com.secondhand.tradingplatformadminentity.entity.admin.shiro.Resources"
-               extends="com.secondhand.tradingplatformadminmapper.mapper.BaseEntityMapper.baseEntityMapper">
+    <resultMap id="resourcesMap" type="com.otoko.starteradminentity.entity.admin.shiro.Resources"
+               extends="com.otoko.starteradminmapper.mapper.BaseEntityMapper.baseEntityMapper">
 
         <result column="title" property="title" jdbcType="VARCHAR"/>
         <result column="url" property="url" jdbcType="VARCHAR"/>
@@ -14,7 +14,7 @@
     </resultMap>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="resourcesMapSimple" type="com.secondhand.tradingplatformadminentity.entity.admin.shiro.Resources">
+    <resultMap id="resourcesMapSimple" type="com.otoko.starteradminentity.entity.admin.shiro.Resources">
 
         <result column="title" property="title" jdbcType="VARCHAR"/>
         <result column="url" property="url" jdbcType="VARCHAR"/>
@@ -25,7 +25,7 @@
         select * from s_base_resources where id = #{resourcesId} and deleted = false
     </select>
 
-    <select id="loadUserResources" resultType="com.secondhand.tradingplatformadminentity.entity.admin.shiro.Resources">
+    <select id="loadUserResources" resultType="com.otoko.starteradminentity.entity.admin.shiro.Resources">
         SELECT
         sbr.id AS id,
         sbr.title AS title,

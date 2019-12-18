@@ -17,7 +17,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 @Configuration
 @EnableAsync
-@ConfigurationProperties(prefix = "tradingplatform.executor")
+@ConfigurationProperties(prefix = "starter.executor")
 public class TaskExecutorConfig implements AsyncConfigurer {
 
     private int corePoolSize;

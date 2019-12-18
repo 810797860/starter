@@ -1,7 +1,7 @@
 package com.otoko.startergecco.scheduler;
 
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
-import com.secondhand.tradingplatformgeccocontroller.spider.SpiderThreadLocal;
+import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.spider.SpiderThreadLocal;
 
 /**
  * 被DeriveSchedulerContext替代，特指派生队列

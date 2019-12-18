@@ -1,12 +1,12 @@
 package com.otoko.startergecco.downloader;
 
-import com.secondhand.tradingplatformgeccocontroller.downloader.proxy.Proxys;
-import com.secondhand.tradingplatformgeccocontroller.downloader.proxy.ProxysContext;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpPostRequest;
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
-import com.secondhand.tradingplatformgeccocontroller.response.HttpResponse;
-import com.secondhand.tradingplatformgeccocontroller.spider.SpiderThreadLocal;
-import com.secondhand.tradingplatformgeccocontroller.utils.UrlUtils;
+import com.otoko.startergeccocontroller.downloader.proxy.Proxys;
+import com.otoko.startergeccocontroller.downloader.proxy.ProxysContext;
+import com.otoko.startergeccocontroller.request.HttpPostRequest;
+import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.response.HttpResponse;
+import com.otoko.startergeccocontroller.spider.SpiderThreadLocal;
+import com.otoko.startergeccocontroller.utils.UrlUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.Header;
@@ -53,7 +53,7 @@ import java.util.Map;
  * @author huchengyi
  *
  */
-@com.secondhand.tradingplatformgeccocontroller.annotation.Downloader("httpClientDownloader")
+@com.otoko.startergeccocontroller.annotation.Downloader("httpClientDownloader")
 public class HttpClientDownloader extends AbstractDownloader {
 	
 	private static Log log = LogFactory.getLog(HttpClientDownloader.class);

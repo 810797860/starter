@@ -1,7 +1,7 @@
 package com.otoko.startergecco.downloader;
 
-import com.secondhand.tradingplatformgeccocontroller.request.HttpRequest;
-import com.secondhand.tradingplatformgeccocontroller.response.HttpResponse;
+import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergeccocontroller.response.HttpResponse;
 
 public interface AfterDownload {
 	

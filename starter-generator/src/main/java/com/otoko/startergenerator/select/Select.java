@@ -1,6 +1,6 @@
 package com.otoko.startergenerator.select;
 
-import com.secondhand.tradingplatformcommon.pojo.MagicalValue;
+import com.otoko.startercommon.pojo.MagicalValue;
 
 /**
  * @author 81079

@@ -1,6 +1,6 @@
 package com.otoko.startergecco.listener;
 
-import com.secondhand.tradingplatformgeccocontroller.GeccoEngine;
+import com.otoko.startergeccocontroller.GeccoEngine;
 
 /**
  * 简单的引擎时间兼容实现类，可以继承该类覆盖需要的方法
@@ -12,7 +12,7 @@ public abstract class SimpleEventListener implements EventListener {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.secondhand.tradingplatformgeccocontroller.listener.EventListener#onStart(com.secondhand.tradingplatformgeccocontroller.GeccoEngine)
+	 * @see com.otoko.startergeccocontroller.listener.EventListener#onStart(com.otoko.startergeccocontroller.GeccoEngine)
 	 */
 	@Override
 	public void onStart(GeccoEngine ge) {
@@ -21,7 +21,7 @@ public abstract class SimpleEventListener implements EventListener {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.secondhand.tradingplatformgeccocontroller.listener.EventListener#onPause(com.secondhand.tradingplatformgeccocontroller.GeccoEngine)
+	 * @see com.otoko.startergeccocontroller.listener.EventListener#onPause(com.otoko.startergeccocontroller.GeccoEngine)
 	 */
 	@Override
 	public void onPause(GeccoEngine ge) {
@@ -30,7 +30,7 @@ public abstract class SimpleEventListener implements EventListener {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.secondhand.tradingplatformgeccocontroller.listener.EventListener#onRestart(com.secondhand.tradingplatformgeccocontroller.GeccoEngine)
+	 * @see com.otoko.startergeccocontroller.listener.EventListener#onRestart(com.otoko.startergeccocontroller.GeccoEngine)
 	 */
 	@Override
 	public void onRestart(GeccoEngine ge) {
@@ -39,7 +39,7 @@ public abstract class SimpleEventListener implements EventListener {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.secondhand.tradingplatformgeccocontroller.listener.EventListener#onStop(com.secondhand.tradingplatformgeccocontroller.GeccoEngine)
+	 * @see com.otoko.startergeccocontroller.listener.EventListener#onStop(com.otoko.startergeccocontroller.GeccoEngine)
 	 */
 	@Override
 	public void onStop(GeccoEngine ge) {

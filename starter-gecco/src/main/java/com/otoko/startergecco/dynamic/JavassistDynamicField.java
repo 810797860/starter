@@ -1,6 +1,6 @@
 package com.otoko.startergecco.dynamic;
 
-import com.secondhand.tradingplatformgeccocontroller.annotation.*;
+import com.otoko.startergeccocontroller.annotation.*;
 import javassist.CtClass;
 import javassist.CtField;
 import javassist.NotFoundException;

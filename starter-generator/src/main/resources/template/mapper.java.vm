@@ -1,10 +1,10 @@
 ##package ${package.Mapper};
 ##import ${package.Entity}.${entity};
 ##import ${superMapperClassPackage};
-package com.secondhand.tradingplatformadminmapper.mapper;
+package com.otoko.starteradminmapper.mapper;
 
-import com.secondhand.tradingplatformadminentity.entity.${entity};
-import com.secondhand.tradingplatformcommon.base.BaseDao.BaseDao;
+import com.otoko.starteradminentity.entity.${entity};
+import com.otoko.startercommon.base.BaseDao.BaseDao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

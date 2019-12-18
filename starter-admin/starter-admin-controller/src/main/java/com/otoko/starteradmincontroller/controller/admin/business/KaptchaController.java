@@ -1,7 +1,7 @@
 package com.otoko.starteradmincontroller.controller.admin.business;
 
 import com.google.code.kaptcha.Producer;
-import com.secondhand.tradingplatformcommon.pojo.MagicalValue;
+import com.otoko.startercommon.pojo.MagicalValue;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

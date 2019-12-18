@@ -3,15 +3,15 @@ package com.otoko.starteradmincontroller.serviceimpl.business;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.secondhand.tradingplatformadminentity.entity.admin.business.Annex;
-import com.secondhand.tradingplatformadminmapper.mapper.admin.business.AnnexMapper;
-import com.secondhand.tradingplatformadminservice.service.admin.business.AnnexService;
-import com.secondhand.tradingplatformcommon.base.BaseEntity.Sort;
-import com.secondhand.tradingplatformcommon.base.BaseServiceImpl.BaseServiceImpl;
-import com.secondhand.tradingplatformcommon.pojo.CustomizeException;
-import com.secondhand.tradingplatformcommon.pojo.CustomizeStatus;
-import com.secondhand.tradingplatformcommon.pojo.MagicalValue;
-import com.secondhand.tradingplatformcommon.util.ToolUtil;
+import com.otoko.starteradminentity.entity.admin.business.Annex;
+import com.otoko.starteradminmapper.mapper.admin.business.AnnexMapper;
+import com.otoko.starteradminservice.service.admin.business.AnnexService;
+import com.otoko.startercommon.base.BaseEntity.Sort;
+import com.otoko.startercommon.base.BaseServiceImpl.BaseServiceImpl;
+import com.otoko.startercommon.pojo.CustomizeException;
+import com.otoko.startercommon.pojo.CustomizeStatus;
+import com.otoko.startercommon.pojo.MagicalValue;
+import com.otoko.startercommon.util.ToolUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheConfig;
@@ -39,7 +39,7 @@ import java.util.stream.Collectors;
 @CacheConfig(cacheNames = "annex")
 public class AnnexServiceImpl extends BaseServiceImpl<AnnexMapper, Annex> implements AnnexService {
 
-    @Value("${tradingplatform.file.uploadPath}")
+    @Value("${starter.file.uploadPath}")
     private String fileUploadLath;
 
     @Autowired
