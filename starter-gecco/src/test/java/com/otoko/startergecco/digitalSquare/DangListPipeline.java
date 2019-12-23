@@ -1,9 +1,9 @@
 package com.otoko.startergecco.digitalSquare;
 
-import com.otoko.startergeccocontroller.annotation.PipelineName;
-import com.otoko.startergeccocontroller.pipeline.Pipeline;
-import com.otoko.startergeccocontroller.request.HttpRequest;
-import com.otoko.startergeccocontroller.spider.HrefBean;
+import com.otoko.startergecco.annotation.PipelineName;
+import com.otoko.startergecco.pipeline.Pipeline;
+import com.otoko.startergecco.request.HttpRequest;
+import com.otoko.startergecco.spider.HrefBean;
 
 import java.util.ArrayList;
 import java.util.List;

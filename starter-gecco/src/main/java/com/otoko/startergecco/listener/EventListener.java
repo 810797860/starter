@@ -1,6 +1,6 @@
 package com.otoko.startergecco.listener;
 
-import com.otoko.startergeccocontroller.GeccoEngine;
+import com.otoko.startergecco.GeccoEngine;
 
 /**
  * 爬虫引擎生命周期监听器

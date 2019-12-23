@@ -70,7 +70,7 @@ public class MysqlGenerator {
                         .setUsername("root")
                         .setPassword("123456")
 /*                        .setUrl("jdbc:mysql://mysqldb:3306/starter??characterEncoding=utf8")*/
-                        .setUrl("jdbc:mysql://localhost:3306/starter??characterEncoding=UTF-8&useUnicode=true&useSSL=false")
+                        .setUrl("jdbc:mysql://localhost:3306/starter?characterEncoding=UTF-8&useUnicode=true&useSSL=false")
         ).setStrategy(
                 // 策略配置
                 new StrategyConfig()

@@ -3,22 +3,22 @@ package com.otoko.startergecco;
 import com.alibaba.fastjson.JSON;
 import com.google.common.io.Files;
 import com.google.common.io.Resources;
-import com.otoko.startergeccocontroller.downloader.proxy.FileProxys;
-import com.otoko.startergeccocontroller.downloader.proxy.Proxys;
-import com.otoko.startergeccocontroller.dynamic.DynamicGecco;
-import com.otoko.startergeccocontroller.dynamic.GeccoClassLoader;
-import com.otoko.startergeccocontroller.listener.EventListener;
-import com.otoko.startergeccocontroller.monitor.GeccoJmx;
-import com.otoko.startergeccocontroller.monitor.GeccoMonitor;
-import com.otoko.startergeccocontroller.pipeline.PipelineFactory;
-import com.otoko.startergeccocontroller.request.HttpGetRequest;
-import com.otoko.startergeccocontroller.request.HttpRequest;
-import com.otoko.startergeccocontroller.request.StartRequestList;
-import com.otoko.startergeccocontroller.scheduler.NoLoopStartScheduler;
-import com.otoko.startergeccocontroller.scheduler.Scheduler;
-import com.otoko.startergeccocontroller.scheduler.StartScheduler;
-import com.otoko.startergeccocontroller.spider.Spider;
-import com.otoko.startergeccocontroller.spider.SpiderBeanFactory;
+import com.otoko.startergecco.downloader.proxy.FileProxys;
+import com.otoko.startergecco.downloader.proxy.Proxys;
+import com.otoko.startergecco.dynamic.DynamicGecco;
+import com.otoko.startergecco.dynamic.GeccoClassLoader;
+import com.otoko.startergecco.listener.EventListener;
+import com.otoko.startergecco.monitor.GeccoJmx;
+import com.otoko.startergecco.monitor.GeccoMonitor;
+import com.otoko.startergecco.pipeline.PipelineFactory;
+import com.otoko.startergecco.request.HttpGetRequest;
+import com.otoko.startergecco.request.HttpRequest;
+import com.otoko.startergecco.request.StartRequestList;
+import com.otoko.startergecco.scheduler.NoLoopStartScheduler;
+import com.otoko.startergecco.scheduler.Scheduler;
+import com.otoko.startergecco.scheduler.StartScheduler;
+import com.otoko.startergecco.spider.Spider;
+import com.otoko.startergecco.spider.SpiderBeanFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -228,7 +228,7 @@ public class GeccoEngine<V> extends Thread implements Callable<V> {
 	@Override
 	public void run() {
 		if (debug) {
-			Logger log = LogManager.getLogger("com.otoko.startergeccocontroller.spider.render");
+			Logger log = LogManager.getLogger("com.otoko.startergecco.spider.render");
 			log.setLevel(Level.DEBUG);
 		}
 		if(proxysLoader == null) {//默认采用proxys文件代理集合

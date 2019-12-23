@@ -1,6 +1,6 @@
 package com.otoko.startergecco.monitor;
 
-import com.otoko.startergeccocontroller.annotation.MBean;
+import com.otoko.startergecco.annotation.MBean;
 import org.reflections.Reflections;
 import org.weakref.jmx.MBeanExporter;
 
@@ -12,7 +12,7 @@ public class GeccoJmx {
 	private static MBeanExporter exporter = new MBeanExporter(ManagementFactory.getPlatformMBeanServer());
 	
 	public static void export(String classpath) {
-		Reflections reflections = new Reflections("com.otoko.startergeccocontroller.monitor");
+		Reflections reflections = new Reflections("com.otoko.startergecco.monitor");
 		Set<Class<?>> mbeanClasses = reflections.getTypesAnnotatedWith(MBean.class);
 		for(Class<?> mbeanClass : mbeanClasses) {
 			MBean mbean = (MBean)mbeanClass.getAnnotation(MBean.class); 

@@ -1,12 +1,12 @@
 package com.otoko.startergecco.images;
 
-import com.otoko.startergeccocontroller.GeccoEngine;
-import com.otoko.startergeccocontroller.annotation.Gecco;
-import com.otoko.startergeccocontroller.annotation.HtmlField;
-import com.otoko.startergeccocontroller.annotation.Image;
-import com.otoko.startergeccocontroller.annotation.PipelineName;
-import com.otoko.startergeccocontroller.pipeline.Pipeline;
-import com.otoko.startergeccocontroller.spider.HtmlBean;
+import com.otoko.startergecco.GeccoEngine;
+import com.otoko.startergecco.annotation.Gecco;
+import com.otoko.startergecco.annotation.HtmlField;
+import com.otoko.startergecco.annotation.Image;
+import com.otoko.startergecco.annotation.PipelineName;
+import com.otoko.startergecco.pipeline.Pipeline;
+import com.otoko.startergecco.spider.HtmlBean;
 
 import java.util.List;
 
@@ -35,7 +35,7 @@ public class ImageListDemo implements HtmlBean, Pipeline<ImageListDemo> {
 
 	public static void main(String[] args) {
         GeccoEngine.create()
-                .classpath("com.otoko.startergeccocontroller.demo.images")
+                .classpath("com.otoko.startergecco.demo.images")
                 .start("http://canlian.jiading.gov.cn/gyzc/zcxmdt/content_430614")
                 .interval(1000)
                 .run();

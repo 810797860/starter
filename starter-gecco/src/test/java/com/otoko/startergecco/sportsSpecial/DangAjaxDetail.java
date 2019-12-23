@@ -1,7 +1,9 @@
 package com.otoko.startergecco.sportsSpecial;
 
-import com.otoko.startergeccocontroller.annotation.HtmlField;
-import com.otoko.startergeccocontroller.spider.HtmlBean;
+import com.otoko.startergecco.annotation.HtmlField;
+import com.otoko.startergecco.annotation.JSONPath;
+import com.otoko.startergecco.spider.HtmlBean;
+import com.otoko.startergecco.spider.JsonBean;
 
 public class DangAjaxDetail implements HtmlBean{
 

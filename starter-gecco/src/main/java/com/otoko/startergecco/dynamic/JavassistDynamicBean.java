@@ -1,6 +1,6 @@
 package com.otoko.startergecco.dynamic;
 
-import com.otoko.startergeccocontroller.annotation.Gecco;
+import com.otoko.startergecco.annotation.Gecco;
 import javassist.*;
 import javassist.bytecode.AnnotationsAttribute;
 import javassist.bytecode.ClassFile;
@@ -60,10 +60,10 @@ public class JavassistDynamicBean implements DynamicBean {
 			try {
 				clazz = pool.makeClass(spiderBeanName);
 				if (beanType.equals(HtmlBean)) {
-					CtClass htmlBeanInterface = pool.get("com.otoko.startergeccocontroller.spider.HtmlBean");
+					CtClass htmlBeanInterface = pool.get("com.otoko.startergecco.spider.HtmlBean");
 					clazz.addInterface(htmlBeanInterface);
 				} else {
-					CtClass jsonBeanInterface = pool.get("com.otoko.startergeccocontroller.spider.JsonBean");
+					CtClass jsonBeanInterface = pool.get("com.otoko.startergecco.spider.JsonBean");
 					clazz.addInterface(jsonBeanInterface);
 				}
 			} catch (NotFoundException cex) {

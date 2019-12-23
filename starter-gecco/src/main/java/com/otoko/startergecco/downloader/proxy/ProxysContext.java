@@ -1,7 +1,7 @@
 package com.otoko.startergecco.downloader.proxy;
 
-import com.otoko.startergeccocontroller.spider.Spider;
-import com.otoko.startergeccocontroller.spider.SpiderThreadLocal;
+import com.otoko.startergecco.spider.Spider;
+import com.otoko.startergecco.spider.SpiderThreadLocal;
 
 public class ProxysContext {
 	

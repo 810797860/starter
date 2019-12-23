@@ -1,7 +1,8 @@
 package com.otoko.startergecco.bookLibrary;
 
-import com.otoko.startergeccocontroller.annotation.*;
-import com.otoko.startergeccocontroller.spider.HtmlBean;
+import com.otoko.startercommon.util.ToolUtil;
+import com.otoko.startergecco.annotation.*;
+import com.otoko.startergecco.spider.HtmlBean;
 
 //@Gecco(matchUrl = "http://product.dangdang.com/{id}.html", pipelines = {"consolePipeline", "bookLibraryDetailPipeline"})
 public class DangDetail implements HtmlBean{

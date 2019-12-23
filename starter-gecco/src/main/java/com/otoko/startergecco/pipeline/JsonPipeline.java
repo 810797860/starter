@@ -2,7 +2,7 @@ package com.otoko.startergecco.pipeline;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.otoko.startergeccocontroller.spider.SpiderBean;
+import com.otoko.startergecco.spider.SpiderBean;
 
 public abstract class JsonPipeline implements Pipeline<SpiderBean> {
 

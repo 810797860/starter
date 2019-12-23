@@ -1,7 +1,7 @@
 package com.otoko.startergecco.jd;
 
-import com.otoko.startergeccocontroller.annotation.*;
-import com.otoko.startergeccocontroller.spider.HtmlBean;
+import com.otoko.startergecco.annotation.*;
+import com.otoko.startergecco.spider.HtmlBean;
 
 public class ProductBrief implements HtmlBean {
 

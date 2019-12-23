@@ -1,9 +1,9 @@
 package com.otoko.startergecco.spider.render;
 
-import com.otoko.startergeccocontroller.annotation.Request;
-import com.otoko.startergeccocontroller.request.HttpRequest;
-import com.otoko.startergeccocontroller.response.HttpResponse;
-import com.otoko.startergeccocontroller.spider.SpiderBean;
+import com.otoko.startergecco.annotation.Request;
+import com.otoko.startergecco.request.HttpRequest;
+import com.otoko.startergecco.response.HttpResponse;
+import com.otoko.startergecco.spider.SpiderBean;
 import net.sf.cglib.beans.BeanMap;
 import org.reflections.ReflectionUtils;
 

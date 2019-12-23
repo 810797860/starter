@@ -13,11 +13,11 @@ public class DynamicGecco {
 	}
 	
 	public static JavassistDynamicBean html() {
-		return new JavassistDynamicBean("com.otoko.startergeccocontroller.dynamic.HtlmBean"+RandomStringUtils.randomAlphabetic(6)+System.nanoTime(), JavassistDynamicBean.HtmlBean);
+		return new JavassistDynamicBean("com.otoko.startergecco.dynamic.HtlmBean"+RandomStringUtils.randomAlphabetic(6)+System.nanoTime(), JavassistDynamicBean.HtmlBean);
 	}
 	
 	public static JavassistDynamicBean json() {
-		return new JavassistDynamicBean("com.otoko.startergeccocontroller.dynamic.JsonBean"+RandomStringUtils.randomAlphabetic(6)+System.nanoTime(), JavassistDynamicBean.JsonBean);
+		return new JavassistDynamicBean("com.otoko.startergecco.dynamic.JsonBean"+RandomStringUtils.randomAlphabetic(6)+System.nanoTime(), JavassistDynamicBean.JsonBean);
 	}
 	
 	public static void unregister(Class<?> clazz) {

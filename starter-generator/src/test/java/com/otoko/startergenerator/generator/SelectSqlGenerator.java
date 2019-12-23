@@ -19,7 +19,7 @@ public class SelectSqlGenerator {
 
     {
         dataSource = new DruidDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/starter??useUnicode=true&characterEncoding=utf-8");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/starter?useUnicode=true&characterEncoding=utf-8");
         dataSource.setUsername("root");
         dataSource.setPassword("123456");
     }

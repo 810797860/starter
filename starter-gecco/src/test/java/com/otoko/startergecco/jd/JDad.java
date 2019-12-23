@@ -1,8 +1,8 @@
 package com.otoko.startergecco.jd;
 
 import com.alibaba.fastjson.JSONObject;
-import com.otoko.startergeccocontroller.annotation.JSONPath;
-import com.otoko.startergeccocontroller.spider.JsonBean;
+import com.otoko.startergecco.annotation.JSONPath;
+import com.otoko.startergecco.spider.JsonBean;
 
 import java.util.List;
 

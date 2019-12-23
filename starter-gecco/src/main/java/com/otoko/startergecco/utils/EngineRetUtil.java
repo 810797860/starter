@@ -1,6 +1,6 @@
 package com.otoko.startergecco.utils;
 
-import com.otoko.startergeccocontroller.spider.SpiderThreadLocal;
+import com.otoko.startergecco.spider.SpiderThreadLocal;
 
 public class EngineRetUtil{
 

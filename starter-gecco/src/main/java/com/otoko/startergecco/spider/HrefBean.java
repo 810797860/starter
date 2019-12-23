@@ -1,8 +1,8 @@
 package com.otoko.startergecco.spider;
 
-import com.otoko.startergeccocontroller.annotation.Href;
-import com.otoko.startergeccocontroller.annotation.HtmlField;
-import com.otoko.startergeccocontroller.annotation.Text;
+import com.otoko.startergecco.annotation.Href;
+import com.otoko.startergecco.annotation.HtmlField;
+import com.otoko.startergecco.annotation.Text;
 
 public class HrefBean implements SpiderBean {
 

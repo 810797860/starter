@@ -1,7 +1,7 @@
 package com.otoko.startergecco.spider.render;
 
-import com.otoko.startergeccocontroller.spider.SpiderBean;
-import com.otoko.startergeccocontroller.spider.SpiderThreadLocal;
+import com.otoko.startergecco.spider.SpiderBean;
+import com.otoko.startergecco.spider.SpiderThreadLocal;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

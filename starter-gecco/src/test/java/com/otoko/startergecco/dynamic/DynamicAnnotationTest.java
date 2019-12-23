@@ -1,6 +1,6 @@
 package com.otoko.startergecco.dynamic;
 
-import com.otoko.startergeccocontroller.GeccoEngine;
+import com.otoko.startergecco.GeccoEngine;
 
 /**
  * 对已经存在的bean动态增加注解的方法示例，bean必须实现HtmlBean/JsonBean接口
@@ -17,7 +17,7 @@ public class DynamicAnnotationTest {
 	
 	public static void main(String[] args) throws Exception {
 		//动态增加注解
-		DynamicGecco.html("com.otoko.startergeccocontroller.demo.dynamic.MyGithub")
+		DynamicGecco.html("com.otoko.startergecco.demo.dynamic.MyGithub")
 		.gecco("https://github.com/xtuhcy/gecco", "consolePipeline")
 		.existField("title").csspath(".repository-meta-content").text(false).build()
 		.existField("star").csspath(".pagehead-actions li:nth-child(2) .social-count").text(false).build()
@@ -30,7 +30,7 @@ public class DynamicAnnotationTest {
 		
 		//开始抓取
 		GeccoEngine.create()
-		.classpath("com.otoko.startergeccocontroller.demo.dynamic")
+		.classpath("com.otoko.startergecco.demo.dynamic")
 		.start("https://github.com/xtuhcy/gecco")
 		.run();
 	}

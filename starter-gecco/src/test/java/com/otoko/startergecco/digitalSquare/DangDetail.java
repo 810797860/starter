@@ -1,7 +1,7 @@
 package com.otoko.startergecco.digitalSquare;
 
-import com.otoko.startergeccocontroller.annotation.*;
-import com.otoko.startergeccocontroller.spider.HtmlBean;
+import com.otoko.startergecco.annotation.*;
+import com.otoko.startergecco.spider.HtmlBean;
 
 @Gecco(matchUrl = "http://product.dangdang.com/{id}.html", pipelines = {"consolePipeline", "digitalSquareDetailPipeline"})
 public class DangDetail implements HtmlBean{

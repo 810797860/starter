@@ -1,12 +1,12 @@
 package com.otoko.startergecco.sportsSpecial;
 
-import com.otoko.startergeccocontroller.GeccoEngine;
-import com.otoko.startergeccocontroller.annotation.Gecco;
-import com.otoko.startergeccocontroller.annotation.HtmlField;
-import com.otoko.startergeccocontroller.annotation.Request;
-import com.otoko.startergeccocontroller.request.HttpGetRequest;
-import com.otoko.startergeccocontroller.request.HttpRequest;
-import com.otoko.startergeccocontroller.spider.HtmlBean;
+import com.otoko.startergecco.GeccoEngine;
+import com.otoko.startergecco.annotation.Gecco;
+import com.otoko.startergecco.annotation.HtmlField;
+import com.otoko.startergecco.annotation.Request;
+import com.otoko.startergecco.request.HttpGetRequest;
+import com.otoko.startergecco.request.HttpRequest;
+import com.otoko.startergecco.spider.HtmlBean;
 
 import java.util.List;
 
@@ -43,14 +43,14 @@ public class DangPage implements HtmlBean{
         HttpGetRequest httpGetRequest = new HttpGetRequest("http://fashion.dangdang.com/sports");
         httpGetRequest.setCharset("GBK");
         GeccoEngine.create()
-                .classpath("com.otoko.startergeccocontroller.sportsSpecial")
+                .classpath("com.otoko.startergecco.sportsSpecial")
                 .start(httpGetRequest)
                 .thread(1)
                 .interval(4000)
                 .run();
 
         GeccoEngine.create()
-                .classpath("com.otoko.startergeccocontroller.sportsSpecial")
+                .classpath("com.otoko.startergecco.sportsSpecial")
                 .start(DangListPipeline.httpRequests)
                 .thread(1)
                 .interval(4000)

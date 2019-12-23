@@ -1,13 +1,13 @@
 package com.otoko.startergecco.spider;
 
-import com.otoko.startergeccocontroller.GeccoEngine;
-import com.otoko.startergeccocontroller.downloader.*;
-import com.otoko.startergeccocontroller.pipeline.Pipeline;
-import com.otoko.startergeccocontroller.request.HttpRequest;
-import com.otoko.startergeccocontroller.response.HttpResponse;
-import com.otoko.startergeccocontroller.scheduler.Scheduler;
-import com.otoko.startergeccocontroller.scheduler.UniqueSpiderScheduler;
-import com.otoko.startergeccocontroller.spider.render.Render;
+import com.otoko.startergecco.GeccoEngine;
+import com.otoko.startergecco.downloader.*;
+import com.otoko.startergecco.pipeline.Pipeline;
+import com.otoko.startergecco.request.HttpRequest;
+import com.otoko.startergecco.response.HttpResponse;
+import com.otoko.startergecco.scheduler.Scheduler;
+import com.otoko.startergecco.scheduler.UniqueSpiderScheduler;
+import com.otoko.startergecco.spider.render.Render;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

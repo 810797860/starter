@@ -1,12 +1,12 @@
 package com.otoko.startergecco.jd;
 
-import com.otoko.startergeccocontroller.GeccoEngine;
-import com.otoko.startergeccocontroller.annotation.Gecco;
-import com.otoko.startergeccocontroller.annotation.HtmlField;
-import com.otoko.startergeccocontroller.annotation.Request;
-import com.otoko.startergeccocontroller.request.HttpGetRequest;
-import com.otoko.startergeccocontroller.request.HttpRequest;
-import com.otoko.startergeccocontroller.spider.HtmlBean;
+import com.otoko.startergecco.GeccoEngine;
+import com.otoko.startergecco.annotation.Gecco;
+import com.otoko.startergecco.annotation.HtmlField;
+import com.otoko.startergecco.annotation.Request;
+import com.otoko.startergecco.request.HttpGetRequest;
+import com.otoko.startergecco.request.HttpRequest;
+import com.otoko.startergecco.spider.HtmlBean;
 
 import java.util.List;
 
@@ -67,7 +67,7 @@ public class AllSort implements HtmlBean {
 		HttpGetRequest start = new HttpGetRequest("https://www.jd.com/allSort.aspx");
 		start.setCharset("GBK");
 		GeccoEngine.create()
-		.classpath("com.otoko.startergeccocontroller.jd")
+		.classpath("com.otoko.startergecco.jd")
 		//开始抓取的页面地址
 		.start(start)
 		//开启几个爬虫线程
@@ -79,7 +79,7 @@ public class AllSort implements HtmlBean {
 		
 		//分类列表下的商品列表采用3线程抓取
 		GeccoEngine.create()
-		.classpath("com.otoko.startergeccocontroller.jd")
+		.classpath("com.otoko.startergecco.jd")
 		//开始抓取的页面地址
 		.start(AllSortPipeline.sortRequests)
 		//开启几个爬虫线程

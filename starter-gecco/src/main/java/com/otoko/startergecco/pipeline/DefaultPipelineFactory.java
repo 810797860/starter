@@ -1,7 +1,7 @@
 package com.otoko.startergecco.pipeline;
 
-import com.otoko.startergeccocontroller.annotation.PipelineName;
-import com.otoko.startergeccocontroller.spider.SpiderBean;
+import com.otoko.startergecco.annotation.PipelineName;
+import com.otoko.startergecco.spider.SpiderBean;
 import org.reflections.Reflections;
 
 import java.util.HashMap;

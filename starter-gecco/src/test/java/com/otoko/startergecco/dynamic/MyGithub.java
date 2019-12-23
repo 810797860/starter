@@ -1,7 +1,7 @@
 package com.otoko.startergecco.dynamic;
 
-import com.otoko.startergeccocontroller.request.HttpRequest;
-import com.otoko.startergeccocontroller.spider.HtmlBean;
+import com.otoko.startergecco.request.HttpRequest;
+import com.otoko.startergecco.spider.HtmlBean;
 
 public class MyGithub implements HtmlBean {
 	

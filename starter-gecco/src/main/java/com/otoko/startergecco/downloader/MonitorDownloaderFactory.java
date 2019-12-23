@@ -1,6 +1,6 @@
 package com.otoko.startergecco.downloader;
 
-import com.otoko.startergeccocontroller.monitor.DownloadMointorIntercetor;
+import com.otoko.startergecco.monitor.DownloadMointorIntercetor;
 import net.sf.cglib.proxy.Enhancer;
 import org.reflections.Reflections;
 

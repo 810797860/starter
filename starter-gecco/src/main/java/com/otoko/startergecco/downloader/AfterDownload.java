@@ -1,7 +1,7 @@
 package com.otoko.startergecco.downloader;
 
-import com.otoko.startergeccocontroller.request.HttpRequest;
-import com.otoko.startergeccocontroller.response.HttpResponse;
+import com.otoko.startergecco.request.HttpRequest;
+import com.otoko.startergecco.response.HttpResponse;
 
 public interface AfterDownload {
 	

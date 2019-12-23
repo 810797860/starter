@@ -1,10 +1,10 @@
 package com.otoko.startergecco.spider;
 
-import com.otoko.startergeccocontroller.downloader.AfterDownload;
-import com.otoko.startergeccocontroller.downloader.BeforeDownload;
-import com.otoko.startergeccocontroller.downloader.Downloader;
-import com.otoko.startergeccocontroller.pipeline.Pipeline;
-import com.otoko.startergeccocontroller.spider.render.Render;
+import com.otoko.startergecco.downloader.AfterDownload;
+import com.otoko.startergecco.downloader.BeforeDownload;
+import com.otoko.startergecco.downloader.Downloader;
+import com.otoko.startergecco.pipeline.Pipeline;
+import com.otoko.startergecco.spider.render.Render;
 
 import java.util.List;
 

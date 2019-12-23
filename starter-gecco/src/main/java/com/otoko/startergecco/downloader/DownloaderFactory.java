@@ -20,9 +20,9 @@ public abstract class DownloaderFactory {
 	
 	public DownloaderFactory(Reflections reflections) {
 		this.downloaders = new HashMap<String, Downloader>();
-		Set<Class<?>> classes = reflections.getTypesAnnotatedWith(com.otoko.startergeccocontroller.annotation.Downloader.class);
+		Set<Class<?>> classes = reflections.getTypesAnnotatedWith(com.otoko.startergecco.annotation.Downloader.class);
 		for(Class<?> downloaderClass : classes) {
-			com.otoko.startergeccocontroller.annotation.Downloader downloader = (com.otoko.startergeccocontroller.annotation.Downloader)downloaderClass.getAnnotation(com.otoko.startergeccocontroller.annotation.Downloader.class);
+			com.otoko.startergecco.annotation.Downloader downloader = (com.otoko.startergecco.annotation.Downloader)downloaderClass.getAnnotation(com.otoko.startergecco.annotation.Downloader.class);
 			try {
 				Object o = createDownloader(downloaderClass);
 				if(o instanceof Downloader) {

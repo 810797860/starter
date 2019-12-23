@@ -1,8 +1,8 @@
 package com.otoko.startergecco;
 
-import com.otoko.startergeccocontroller.annotation.*;
-import com.otoko.startergeccocontroller.request.HttpRequest;
-import com.otoko.startergeccocontroller.spider.HtmlBean;
+import com.otoko.startergecco.annotation.*;
+import com.otoko.startergecco.request.HttpRequest;
+import com.otoko.startergecco.spider.HtmlBean;
 
 @Gecco(matchUrl="https://github.com/{user}/{project}", pipelines="consolePipeline", timeout=1000)
 public class MyGithub implements HtmlBean {
@@ -103,7 +103,7 @@ public class MyGithub implements HtmlBean {
 
 	public static void main(String[] args) {
 		GeccoEngine.create()
-		.classpath("com.otoko.startergeccocontroller.demo")
+		.classpath("com.otoko.startergecco.demo")
 		//开始抓取的页面地址
 		.start("https://github.com/xtuhcy/gecco")
 		.start("https://github.com/xtuhcy/gecco-spring")

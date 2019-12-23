@@ -1,6 +1,6 @@
 package com.otoko.startergecco.scheduler;
 
-import com.otoko.startergeccocontroller.request.HttpRequest;
+import com.otoko.startergecco.request.HttpRequest;
 
 import java.util.concurrent.LinkedBlockingQueue;
 

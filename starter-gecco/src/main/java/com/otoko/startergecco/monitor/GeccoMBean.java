@@ -1,6 +1,6 @@
 package com.otoko.startergecco.monitor;
 
-import com.otoko.startergeccocontroller.annotation.MBean;
+import com.otoko.startergecco.annotation.MBean;
 import org.weakref.jmx.Managed;
 
 @MBean("gecco")

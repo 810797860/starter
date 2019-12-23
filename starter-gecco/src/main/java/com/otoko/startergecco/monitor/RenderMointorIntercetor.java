@@ -1,6 +1,6 @@
 package com.otoko.startergecco.monitor;
 
-import com.otoko.startergeccocontroller.spider.render.RenderException;
+import com.otoko.startergecco.spider.render.RenderException;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 

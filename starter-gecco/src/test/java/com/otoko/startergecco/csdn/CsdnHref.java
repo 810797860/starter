@@ -1,10 +1,10 @@
 package com.otoko.startergecco.csdn;
 
-import com.otoko.startergeccocontroller.GeccoEngine;
-import com.otoko.startergeccocontroller.annotation.Gecco;
-import com.otoko.startergeccocontroller.annotation.HtmlField;
-import com.otoko.startergeccocontroller.request.HttpGetRequest;
-import com.otoko.startergeccocontroller.spider.HtmlBean;
+import com.otoko.startergecco.GeccoEngine;
+import com.otoko.startergecco.annotation.Gecco;
+import com.otoko.startergecco.annotation.HtmlField;
+import com.otoko.startergecco.request.HttpGetRequest;
+import com.otoko.startergecco.spider.HtmlBean;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class CsdnHref implements HtmlBean{
         HttpGetRequest httpGetRequest = new HttpGetRequest("https://blog.csdn.net/weixin_41835916/article/details/81413498");
         httpGetRequest.setCharset("GBK");
         GeccoEngine.create()
-                .classpath("com.otoko.startergeccocontroller.csdn")
+                .classpath("com.otoko.startergecco.csdn")
                 .start(httpGetRequest)
                 .thread(1)
                 .interval(2000)

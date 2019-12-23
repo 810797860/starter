@@ -38,7 +38,7 @@ public class FieldType {
 	public static CtClass requestType;
 	static {
 		try {
-			requestType = ClassPool.getDefault().get("com.otoko.startergeccocontroller.request.HttpRequest");
+			requestType = ClassPool.getDefault().get("com.otoko.startergecco.request.HttpRequest");
 		} catch (NotFoundException e) {
 			e.printStackTrace();
 		}

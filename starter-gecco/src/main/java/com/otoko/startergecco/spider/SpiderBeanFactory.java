@@ -1,20 +1,20 @@
 package com.otoko.startergecco.spider;
 
-import com.otoko.startergeccocontroller.annotation.Gecco;
-import com.otoko.startergeccocontroller.downloader.DownloaderAOPFactory;
-import com.otoko.startergeccocontroller.downloader.DownloaderFactory;
-import com.otoko.startergeccocontroller.downloader.MonitorDownloaderFactory;
-import com.otoko.startergeccocontroller.dynamic.GeccoClassLoader;
-import com.otoko.startergeccocontroller.dynamic.GeccoJavaReflectionAdapter;
-import com.otoko.startergeccocontroller.pipeline.DefaultPipelineFactory;
-import com.otoko.startergeccocontroller.pipeline.Pipeline;
-import com.otoko.startergeccocontroller.pipeline.PipelineFactory;
-import com.otoko.startergeccocontroller.request.HttpRequest;
-import com.otoko.startergeccocontroller.spider.render.MonitorRenderFactory;
-import com.otoko.startergeccocontroller.spider.render.RenderFactory;
-import com.otoko.startergeccocontroller.spider.render.RenderType;
-import com.otoko.startergeccocontroller.utils.ReflectUtils;
-import com.otoko.startergeccocontroller.utils.UrlMatcher;
+import com.otoko.startergecco.annotation.Gecco;
+import com.otoko.startergecco.downloader.DownloaderAOPFactory;
+import com.otoko.startergecco.downloader.DownloaderFactory;
+import com.otoko.startergecco.downloader.MonitorDownloaderFactory;
+import com.otoko.startergecco.dynamic.GeccoClassLoader;
+import com.otoko.startergecco.dynamic.GeccoJavaReflectionAdapter;
+import com.otoko.startergecco.pipeline.DefaultPipelineFactory;
+import com.otoko.startergecco.pipeline.Pipeline;
+import com.otoko.startergecco.pipeline.PipelineFactory;
+import com.otoko.startergecco.request.HttpRequest;
+import com.otoko.startergecco.spider.render.MonitorRenderFactory;
+import com.otoko.startergecco.spider.render.RenderFactory;
+import com.otoko.startergecco.spider.render.RenderType;
+import com.otoko.startergecco.utils.ReflectUtils;
+import com.otoko.startergecco.utils.UrlMatcher;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -67,15 +67,15 @@ public class SpiderBeanFactory {
 	public SpiderBeanFactory(String classPath, PipelineFactory pipelineFactory) {
 		if (StringUtils.isNotEmpty(classPath)) {
 			reflections = new Reflections(
-					ConfigurationBuilder.build("com.otoko.startergeccocontroller", classPath, GeccoClassLoader.get())
+					ConfigurationBuilder.build("com.otoko.startergecco", classPath, GeccoClassLoader.get())
 							.setMetadataAdapter(new GeccoJavaReflectionAdapter())
 							.setExpandSuperTypes(false));
-			// reflections = new Reflections("com.otoko.startergeccocontroller", classPath);
+			// reflections = new Reflections("com.otoko.startergecco", classPath);
 		} else {
-			reflections = new Reflections(ConfigurationBuilder.build("com.otoko.startergeccocontroller", GeccoClassLoader.get())
+			reflections = new Reflections(ConfigurationBuilder.build("com.otoko.startergecco", GeccoClassLoader.get())
 					.setMetadataAdapter(new GeccoJavaReflectionAdapter())
 					.setExpandSuperTypes(false));
-			// reflections = new Reflections("com.otoko.startergeccocontroller");
+			// reflections = new Reflections("com.otoko.startergecco");
 		}
 		dynamic();
 

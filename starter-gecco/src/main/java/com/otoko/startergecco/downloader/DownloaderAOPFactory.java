@@ -1,6 +1,6 @@
 package com.otoko.startergecco.downloader;
 
-import com.otoko.startergeccocontroller.annotation.GeccoClass;
+import com.otoko.startergecco.annotation.GeccoClass;
 import org.reflections.Reflections;
 
 import java.util.HashMap;

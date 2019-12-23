@@ -1,11 +1,11 @@
 package com.otoko.startergecco.sogouwx;
 
-import com.otoko.startergeccocontroller.GeccoEngine;
-import com.otoko.startergeccocontroller.annotation.Gecco;
-import com.otoko.startergeccocontroller.annotation.HtmlField;
-import com.otoko.startergeccocontroller.annotation.RequestParameter;
-import com.otoko.startergeccocontroller.request.HttpGetRequest;
-import com.otoko.startergeccocontroller.spider.HtmlBean;
+import com.otoko.startergecco.GeccoEngine;
+import com.otoko.startergecco.annotation.Gecco;
+import com.otoko.startergecco.annotation.HtmlField;
+import com.otoko.startergecco.annotation.RequestParameter;
+import com.otoko.startergecco.request.HttpGetRequest;
+import com.otoko.startergecco.spider.HtmlBean;
 
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class SogouWX implements HtmlBean {
 		start.addHeader("Accept-Encoding", "gzip, deflate, sdch");
 		start.addHeader("Cache-Control", "max-age=0");
 		GeccoEngine.create()
-		.classpath("com.otoko.startergeccocontroller.demo.sogouwx")
+		.classpath("com.otoko.startergecco.demo.sogouwx")
 		.start(start)
 		//.start("http://mp.weixin.qq.com/s?__biz=MzAwMjIyODIwNA==&mid=2650194319&idx=7&sn=5fbba7eb7f393508461468ea5c412ba5&3rd=MzA3MDU4NTYzMw==&scene=6")
 		.interval(5000)

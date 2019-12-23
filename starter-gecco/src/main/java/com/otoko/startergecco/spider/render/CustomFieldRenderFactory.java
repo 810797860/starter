@@ -1,6 +1,6 @@
 package com.otoko.startergecco.spider.render;
 
-import com.otoko.startergeccocontroller.annotation.FieldRenderName;
+import com.otoko.startergecco.annotation.FieldRenderName;
 import org.reflections.Reflections;
 
 import java.util.HashMap;

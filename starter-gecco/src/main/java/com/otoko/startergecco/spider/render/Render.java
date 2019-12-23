@@ -1,8 +1,8 @@
 package com.otoko.startergecco.spider.render;
 
-import com.otoko.startergeccocontroller.request.HttpRequest;
-import com.otoko.startergeccocontroller.response.HttpResponse;
-import com.otoko.startergeccocontroller.spider.SpiderBean;
+import com.otoko.startergecco.request.HttpRequest;
+import com.otoko.startergecco.response.HttpResponse;
+import com.otoko.startergecco.spider.SpiderBean;
 
 /**
  * 渲染器，将下载下来的各种格式内容对象化，并将需要继续抓取的链接抽取出来

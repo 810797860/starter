@@ -1,12 +1,12 @@
 package com.otoko.startergecco.downloader;
 
-import com.otoko.startergeccocontroller.downloader.proxy.Proxys;
-import com.otoko.startergeccocontroller.downloader.proxy.ProxysContext;
-import com.otoko.startergeccocontroller.request.HttpPostRequest;
-import com.otoko.startergeccocontroller.request.HttpRequest;
-import com.otoko.startergeccocontroller.response.HttpResponse;
-import com.otoko.startergeccocontroller.spider.SpiderThreadLocal;
-import com.otoko.startergeccocontroller.utils.UrlUtils;
+import com.otoko.startergecco.downloader.proxy.Proxys;
+import com.otoko.startergecco.downloader.proxy.ProxysContext;
+import com.otoko.startergecco.request.HttpPostRequest;
+import com.otoko.startergecco.request.HttpRequest;
+import com.otoko.startergecco.response.HttpResponse;
+import com.otoko.startergecco.spider.SpiderThreadLocal;
+import com.otoko.startergecco.utils.UrlUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.Header;
@@ -53,7 +53,7 @@ import java.util.Map;
  * @author huchengyi
  *
  */
-@com.otoko.startergeccocontroller.annotation.Downloader("httpClientDownloader")
+@com.otoko.startergecco.annotation.Downloader("httpClientDownloader")
 public class HttpClientDownloader extends AbstractDownloader {
 	
 	private static Log log = LogFactory.getLog(HttpClientDownloader.class);
