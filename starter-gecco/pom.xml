@@ -120,6 +120,11 @@
 			<artifactId>httpclient</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.weakref</groupId>
+			<artifactId>jmxutils</artifactId>
+			<version>1.19</version>
+		</dependency>
 	</dependencies>
 
 	<build>
