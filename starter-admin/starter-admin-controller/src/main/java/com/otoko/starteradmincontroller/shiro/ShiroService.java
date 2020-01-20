@@ -46,6 +46,7 @@ public class ShiroService {
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/font-awesome/**", "anon");
+        filterChainDefinitionMap.put("/layui/**", "anon");
         List<Resources> resourcesList = resourcesService.myQueryAll();
         for (Resources resources : resourcesList) {
 

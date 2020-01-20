@@ -102,6 +102,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/front/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/plugin/**", "anon");
+        filterChainDefinitionMap.put("/layui/**", "anon");
 
         //前端路由过滤
         filterChainDefinitionMap = FilterChainDefinitionMapBuilder.addFilterChainDefinitionMap(filterChainDefinitionMap);
