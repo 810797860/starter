@@ -91,10 +91,6 @@ public class FilterChainDefinitionMapBuilder {
         //测试阿里云发邮件的接口
         filterChainDefinitionMap.put("/admin/test/myTestSendEmail", "anon");
 
-        //测试后台登录ui
-        filterChainDefinitionMap.put("/index", "anon");
-        filterChainDefinitionMap.put("/test", "anon");
-
         return (LinkedHashMap<String, String>) filterChainDefinitionMap;
     }
 }
