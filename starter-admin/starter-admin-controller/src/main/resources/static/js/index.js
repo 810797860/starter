@@ -12,7 +12,15 @@ layui.use(['layer', 'form', 'element'], function(){
         form = layui.form,
         element = layui.element;
     initializationMenu(menuList);
+    //初始化首页
+    $("iframe").attr("src","/admin/home.html");
     //获取src值
+    //给首页添加
+    $("#ojbk-nav-home").on("click",function(){
+        var address =$(this).attr("data-src");
+        $("iframe").attr("src",address);
+    });
+    //给动态生成的标签页添加
     $(".ojbk-nav li dl dd a").on("click",function(){
         var address =$(this).attr("data-src");
         $("iframe").attr("src",address);
@@ -38,7 +46,7 @@ layui.use(['layer', 'form', 'element'], function(){
         //无父节点
         for (var i = 0, len = TEMPS.length; i < len; i++) {
             if (TEMPS[i].pid === 'undefined' || TEMPS[i].pid === null){
-                menuDom.append('<li id="ojbk-nav-id-' + TEMPS[i].id + '" class="layui-nav-item"><a lay-href target title="' + TEMPS[i].name + '"><i class="layui-icon ' + TEMPS[i].icon + ' ojbk-icon"></i>' + TEMPS[i].name + '</a></li>');
+                menuDom.append('<li id="ojbk-nav-id-' + TEMPS[i].id + '" class="layui-nav-item"><a lay-href target title="' + TEMPS[i].name + '" href="javascript:;"><i class="layui-icon ' + TEMPS[i].icon + ' ojbk-icon"></i>' + TEMPS[i].name + '</a></li>');
             }
         }
         //有父节点
@@ -50,14 +58,13 @@ layui.use(['layer', 'form', 'element'], function(){
                 var parentChildDom = $('#ojbk-nav-child-id-' + TEMPS[i].pid);
                 if (parentChildDom.length === 0){
                     //添加该子节点的头
-                    parentDom.append('<dl id="ojbk-nav-child-id-' + TEMPS[i].pid + '" class="layui-nav-child"><dd><a lay-href="' + TEMPS[i].url + '">' + TEMPS[i].name + '</a></dd></dl>');
+                    parentDom.append('<dl id="ojbk-nav-child-id-' + TEMPS[i].pid + '" class="layui-nav-child"><dd><a data-src="' + TEMPS[i].url + '" target="_top" href="javascript:;">' + TEMPS[i].name + '</a></dd></dl>');
                 } else {
                     //继续添加子节点
-                    parentChildDom.append('<dd><a lay-href="' + TEMPS[i].url + '">' + TEMPS[i].name + '</a></dd>');
+                    parentChildDom.append('<dd><a data-src="' + TEMPS[i].url + '" target="_top" href="javascript:;">' + TEMPS[i].name + '</a></dd>');
                 }
             }
         }
-        element.init();
         element.render('nav');
     }
 });

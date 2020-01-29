@@ -70,6 +70,17 @@ public class AdminPageController {
         return "index";
     }
 
+    /**
+     * @description : 跳转到首页页面
+     * @author : zhangjk
+     * @since : Create in 2018-12-04
+     */
+    @GetMapping(value = "/home.html")
+    @ApiOperation(value = "/home.html", notes = "跳转到首页页面")
+    public String home() {
+        return "home";
+    }
+
     @GetMapping("/demo/table/user/")
     @ResponseBody
     public String testUser(){
