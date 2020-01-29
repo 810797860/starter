@@ -1,3 +1,8 @@
+//JavaScript代码区域
+layui.config({
+    version: '1568076536509' //为了更新 js 缓存，可忽略
+});
+
 layui.extend({
     validate: '/js/extend/validate'
 }).use(['form', 'layer', 'validate'], function (form, layer) {
