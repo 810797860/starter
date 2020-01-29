@@ -13,7 +13,7 @@ layui.use(['layer', 'form', 'element'], function(){
         element = layui.element;
     initializationMenu(menuList);
     //获取src值
-    $(".main_left dd a").on("click",function(){
+    $(".ojbk-nav li dl dd a").on("click",function(){
         var address =$(this).attr("data-src");
         $("iframe").attr("src",address);
     });
