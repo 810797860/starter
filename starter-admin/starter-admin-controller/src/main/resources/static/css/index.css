@@ -11,3 +11,7 @@
     display: inline-block;
     width: 25px;
 }
+
+.main_right{
+    overflow: hidden;
+}
