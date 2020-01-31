@@ -57,3 +57,16 @@ input:focus{
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
+.layui-table-cell {
+    height: auto;
+    line-height: 45px;
+}
+th .layui-table-cell {
+    height: auto;
+    line-height: 22.5px;
+}
+th .laytable-cell-1-0-7 {
+    height: auto;
+    line-height: 22.5px;
+}
