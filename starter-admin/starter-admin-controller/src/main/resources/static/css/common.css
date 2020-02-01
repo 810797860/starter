@@ -58,6 +58,7 @@ input:focus{
     transform: translate(-50%, -50%);
 }
 
+/*!*表格格式化*!
 .layui-table-cell {
     height: auto;
     line-height: 45px;
@@ -69,4 +70,8 @@ th .layui-table-cell {
 th .laytable-cell-1-0-7 {
     height: auto;
     line-height: 22.5px;
+}*/
+/*调整搜索按钮*/
+.ojbk-search-btn{
+    margin-top: -17px;
 }

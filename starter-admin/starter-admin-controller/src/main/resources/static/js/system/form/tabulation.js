@@ -27,7 +27,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
             , contentType: 'application/json'
             , method: 'post'//post请求
             , where: postData
-            , limit: 7
+            , limit: 10
             , parseData: function (res) {
                 totalNumber = res.recordsTotal;
                 return {
@@ -40,7 +40,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
             , done: function (res, curr, count) {
                 $("table").css("width", "100%");
                 $("table").css("height", "auto");
-                renderLaypage(pageFlag);
+                renderLaypage();
             }
             , title: '用户表'
             , page: false //开启分页
@@ -62,17 +62,15 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
     function paginationParameters(pageCurrent) {
         var page = {};
         page.current = pageCurrent;
-        page.size = 7;
+        page.size = 10;
 
         var sorts = [];
         var defaultSort = {};
         defaultSort.field = 'id';
         defaultSort.isAsc = false;
         sorts.push(defaultSort);
-        postData = {
-            page: page,
-            sorts: sorts
-        };
+        postData['page'] = page;
+        postData['sorts'] = sorts;
     }
 
     /**
@@ -92,6 +90,38 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                 }
             }
         });
+    }
+
+    /**
+     * 搜索按钮
+     */
+    $(".ojbk-search-btn").click(function () {
+        //先获取搜索框的值
+        var title = $("#searchTitle").val();
+        var collection = $("#searchCollection").val();
+        if (StringNoEmpty(title)){
+            postData['title'] = title;
+        }
+        if (StringNoEmpty(collection)){
+            postData['collection'] = collection;
+        }
+
+        //设置页数为1，并渲染table和分页组件
+        paginationParameters(1);
+        renderTable();
+        renderLaypage();
+    })
+
+    /**
+     * str判空
+     * @param str
+     * @returns {boolean}
+     * @constructor
+     */
+    function StringNoEmpty(str) {
+        if (str != null && str != "" && str != undefined) {
+            return true;
+        } else return false;
     }
 
     //监听头工具栏事件
