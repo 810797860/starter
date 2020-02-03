@@ -4,8 +4,6 @@ layui.config({
 });
 
 layui.use(['layer', 'form', 'element'], function(){
-    console.log(roleMenus);
-    console.log(userObj);
     var $ = layui.jquery,
         menuList = sortUp(roleMenus, 'sort'),
         layer = layui.layer,

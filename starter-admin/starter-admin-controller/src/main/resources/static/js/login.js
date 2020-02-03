@@ -58,24 +58,6 @@ layui.extend({
         var password = $view.find('#password').val();
         var verifyCode = $view.find('#verifyCode').val();
 
-        //判空
-        if (username === ''){
-            layer.msg("账号不能为空！");
-            loading.hide();
-            initCode();
-            return;
-        } else if (password === ''){
-            layer.msg("密码不能为空！");
-            loading.hide();
-            initCode();
-            return;
-        } else if (verifyCode === ''){
-            layer.msg("验证码不能为空！");
-            loading.hide();
-            initCode();
-            return;
-        }
-
         var postData = {
             userName: username,
             password: password,

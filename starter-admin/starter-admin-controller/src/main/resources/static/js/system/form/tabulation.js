@@ -12,9 +12,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         ,postData = {}//分页传参
         ,totalNumber = 0
 
-    paginationParameters(1);
-    renderTable();
-    renderLaypage();
+    refresh();
 
 
     //执行一个 table 实例
@@ -40,6 +38,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
             , done: function (res, curr, count) {
                 $("table").css("width", "100%");
                 $("table").css("height", "auto");
+                console.log(res);
                 renderLaypage();
             }
             , title: '用户表'
@@ -93,6 +92,17 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
     }
 
     /**
+     * 刷新表单
+     */
+    function refresh() {
+
+        //设置页数为1，并渲染table和分页组件
+        paginationParameters(1);
+        renderTable();
+        renderLaypage();
+    }
+
+    /**
      * 搜索按钮
      */
     $(".ojbk-search-btn").click(function () {
@@ -101,15 +111,16 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         var collection = $("#searchCollection").val();
         if (StringNoEmpty(title)){
             postData['title'] = title;
+        } else {
+            delete postData['title'];
         }
         if (StringNoEmpty(collection)){
             postData['collection'] = collection;
+        } else {
+            delete postData['collection'];
         }
 
-        //设置页数为1，并渲染table和分页组件
-        paginationParameters(1);
-        renderTable();
-        renderLaypage();
+        refresh();
     })
 
     /**
@@ -130,7 +141,20 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
             ,data = checkStatus.data; //获取选中的数据
         switch(obj.event){
             case 'add':
-                layer.msg('添加');
+                //跳转到新增页面
+                layer.open({
+                    type: 2
+                    ,title: '新建表单'
+                    ,content: '/admin/form/create.html'
+                    ,maxmin: true
+                    ,area: ['550px', '550px']
+                    ,btn: ['确定', '取消']
+                    ,yes: function (index, layro) {
+                        var submit = layro.find('iframe').contents().find('#modifyBtn');
+                        submit.click();
+                        layer.msg("新增成功");
+                    }
+                })
                 break;
             case 'update':
                 if(data.length === 0){
@@ -167,4 +191,14 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
             layer.msg('编辑操作');
         }
     });
+
+    /**
+     * 给子页面定义函数
+     */
+    var _tools = {
+        refresh: function(){
+            refresh();
+        }
+    }
+    window.tools = _tools;
 });

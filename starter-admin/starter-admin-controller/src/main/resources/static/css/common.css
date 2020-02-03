@@ -75,3 +75,8 @@ th .laytable-cell-1-0-7 {
 .ojbk-search-btn{
     margin-top: -17px;
 }
+
+/*新增修改样式*/
+.ojbk-modify{
+    padding: 20px 30px 0 0;
+}
