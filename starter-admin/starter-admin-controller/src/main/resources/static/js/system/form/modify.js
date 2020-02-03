@@ -31,12 +31,12 @@ layui.extend({
 
         //调接口
         $.ajax({
-            type: 'post',
-            url: '/admin/form/create_update',
-            contentType: 'application/json;charset=utf-8',
-            dataType: 'json',
-            data: JSON.stringify(postData),
-            success: function (data) {
+            type: 'post'
+            ,url: '/admin/form/create_update'
+            ,contentType: 'application/json;charset=utf-8'
+            ,dataType: 'json'
+            ,data: JSON.stringify(postData)
+            ,success: function (data) {
                 switch (data.code){
                     case 200:
                         parent.tools.refresh();

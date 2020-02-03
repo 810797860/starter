@@ -19,7 +19,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
     function renderTable() {
         table.render({
             elem: '#demo'
-            , height: 'full-200'
+            , height: 'full-130'
             , cellMinWidth: 80
             , url: '/admin/form/query' //数据接口
             , contentType: 'application/json'
@@ -36,9 +36,6 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                 }
             }
             , done: function (res, curr, count) {
-                $("table").css("width", "100%");
-                $("table").css("height", "auto");
-                console.log(res);
                 renderLaypage();
             }
             , title: '用户表'
@@ -46,10 +43,10 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
             , toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , totalRow: true //开启合计行
             , cols: [[ //表头
-                {type: 'checkbox', fixed: 'left'}
-                , {field: 'id', title: 'ID', sort: true, fixed: 'left'}
-                , {field: 'title', title: '表名', fixed: 'left'}
-                , {field: 'collection', title: '物理表名', fixed: 'left'}
+                {type: 'checkbox'}
+                , {field: 'id', title: 'ID', sort: true}
+                , {field: 'title', title: '表名'}
+                , {field: 'collection', title: '物理表名'}
             ]]
         });
     }
@@ -119,7 +116,6 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         } else {
             delete postData['collection'];
         }
-
         refresh();
     })
 
@@ -160,9 +156,20 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                 if(data.length === 0){
                     layer.msg('请选择一行');
                 } else if(data.length > 1){
-                    layer.msg('只能同时编辑一个');
+                    layer.msg('只能同时修改一个');
                 } else {
-                    layer.alert('编辑 [id]：'+ checkStatus.data[0].id);
+                    //跳转到修改页面
+                    layer.open({
+                        type: 2
+                        ,title: '修改表单'
+                        ,content: '/admin/form/' + checkStatus.data[0].id + '/update.html'
+                        ,maxmin: true
+                        ,area: ['550px', '550px']
+                        ,btn: ['确定', '取消']
+                        ,yes: function (index, layro) {
+                            layer.msg('修改成功');
+                        }
+                    })
                 }
                 break;
             case 'delete':

@@ -65,12 +65,12 @@ layui.extend({
         }
 
         $.ajax({
-            type: 'post',
-            url: '/admin/login',
-            contentType: 'application/json;charset=utf-8',
-            dataType: 'json',
-            data: JSON.stringify(postData),
-            success: function(data){
+            type: 'post'
+            ,url: '/admin/login'
+            ,contentType: 'application/json;charset=utf-8'
+            ,dataType: 'json'
+            ,data: JSON.stringify(postData)
+            ,success: function(data){
                 switch (data.code){
                     case 200:
                         layer.msg("登录成功");
@@ -79,8 +79,8 @@ layui.extend({
                         location.href = '/admin/index';
                         break;
                 }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+            ,error: function (XMLHttpRequest, textStatus, errorThrown) {
                 layer.msg("登录失败");
                 loading.hide();
                 initCode();

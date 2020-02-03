@@ -6,13 +6,13 @@ layui.define(['jquery'], function (exports) {
            if (!isEmpty(value)) {
                var result = '';
                $.ajax({
-                   url: '/job/cron/check',
-                   data: {
+                   url: '/job/cron/check'
+                   ,data: {
                        "cron": value
-                   },
-                   async: false,
-                   type: 'get',
-                   success: function (d) {
+                   }
+                   ,async: false
+                   ,type: 'get'
+                   ,success: function (d) {
                        (!d) && (result = 'cron表达式不合法')
                    }
                });
