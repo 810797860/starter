@@ -141,7 +141,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                 layer.open({
                     type: 2
                     ,title: '新建表单'
-                    ,content: '/admin/form/create.html'
+                    ,content: ['/admin/form/create.html', 'no']
                     ,maxmin: true
                     ,area: ['550px', '550px']
                     ,btn: ['确定', '取消']
@@ -167,6 +167,8 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                         ,area: ['550px', '550px']
                         ,btn: ['确定', '取消']
                         ,yes: function (index, layro) {
+                            var submit = layro.find('iframe').contents().find('#modifyBtn');
+                            submit.click();
                             layer.msg('修改成功');
                         }
                     })
@@ -176,27 +178,31 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                 if(data.length === 0){
                     layer.msg('请选择一行');
                 } else {
-                    layer.msg('删除');
+                    //先获取要删除的行
+                    var dataList = checkStatus.data,
+                        deleteParam = [];
+                    for (var i = 0; i < dataList.length; i++){
+                        deleteParam.push(dataList[i].id);
+                    }
+                    //开始删除
+                    $.ajax({
+                        type: 'put'
+                        , url: '/admin/form/batch_delete'
+                        , contentType: 'application/json;charset=utf-8'
+                        , dataType: 'json'
+                        , data: JSON.stringify(deleteParam)
+                        , success: function (data) {
+                            switch (data.code) {
+                                case 200:
+                                    refresh();
+                                    layer.msg('删除成功');
+                                    break;
+                            }
+                        }
+                    });
                 }
                 break;
         };
-    });
-
-    //监听行工具事件
-    table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
-        var data = obj.data //获得当前行数据
-            ,layEvent = obj.event; //获得 lay-event 对应的值
-        if(layEvent === 'detail'){
-            layer.msg('查看操作');
-        } else if(layEvent === 'del'){
-            layer.confirm('真的删除行么', function(index){
-                obj.del(); //删除对应行（tr）的DOM结构
-                layer.close(index);
-                //向服务端发送删除指令
-            });
-        } else if(layEvent === 'edit'){
-            layer.msg('编辑操作');
-        }
     });
 
     /**

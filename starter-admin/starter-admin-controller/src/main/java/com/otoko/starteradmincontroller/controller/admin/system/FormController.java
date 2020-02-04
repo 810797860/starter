@@ -163,6 +163,8 @@ public class FormController extends BaseController {
             //检查是否具有权限
             subject.checkPermission("/admin/form/batch_delete");
             resJson.setSuccess(formService.myFakeBatchDelete(formIds));
+            resJson.setCode(MagicalValue.CODE_OF_SUCCESS);
+            resJson.setSuccess(true);
         } catch (UnauthorizedException e) {
             resJson.setSuccess(false);
             resJson.setMessage(e.getMessage());
