@@ -10,7 +10,8 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         ,element = layui.element //元素操作
         ,$ = layui.jquery//jquery
         ,postData = {}//分页传参
-        ,totalNumber = 0
+        ,totalNumber = 0//数据总数
+        ,pageCurrent = 1//当前页数
 
     refresh();
 
@@ -40,8 +41,12 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
             }
             , title: '用户表'
             , page: false //开启分页
-            , toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
-            , totalRow: true //开启合计行
+            , toolbar: '#barDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            , defaultToolbar: [{
+                title: '刷新'
+                , layEvent: 'refresh'
+                , icon: 'layui-icon-refresh'
+            }, 'filter', 'exports', 'print']
             , cols: [[ //表头
                 {type: 'checkbox'}
                 , {field: 'id', title: 'ID', sort: true}
@@ -53,9 +58,8 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
 
     /**
      * 处理post传参
-     * @param pageCurrent
      */
-    function paginationParameters(pageCurrent) {
+    function paginationParameters() {
         var page = {};
         page.current = pageCurrent;
         page.size = 10;
@@ -76,12 +80,14 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         laypage.render({
             elem: 'pagesize'
             ,count: totalNumber
-            ,curr: location.hash.replace('#!fenye=', '') //获取起始页。一定要写这个两个。否则你点击了页面，接口也是访问了指定页的内容，但是页面上效果是选中的还是第一个。
+            ,curr: pageCurrent //获取起始页。一定要写这个两个。否则你点击了页面，接口也是访问了指定页的内容，但是页面上效果是选中的还是第一个。
             ,hash: 'fenye' //自定义hash值
             ,layout: ['count', 'prev', 'page', 'next',  'skip']
             ,jump: function(obj, first){
                 if(!first){
-                    paginationParameters(obj.curr);
+                    //设置当前页数
+                    pageCurrent = obj.curr;
+                    paginationParameters();
                     renderTable();
                 }
             }
@@ -92,9 +98,9 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
      * 刷新表单
      */
     function refresh() {
-
         //设置页数为1，并渲染table和分页组件
-        paginationParameters(1);
+        pageCurrent = 1;
+        paginationParameters();
         renderTable();
         renderLaypage();
     }
@@ -117,6 +123,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
             delete postData['collection'];
         }
         refresh();
+        layer.msg('搜索成功');
     })
 
     /**
@@ -136,6 +143,10 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         var checkStatus = table.checkStatus(obj.config.id)
             ,data = checkStatus.data; //获取选中的数据
         switch(obj.event){
+            case 'refresh':
+                refresh();
+                layer.msg('刷新成功');
+                break;
             case 'add':
                 //跳转到新增页面
                 layer.open({
