@@ -87,7 +87,7 @@ layui.extend({
 
     function dynamicDisabled() {
         //判断是新增还是修改
-        if (formId != null){
+        if (!!formId){
             $("#collection").attr("class", "layui-input layui-disabled");
         } else {
             $("#collection").attr("class", "layui-input");

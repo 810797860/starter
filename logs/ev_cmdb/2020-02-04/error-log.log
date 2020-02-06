@@ -178,3 +178,7 @@ org.thymeleaf.exceptions.TemplateInputException: Error resolving template "syste
 2020-02-04 18:26:07.290 [http-nio-8078-exec-9] ERROR com.otoko.startercommon.redisCache.RedisCache - 缓存对象保存失败java.lang.ClassCastException: org.apache.ibatis.cache.CacheKey cannot be cast to java.lang.String
 2020-02-04 19:11:10.698 [http-nio-8078-exec-4] ERROR com.otoko.startercommon.redisCache.RedisCache - 缓存对象获取失败java.lang.ClassCastException: org.apache.ibatis.cache.CacheKey cannot be cast to java.lang.String
 2020-02-04 19:11:10.714 [http-nio-8078-exec-4] ERROR com.otoko.startercommon.redisCache.RedisCache - 缓存对象保存失败java.lang.ClassCastException: org.apache.ibatis.cache.CacheKey cannot be cast to java.lang.String
+2020-02-04 23:01:10.766 [http-nio-8078-exec-7] ERROR com.otoko.startercommon.redisCache.RedisCache - 缓存对象获取失败java.lang.ClassCastException: org.apache.ibatis.cache.CacheKey cannot be cast to java.lang.String
+2020-02-04 23:01:10.771 [http-nio-8078-exec-7] ERROR com.otoko.startercommon.redisCache.RedisCache - 缓存对象保存失败java.lang.ClassCastException: org.apache.ibatis.cache.CacheKey cannot be cast to java.lang.String
+2020-02-04 23:06:28.164 [http-nio-8078-exec-4] ERROR com.otoko.startercommon.redisCache.RedisCache - 缓存对象获取失败java.lang.ClassCastException: org.apache.ibatis.cache.CacheKey cannot be cast to java.lang.String
+2020-02-04 23:06:28.178 [http-nio-8078-exec-4] ERROR com.otoko.startercommon.redisCache.RedisCache - 缓存对象保存失败java.lang.ClassCastException: org.apache.ibatis.cache.CacheKey cannot be cast to java.lang.String

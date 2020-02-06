@@ -20,7 +20,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
     function renderTable() {
         table.render({
             elem: '#demo'
-            , height: 'full-130'
+            , height: 'full-145'
             , cellMinWidth: 80
             , url: '/admin/form/query' //数据接口
             , contentType: 'application/json'
@@ -39,7 +39,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
             , done: function (res, curr, count) {
                 renderLaypage();
             }
-            , title: '用户表'
+            , title: '表单表'
             , page: false //开启分页
             , toolbar: '#barDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , defaultToolbar: [{
@@ -49,7 +49,6 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
             }, 'filter', 'exports', 'print']
             , cols: [[ //表头
                 {type: 'checkbox'}
-                , {field: 'id', title: 'ID', sort: true}
                 , {field: 'title', title: '表名'}
                 , {field: 'collection', title: '物理表名'}
             ]]

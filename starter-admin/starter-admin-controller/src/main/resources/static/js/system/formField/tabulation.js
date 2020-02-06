@@ -12,6 +12,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         ,postData = {}//分页传参
         ,totalNumber = 0//数据总数
         ,pageCurrent = 1//当前页数
+        ,formId = $('#formId').val();//获取url传参
 
     refresh();
 
@@ -20,9 +21,9 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
     function renderTable() {
         table.render({
             elem: '#demo'
-            , height: 'full-130'
+            , height: 'full-145'
             , cellMinWidth: 80
-            , url: '/admin/form/query' //数据接口
+            , url: '/admin/formField/query' //数据接口
             , contentType: 'application/json'
             , method: 'post'//post请求
             , where: postData
@@ -37,11 +38,12 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                 }
             }
             , done: function (res, curr, count) {
+                //设置整个表格样式
                 renderLaypage();
             }
-            , title: '用户表'
+            , title: '表单字段表'
             , page: false //开启分页
-            , toolbar: 'default' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
+            , toolbar: '#barDemo' //开启工具栏，此处显示默认图标，可以自定义模板，详见文档
             , defaultToolbar: [{
                 title: '刷新'
                 , layEvent: 'refresh'
@@ -49,9 +51,34 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
             }, 'filter', 'exports', 'print']
             , cols: [[ //表头
                 {type: 'checkbox'}
-                , {field: 'id', title: 'ID', sort: true}
-                , {field: 'title', title: '表名'}
-                , {field: 'collection', title: '物理表名'}
+                , {field: 'title', title: '字段名'}
+                , {field: 'field_name', title: '物理字段名'}
+                , {field: 'required', title: '是否必填'
+                , templet: function (d) {
+                    var requiredStr = d.required;
+                    return requiredStr == true ? '是' : '否';
+                }}
+                , {field: 'show_type', title: '显示类型'
+                , templet: function (d) {
+                    //数据回显
+                    var showTypeStr = d.show_type;
+                    //判空
+                    if (!!showTypeStr){
+                        var showTypeObj = JSON.parse(showTypeStr);
+                        return showTypeObj.title;
+                    }
+                }}
+                , {field: 'field_type', title: '字段类型'
+                , templet: function (d) {
+                    //数据回显
+                    var fieldTypeStr = d.field_type;
+                    //判空
+                    if (!!fieldTypeStr){
+                        var fieldTypeObj = JSON.parse(fieldTypeStr);
+                        return fieldTypeObj.title;
+                    }
+                }}
+                , {field: 'default_value', title: '默认值'}
             ]]
         });
     }
@@ -69,6 +96,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         defaultSort.field = 'id';
         defaultSort.isAsc = false;
         sorts.push(defaultSort);
+        postData['formId'] = formId;
         postData['page'] = page;
         postData['sorts'] = sorts;
     }
@@ -80,7 +108,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         laypage.render({
             elem: 'pagesize'
             ,count: totalNumber
-            ,curr: 1 //获取起始页。一定要写这个两个。否则你点击了页面，接口也是访问了指定页的内容，但是页面上效果是选中的还是第一个。
+            ,curr: pageCurrent //获取起始页。一定要写这个两个。否则你点击了页面，接口也是访问了指定页的内容，但是页面上效果是选中的还是第一个。
             ,hash: 'fenye' //自定义hash值
             ,layout: ['count', 'prev', 'page', 'next',  'skip']
             ,jump: function(obj, first){
@@ -99,6 +127,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
      */
     function refresh() {
         //设置页数为1，并渲染table和分页组件
+        pageCurrent = 1;
         paginationParameters();
         renderTable();
         renderLaypage();
@@ -110,16 +139,28 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
     $(".ojbk-search-btn").click(function () {
         //先获取搜索框的值
         var title = $("#searchTitle").val();
-        var collection = $("#searchCollection").val();
+        var fieldName = $("#searchFieldName").val();
+        var required = $("#searchRequired").val();
+        var showType = $("#searchShowType").val();
         if (StringNoEmpty(title)){
             postData['title'] = title;
         } else {
             delete postData['title'];
         }
-        if (StringNoEmpty(collection)){
-            postData['collection'] = collection;
+        if (StringNoEmpty(fieldName)){
+            postData['fieldName'] = fieldName;
         } else {
-            delete postData['collection'];
+            delete postData['fieldName'];
+        }
+        if (StringNoEmpty(required)){
+            postData['required'] = required;
+        } else {
+            delete postData['required'];
+        }
+        if (StringNoEmpty(showType)){
+            postData['showType'] = showType;
+        } else {
+            delete postData['showType'];
         }
         refresh();
         layer.msg('搜索成功');
