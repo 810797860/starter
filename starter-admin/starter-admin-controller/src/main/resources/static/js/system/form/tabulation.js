@@ -20,7 +20,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
     function renderTable() {
         table.render({
             elem: '#demo'
-            , height: 'full-145'
+            , height: 'full-90'
             , cellMinWidth: 80
             , url: '/admin/form/query' //数据接口
             , contentType: 'application/json'
@@ -123,7 +123,14 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         }
         refresh();
         layer.msg('搜索成功');
-    })
+    });
+
+    /**
+     * 隐藏搜索框
+     */
+    $(".ojbk-search-hide-btn").click(function () {
+        $("#ojbk-search").hide();
+    });
 
     /**
      * str判空
@@ -150,7 +157,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                 //跳转到新增页面
                 layer.open({
                     type: 2
-                    ,title: '新建表单'
+                    ,title: '新增表单'
                     ,content: ['/admin/form/create.html', 'no']
                     ,maxmin: true
                     ,area: ['550px', '550px']
@@ -160,7 +167,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                         submit.click();
                         layer.msg("新增成功");
                     }
-                })
+                });
                 break;
             case 'update':
                 if(data.length === 0){
@@ -169,7 +176,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                     layer.msg('只能同时修改一个');
                 } else {
                     //跳转到修改页面
-                    layer.open({
+                    var index = layer.open({
                         type: 2
                         ,title: '修改表单'
                         ,content: '/admin/form/' + checkStatus.data[0].id + '/update.html'
@@ -181,7 +188,9 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                             submit.click();
                             layer.msg('修改成功');
                         }
-                    })
+                    });
+                    //窗口默认最大化
+                    layer.full(index);
                 }
                 break;
             case 'delete':
@@ -211,6 +220,10 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                         }
                     });
                 }
+                break;
+            case 'search':
+                //展开搜索项
+                $("#ojbk-search").show();
                 break;
         };
     });

@@ -21,7 +21,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
     function renderTable() {
         table.render({
             elem: '#demo'
-            , height: 'full-145'
+            , height: 'full-90'
             , cellMinWidth: 80
             , url: '/admin/formField/query' //数据接口
             , contentType: 'application/json'
@@ -142,6 +142,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         var fieldName = $("#searchFieldName").val();
         var required = $("#searchRequired").val();
         var showType = $("#searchShowType").val();
+        var defaultValue = $("#searchDefaultValue").val();
         if (StringNoEmpty(title)){
             postData['title'] = title;
         } else {
@@ -162,9 +163,21 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         } else {
             delete postData['showType'];
         }
+        if (StringNoEmpty(defaultValue)){
+            postData['defaultValue'] = defaultValue;
+        } else {
+            delete postData['defaultValue'];
+        }
         refresh();
         layer.msg('搜索成功');
-    })
+    });
+
+    /**
+     * 隐藏搜索框
+     */
+    $(".ojbk-search-hide-btn").click(function () {
+        $("#ojbk-search").hide();
+    });
 
     /**
      * str判空
@@ -189,10 +202,10 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                 break;
             case 'add':
                 //跳转到新增页面
-                layer.open({
+                var index = layer.open({
                     type: 2
-                    ,title: '新建表单'
-                    ,content: ['/admin/form/create.html', 'no']
+                    ,title: '新增字段'
+                    ,content: '/admin/formField/' + formId + '/create.html'
                     ,maxmin: true
                     ,area: ['550px', '550px']
                     ,btn: ['确定', '取消']
@@ -201,7 +214,9 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                         submit.click();
                         layer.msg("新增成功");
                     }
-                })
+                });
+                //窗口默认最大化
+                layer.full(index);
                 break;
             case 'update':
                 if(data.length === 0){
@@ -210,10 +225,10 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                     layer.msg('只能同时修改一个');
                 } else {
                     //跳转到修改页面
-                    layer.open({
+                    var index = layer.open({
                         type: 2
-                        ,title: '修改表单'
-                        ,content: '/admin/form/' + checkStatus.data[0].id + '/update.html'
+                        ,title: '修改字段'
+                        ,content: '/admin/formField/' + formId + '/' + checkStatus.data[0].id + '/update.html'
                         ,maxmin: true
                         ,area: ['550px', '550px']
                         ,btn: ['确定', '取消']
@@ -222,7 +237,9 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                             submit.click();
                             layer.msg('修改成功');
                         }
-                    })
+                    });
+                    //窗口默认最大化
+                    layer.full(index);
                 }
                 break;
             case 'delete':
@@ -252,6 +269,10 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                         }
                     });
                 }
+                break;
+            case 'search':
+                //展开搜索项
+                $("#ojbk-search").show();
                 break;
         };
     });

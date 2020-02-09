@@ -2,6 +2,7 @@ package com.otoko.starteradminentity.entity.admin.system;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.FieldStrategy;
 import com.otoko.startercommon.base.BaseEntity.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -65,7 +66,7 @@ public class FormField extends BaseEntity {
      * 默认值
      */
     @ApiModelProperty("默认值")
-    @TableField("default_value")
+    @TableField(value = "default_value", strategy = FieldStrategy.IGNORED)
     private String defaultValue;
 
     public Long getFormId() {

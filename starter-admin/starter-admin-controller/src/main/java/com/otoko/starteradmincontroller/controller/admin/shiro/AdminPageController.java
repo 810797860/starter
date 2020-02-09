@@ -81,6 +81,12 @@ public class AdminPageController {
         return "home";
     }
 
+    @GetMapping(value = "/index2.html")
+    @ApiOperation(value = "/index2.html", notes = "跳转到首页页面")
+    public String index2() {
+        return "index2";
+    }
+
     @GetMapping(value = "/index4.html")
     @ApiOperation(value = "/index4.html", notes = "跳转到首页页面")
     public String index4() {

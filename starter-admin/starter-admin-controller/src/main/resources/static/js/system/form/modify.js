@@ -28,6 +28,8 @@ layui.extend({
         //判空
         if (StringNoEmpty(description)){
             postData['description'] = description;
+        } else {
+            postData['description'] = "";
         }
 
         //调接口

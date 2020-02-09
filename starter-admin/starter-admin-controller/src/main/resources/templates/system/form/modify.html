@@ -33,6 +33,19 @@
         </div>
         <!--隐藏的提交按钮，用于验证-->
         <button id="modifyBtn" class="layui-btn" lay-submit lay-filter="modify" style="display: none;"></button>
+        <div th:if="${form['id']}!=null">
+            <div class="layui-tab layui-tab-brief" lay-filter="demo">
+                <ul class="layui-tab-title" style="left: 15px;">
+                    <li class="layui-this">表单字段设置</li>
+                </ul>
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
+                        <iframe frameborder="0" scrolling="auto" style="width: 100%; height: 500px" th:src="'/admin/formField/tabulation.html?formId=' + ${form['id']}">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script src="/layui/layui.js"></script>

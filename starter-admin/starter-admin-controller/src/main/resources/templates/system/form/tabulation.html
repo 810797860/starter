@@ -14,7 +14,7 @@
 <!-- 内容主体区域 -->
 <div style="padding: 15px;">
     <div class="layui-form layui-card-header layuiadmin-card-header-auto">
-        <div class="layui-form-item">
+        <div class="layui-form-item layui-anim" data-anim="layui-anim-upbit" id="ojbk-search" style="display: none;">
             <div class="layui-inline">
                 <label class="layui-form-label">表名</label>
                 <div class="layui-input-inline">
@@ -32,6 +32,11 @@
                     <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
                 </button>
             </div>
+            <div class="layui-inline">
+                <button class="layui-btn layuiadmin-btn-list ojbk-search-hide-btn">
+                    <i class="layui-icon layui-icon-up layuiadmin-button-btn"></i>
+                </button>
+            </div>
         </div>
     </div>
     <table class="layui-hide" id="demo" lay-filter="test"></table>
@@ -44,6 +49,9 @@
         </div>
         <div class="layui-inline" lay-event="delete">
             <i class="layui-icon layui-icon-delete"></i>
+        </div>
+        <div class="layui-inline" lay-event="search">
+            <i class="layui-icon layui-icon-search"></i>
         </div>
     </script>
     <div class="layui-footer">
