@@ -158,7 +158,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                 layer.open({
                     type: 2
                     ,title: '新增表单'
-                    ,content: ['/admin/form/create.html', 'no']
+                    ,content: ['/admin/form/create.html?id=', 'no']
                     ,maxmin: true
                     ,area: ['550px', '550px']
                     ,btn: ['确定', '取消']

@@ -114,47 +114,28 @@ layui.extend({
 
         //调接口
         //不传id，为新增
+        //传id，为修改
         postData['formId'] = formId;
-        if (formId === null) {
-            $.ajax({
-                type: 'post'
-                , url: '/admin/formField/create_update'
-                , contentType: 'application/json;charset=utf-8'
-                , dataType: 'json'
-                , data: JSON.stringify(postData)
-                , success: function (data) {
-                    switch (data.code) {
-                        case 200:
-                            parent.tools.refresh();
-                            //关闭该窗口
-                            var index = parent.layer.getFrameIndex(window.name);
-                            parent.layer.close(index);
-                            break;
-                    }
-                }
-            });
-        } else {
-            //传id，为修改
-            postData['formId'] = formId;
+        if (formId !== null){
             postData['id'] = formFieldId;
-            $.ajax({
-                type: 'post'
-                , url: '/admin/formField/create_update'
-                , contentType: 'application/json;charset=utf-8'
-                , dataType: 'json'
-                , data: JSON.stringify(postData)
-                , success: function (data) {
-                    switch (data.code) {
-                        case 200:
-                            parent.tools.refresh();
-                            //关闭该窗口
-                            var index = parent.layer.getFrameIndex(window.name);
-                            parent.layer.close(index);
-                            break;
-                    }
-                }
-            });
         }
+        $.ajax({
+            type: 'post'
+            , url: '/admin/formField/create_update'
+            , contentType: 'application/json;charset=utf-8'
+            , dataType: 'json'
+            , data: JSON.stringify(postData)
+            , success: function (data) {
+                switch (data.code) {
+                    case 200:
+                        parent.tools.refresh();
+                        //关闭该窗口
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                        break;
+                }
+            }
+        });
     });
 
     /**
