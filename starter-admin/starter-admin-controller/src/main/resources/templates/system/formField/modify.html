@@ -62,6 +62,12 @@
         <button id="modifyBtn" class="layui-btn" lay-submit lay-filter="modify" style="display: none;"></button>
         <input type="hidden" th:value="${formId}" id="formId"/>
         <input type="hidden" th:value="${formField['id']}" id="formFieldId"/>
+        <div class="ojbk-footer">
+            <div class="layui-layer-btn layui-layer-btn-">
+                <a class="layui-layer-btn0">确定</a>
+                <a class="layui-layer-btn1">取消</a>
+            </div>
+        </div>
     </div>
 </div>
 <script src="/layui/layui.js"></script>

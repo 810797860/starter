@@ -104,3 +104,15 @@ th .laytable-cell-1-0-7 {
     right: 0;
     bottom: 0;
 }*/
+
+
+.ojbk-footer{
+    position: fixed;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 15px;
+    background-color: #eee;
+}

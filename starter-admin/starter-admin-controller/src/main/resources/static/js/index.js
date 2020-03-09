@@ -52,10 +52,10 @@ layui.use(['layer', 'form', 'element'], function(){
                 var parentChildDom = $('#ojbk-nav-child-id-' + TEMPS[i].pid);
                 if (parentChildDom.length === 0){
                     //添加该子节点的头
-                    parentDom.append('<dl id="ojbk-nav-child-id-' + TEMPS[i].pid + '" class="layui-nav-child"><dd><a data-src="' + TEMPS[i].url + '" target="_top" href="javascript:;">' + TEMPS[i].name + '</a></dd></dl>');
+                    parentDom.append('<dl id="ojbk-nav-child-id-' + TEMPS[i].pid + '" class="layui-nav-child"><dd><a data-src="' + TEMPS[i].url + '?menuId=' + TEMPS[i].id + '" target="_top" href="javascript:;">' + TEMPS[i].name + '</a></dd></dl>');
                 } else {
                     //继续添加子节点
-                    parentChildDom.append('<dd><a data-src="' + TEMPS[i].url + '" target="_top" href="javascript:;">' + TEMPS[i].name + '</a></dd>');
+                    parentChildDom.append('<dd><a data-src="' + TEMPS[i].url + '?menuId=' + TEMPS[i].id + '" target="_top" href="javascript:;">' + TEMPS[i].name + '</a></dd>');
                 }
             }
         }

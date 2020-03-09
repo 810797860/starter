@@ -13,8 +13,6 @@ layui.extend({
         validate = layui.validate,
         pid = getRequest().pid;
 
-    console.log(pid);
-    console.log(menuId);
 
     form.verify(validate);
     form.render();
