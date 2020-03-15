@@ -99,6 +99,12 @@ public class AdminPageController {
         return "index5";
     }
 
+    @GetMapping(value = "/index6.html")
+    @ApiOperation(value = "/index6.html", notes = "跳转到首页页面")
+    public String index6() {
+        return "index6";
+    }
+
     @GetMapping("/demo/table/user/")
     @ResponseBody
     public String testUser(){
