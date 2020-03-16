@@ -14,6 +14,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         ,pageCurrent = 1//当前页数
         ,pageSize = 10;
 
+
     refresh();
 
 
@@ -152,85 +153,46 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
     table.on('toolbar(test)', function(obj){
         var checkStatus = table.checkStatus(obj.config.id)
             ,data = checkStatus.data; //获取选中的数据
-        switch(obj.event){
-            case 'refresh':
-                refresh();
-                layer.msg('刷新成功');
-                break;
-            case 'add':
-                //跳转到新增页面
-                layer.open({
-                    type: 2
-                    ,title: '新增表单'
-                    ,content: ['/admin/form/create.html?id=', 'no']
-                    ,maxmin: true
-                    ,area: ['550px', '550px']
-                    ,btn: ['确定', '取消']
-                    ,yes: function (index, layro) {
-                        var submit = layro.find('iframe').contents().find('#modifyBtn');
-                        submit.click();
-                        layer.msg("新增成功");
-                    }
-                });
-                break;
-            case 'update':
-                if(data.length === 0){
-                    layer.msg('请选择一行');
-                } else if(data.length > 1){
-                    layer.msg('只能同时修改一个');
-                } else {
-                    //跳转到修改页面
-                    var index = layer.open({
-                        type: 2
-                        ,title: '修改表单'
-                        ,content: '/admin/form/' + checkStatus.data[0].id + '/update.html'
-                        ,maxmin: true
-                        ,area: ['550px', '550px']
-                        ,btn: ['确定', '取消']
-                        ,yes: function (index, layro) {
-                            var submit = layro.find('iframe').contents().find('#modifyBtn');
-                            submit.click();
-                            layer.msg('修改成功');
-                        }
-                    });
-                    //窗口默认最大化
-                    layer.full(index);
-                }
-                break;
-            case 'delete':
-                if(data.length === 0){
-                    layer.msg('请选择一行');
-                } else {
-                    //先获取要删除的行
-                    var dataList = checkStatus.data,
-                        deleteParam = [];
-                    for (var i = 0; i < dataList.length; i++){
-                        deleteParam.push(dataList[i].id);
-                    }
-                    //开始删除
-                    $.ajax({
-                        type: 'put'
-                        , url: '/admin/form/batch_delete'
-                        , contentType: 'application/json;charset=utf-8'
-                        , dataType: 'json'
-                        , data: JSON.stringify(deleteParam)
-                        , success: function (data) {
-                            switch (data.code) {
-                                case 200:
-                                    refresh();
-                                    layer.msg('删除成功');
-                                    break;
-                            }
-                        }
-                    });
-                }
-                break;
-            case 'search':
-                //展开搜索项
-                $("#ojbk-search").show();
-                break;
-        };
+        eval(getSwitchStr());
     });
+
+    /**
+     * 监听行双击事件
+     */
+    table.on('rowDouble(test)', function(obj){
+        //obj 同上
+        var id = obj.data.id; //获取选中的数据
+        updateOperation(id);
+    });
+
+    function updateOperation(id) {
+        //跳转到修改页面
+        var index = layer.open({
+            type: 2
+            ,title: '修改表单'
+            ,content: '/admin/form/' + id + '/update.html'
+            ,maxmin: true
+            ,area: ['550px', '550px']
+            ,btn: ['确定', '取消']
+            ,yes: function (index, layro) {
+                var submit = layro.find('iframe').contents().find('#modifyBtn');
+                submit.click();
+                layer.msg('修改成功');
+            }
+        });
+        //窗口默认最大化
+        layer.full(index);
+    }
+
+    function getSwitchStr() {
+        var switchStr = "switch(obj.event){";
+        for (var i = 0; i < buttons.length; i++){
+            switchStr = switchStr + " case '" + buttons[i].icon + "': " + buttons[i].script + "break;";
+        }
+        switchStr = switchStr + "};";
+        console.log(switchStr);
+        return switchStr;
+    }
 
     /**
      * 给子页面定义函数

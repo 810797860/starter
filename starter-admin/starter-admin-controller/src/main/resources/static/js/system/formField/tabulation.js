@@ -219,7 +219,13 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                 layer.full(index);
                 break;
             case 'update':
-                updateOperation(checkStatus.data[0].id, data);
+                if(data.length === 0){
+                    layer.msg('请选择一行');
+                } else if(data.length > 1){
+                    layer.msg('只能同时修改一个');
+                } else {
+                    updateOperation(checkStatus.data[0].id);
+                }
                 break;
             case 'delete':
                 if(data.length === 0){
@@ -261,40 +267,31 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
      */
     table.on('rowDouble(test)', function(obj){
         //obj 同上
-        var id = obj.data.id
-            , data = obj.data; //获取选中的数据
-        updateOperation(id, data);
+        var id = obj.data.id; //获取选中的数据
+        updateOperation(id);
     });
 
     /**
      * 抽出修改部分，方便双击修改
      * @param id
-     * @param data
      */
-    function updateOperation(id, data) {
-        if(data.length === 0){
-            layer.msg('请选择一行');
-        } else if(data.length > 1){
-            layer.msg('只能同时修改一个');
-        } else {
-            window.open('/admin/formField/' + formId + '/' + id + '/update.html');
-            /*//跳转到修改页面
-            var index = layer.open({
-                type: 2
-                ,title: '修改字段'
-                ,content: '/admin/formField/' + formId + '/' + id + '/update.html'
-                ,maxmin: true
-                ,area: ['550px', '550px']
-                ,btn: ['确定', '取消']
-                ,yes: function (index, layro) {
-                    var submit = layro.find('iframe').contents().find('#modifyBtn');
-                    submit.click();
-                    layer.msg('修改成功');
-                }
-            });
-            //窗口默认最大化
-            layer.full(index);*/
-        }
+    function updateOperation(id) {
+        //跳转到修改页面
+        var index = layer.open({
+            type: 2
+            ,title: '修改字段'
+            ,content: '/admin/formField/' + formId + '/' + id + '/update.html'
+            ,maxmin: true
+            ,area: ['550px', '550px']
+            ,btn: ['确定', '取消']
+            ,yes: function (index, layro) {
+                var submit = layro.find('iframe').contents().find('#modifyBtn');
+                submit.click();
+                layer.msg('修改成功');
+            }
+        });
+        //窗口默认最大化
+        layer.full(index);
     }
 
     /**
