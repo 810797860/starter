@@ -41,17 +41,8 @@
     </div>
     <table class="layui-hide" id="demo" lay-filter="test"></table>
     <script type="text/html" id="barDemo">
-        <div class="layui-inline" lay-event="add" style="width: auto">
-            <i class="layui-icon layui-icon-add-1"></i>增加表单
-        </div>
-        <div class="layui-inline" lay-event="update" style="width: auto">
-            <i class="layui-icon layui-icon-edit"></i>修改表单
-        </div>
-        <div class="layui-inline" lay-event="delete" style="width: auto">
-            <i class="layui-icon layui-icon-delete"></i>删除表单
-        </div>
-        <div class="layui-inline" lay-event="search" style="width: auto">
-            <i class="layui-icon layui-icon-search"></i>搜索表单
+        <div th:each="button:${buttons}" class="layui-inline" th:lay-event="${button['icon']}" style="width: auto">
+            <i th:class="${button['className']}" th:text="${button['title']}"></i>
         </div>
     </script>
     <div class="layui-footer">
