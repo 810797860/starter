@@ -117,12 +117,12 @@ layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
         //先获取搜索框的值
         var title = $("#searchTitle").val();
         var collection = $("#searchCollection").val();
-        if (StringNoEmpty(title)){
+        if (ojbk.stringNoEmpty(title)){
             postData['title'] = title;
         } else {
             delete postData['title'];
         }
-        if (StringNoEmpty(collection)){
+        if (ojbk.stringNoEmpty(collection)){
             postData['collection'] = collection;
         } else {
             delete postData['collection'];
@@ -138,23 +138,11 @@ layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
         $("#ojbk-search").hide();
     });
 
-    /**
-     * str判空
-     * @param str
-     * @returns {boolean}
-     * @constructor
-     */
-    function StringNoEmpty(str) {
-        if (str != null && str != "" && str != undefined) {
-            return true;
-        } else return false;
-    }
-
     //监听头工具栏事件
     table.on('toolbar(test)', function(obj){
         var checkStatus = table.checkStatus(obj.config.id)
             ,data = checkStatus.data; //获取选中的数据
-        eval(getSwitchStr());
+        eval(ojbk.getSwitchStr(buttons));
     });
 
     /**
@@ -183,16 +171,6 @@ layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
         });
         //窗口默认最大化
         layer.full(index);
-    }
-
-    function getSwitchStr() {
-        var switchStr = "switch(obj.event){";
-        for (var i = 0; i < buttons.length; i++){
-            switchStr = switchStr + " case '" + buttons[i].icon + "': " + buttons[i].script + "break;";
-        }
-        switchStr = switchStr + "};";
-        console.log(switchStr);
-        return switchStr;
     }
 
     //单击行勾选checkbox事件

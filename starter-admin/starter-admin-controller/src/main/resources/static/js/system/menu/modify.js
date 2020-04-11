@@ -3,15 +3,14 @@ layui.config({
     version: '1568076536509' //为了更新 js 缓存，可忽略
 });
 
-layui.extend({
-    validate: '/js/extend/validate'
-}).use(['layer', 'form', 'element', 'validate'], function() {
+layui.use(['layer', 'form', 'element', 'validate', 'ojbk'], function() {
     var $ = layui.jquery,
         layer = layui.layer,
         form = layui.form,
         element = layui.element,
         validate = layui.validate,
-        pid = getRequest().pid;
+        ojbk = layui.ojbk,
+        pid = ojbk.getRequest().pid;
 
 
     form.verify(validate);
@@ -29,17 +28,17 @@ layui.extend({
         postData['num'] = num;
         var description = $("#description").val();
         //判空
-        if (StringNoEmpty(url)){
+        if (ojbk.stringNoEmpty(url)){
             postData['url'] = url;
         } else {
             postData['url'] = "";
         }
-        if (StringNoEmpty(icon)){
+        if (ojbk.stringNoEmpty(icon)){
             postData['icon'] = icon;
         } else {
             postData['icon'] = "";
         }
-        if (StringNoEmpty(description)){
+        if (ojbk.stringNoEmpty(description)){
             postData['description'] = description;
         } else {
             postData['description'] = "";
@@ -52,50 +51,15 @@ layui.extend({
         if (menuId !== null){
             postData['id'] = menuId;
         }
-        $.ajax({
-            type: 'post'
-            , url: '/admin/menu/create_update'
-            , contentType: 'application/json;charset=utf-8'
-            , dataType: 'json'
-            , data: JSON.stringify(postData)
-            , success: function (data) {
-                switch (data.code) {
-                    case 200:
-                        //关闭该窗口
-                        var index = parent.layer.getFrameIndex(window.name);
-                        parent.layer.close(index);
-                        break;
-                }
+
+        ojbk.postAjax('/admin/menu/create_update', postData, function (data) {
+            switch (data.code) {
+                case 200:
+                    //关闭该窗口
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                    break;
             }
         });
     });
-
-    /**
-     * 从当前页面的url地址中获取参数数据
-     * @returns {Object}
-     */
-    function getRequest() {
-        var url = location.search; //获取url中"?"符后的字串
-        var theRequest = new Object();
-        if(url.indexOf("?") != -1) {
-            var str = url.substr(1);
-            strs = str.split("&");
-            for(var i = 0; i < strs.length; i++) {
-                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
-            }
-        }
-        return theRequest;
-    }
-
-    /**
-     * str判空
-     * @param str
-     * @returns {boolean}
-     * @constructor
-     */
-    function StringNoEmpty(str) {
-        if (str != null && str != "" && str != undefined) {
-            return true;
-        } else return false;
-    }
 });

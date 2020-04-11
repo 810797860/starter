@@ -3,11 +3,12 @@ layui.config({
     version: '1568076536509' //为了更新 js 缓存，可忽略
 });
 
-layui.use(['laypage', 'layer', 'table', 'element'], function(){
+layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
     var laypage = layui.laypage //分页
         ,layer = layui.layer //弹层
         ,table = layui.table //表格
         ,element = layui.element //元素操作
+        ,ojbk = layui.ojbk
         ,$ = layui.jquery//jquery
         ,postData = {}//分页传参
         ,totalNumber = 0//数据总数
@@ -146,27 +147,27 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         var required = $("#searchRequired").val();
         var showType = $("#searchShowType").val();
         var defaultValue = $("#searchDefaultValue").val();
-        if (StringNoEmpty(title)){
+        if (ojbk.stringNoEmpty(title)){
             postData['title'] = title;
         } else {
             delete postData['title'];
         }
-        if (StringNoEmpty(fieldName)){
+        if (ojbk.stringNoEmpty(fieldName)){
             postData['fieldName'] = fieldName;
         } else {
             delete postData['fieldName'];
         }
-        if (StringNoEmpty(required)){
+        if (ojbk.stringNoEmpty(required)){
             postData['required'] = required;
         } else {
             delete postData['required'];
         }
-        if (StringNoEmpty(showType)){
+        if (ojbk.stringNoEmpty(showType)){
             postData['showType'] = showType;
         } else {
             delete postData['showType'];
         }
-        if (StringNoEmpty(defaultValue)){
+        if (ojbk.stringNoEmpty(defaultValue)){
             postData['defaultValue'] = defaultValue;
         } else {
             delete postData['defaultValue'];
@@ -182,23 +183,11 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         $("#ojbk-search").hide();
     });
 
-    /**
-     * str判空
-     * @param str
-     * @returns {boolean}
-     * @constructor
-     */
-    function StringNoEmpty(str) {
-        if (str != null && str != "" && str != undefined) {
-            return true;
-        } else return false;
-    }
-
     //监听头工具栏事件
     table.on('toolbar(test)', function(obj){
         var checkStatus = table.checkStatus(obj.config.id)
             ,data = checkStatus.data; //获取选中的数据
-        eval(getSwitchStr());
+        eval(ojbk.getSwitchStr(buttons));
     });
 
     /**
@@ -231,16 +220,6 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         });
         //窗口默认最大化
         parent.parent.layer.full(index);
-    }
-
-    function getSwitchStr() {
-        var switchStr = "switch(obj.event){";
-        for (var i = 0; i < buttons.length; i++){
-            switchStr = switchStr + " case '" + buttons[i].icon + "': " + buttons[i].script + "break;";
-        }
-        switchStr = switchStr + "};";
-        console.log(switchStr);
-        return switchStr;
     }
 
     //单击行勾选checkbox事件

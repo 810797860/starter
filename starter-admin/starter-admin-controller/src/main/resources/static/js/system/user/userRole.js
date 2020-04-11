@@ -3,10 +3,11 @@ layui.config({
     version: '1568076536509' //为了更新 js 缓存，可忽略
 });
 
-layui.use(['layer', 'element', 'tree'], function(){
+layui.use(['layer', 'element', 'tree', 'ojbk'], function(){
     var layer = layui.layer //弹层
         ,element = layui.element //元素操作
         ,tree = layui.tree//树
+        ,ojbk = layui.ojbk //自定义模块
         ,$ = layui.jquery;//jquery
 
     refresh();
@@ -63,18 +64,11 @@ layui.use(['layer', 'element', 'tree'], function(){
                     var deleteParam = [];
                     deleteParam.push(data.id);
                     //开始删除
-                    $.ajax({
-                        type: 'put'
-                        , url: '/admin/menu/batch_delete'
-                        , contentType: 'application/json;charset=utf-8'
-                        , dataType: 'json'
-                        , data: JSON.stringify(deleteParam)
-                        , success: function (data) {
-                            switch (data.code) {
-                                case 200:
-                                    layer.msg('删除成功');
-                                    break;
-                            }
+                    ojbk.putAjax('/admin/menu/batch_delete', deleteParam, function (data) {
+                        switch (data.code) {
+                            case 200:
+                                layer.msg('删除成功');
+                                break;
                         }
                     });
                 }

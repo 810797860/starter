@@ -3,14 +3,13 @@ layui.config({
     version: '1568076536509' //为了更新 js 缓存，可忽略
 });
 
-layui.extend({
-    validate: '/js/extend/validate'
-}).use(['layer', 'form', 'element', 'validate'], function() {
+layui.use(['layer', 'form', 'element', 'validate', 'ojbk'], function() {
     var $ = layui.jquery,
         layer = layui.layer,
         form = layui.form,
         element = layui.element,
-        validate = layui.validate;
+        validate = layui.validate,
+        ojbk = layui.ojbk;
 
     form.verify(validate);
     form.render();
@@ -28,12 +27,12 @@ layui.extend({
         var phone = $("#phone").val();
         var email = $("#email").val();
         //判空
-        if (StringNoEmpty(phone)){
+        if (ojbk.stringNoEmpty(phone)){
             postData['phone'] = phone;
         } else {
             postData['phone'] = "";
         }
-        if (StringNoEmpty(email)){
+        if (ojbk.stringNoEmpty(email)){
             postData['email'] = email;
         } else {
             postData['email'] = "";
@@ -41,22 +40,15 @@ layui.extend({
 
         //调接口
         //新增
-        $.ajax({
-            type: 'post'
-            , url: '/admin/user/create_update'
-            , contentType: 'application/json;charset=utf-8'
-            , dataType: 'json'
-            , data: JSON.stringify(postData)
-            , success: function (data) {
-                switch (data.code) {
-                    case 200:
-                        parent.tools.refresh();
-                        //关闭该窗口
-                        var index = parent.layer.getFrameIndex(window.name);
-                        parent.layer.close(index);
-                        layer.msg("新增成功");
-                        break;
-                }
+        ojbk.postAjax('/admin/user/create_update', postData, function (data) {
+            switch (data.code) {
+                case 200:
+                    parent.tools.refresh();
+                    //关闭该窗口
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                    layer.msg("新增成功");
+                    break;
             }
         });
     });

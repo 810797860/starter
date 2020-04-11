@@ -3,11 +3,12 @@ layui.config({
     version: '1568076536509' //为了更新 js 缓存，可忽略
 });
 
-layui.use(['laypage', 'layer', 'table', 'element'], function(){
+layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
     var laypage = layui.laypage //分页
         ,layer = layui.layer //弹层
         ,table = layui.table //表格
         ,element = layui.element //元素操作
+        ,ojbk = layui.ojbk //自定义模块
         ,$ = layui.jquery//jquery
         ,postData = {}//分页传参
         ,totalNumber = 0//数据总数
@@ -106,18 +107,6 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         renderLaypage();
     }
 
-    /**
-     * str判空
-     * @param str
-     * @returns {boolean}
-     * @constructor
-     */
-    function StringNoEmpty(str) {
-        if (str != null && str != "" && str != undefined) {
-            return true;
-        } else return false;
-    }
-
     //监听头工具栏事件
     table.on('toolbar(test)', function(obj){
         var checkStatus = table.checkStatus(obj.config.id)
@@ -176,20 +165,14 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
                     for (var i = 0; i < dataList.length; i++){
                         deleteParam.push(dataList[i].id);
                     }
+
                     //开始删除
-                    $.ajax({
-                        type: 'put'
-                        , url: '/admin/user/batch_delete'
-                        , contentType: 'application/json;charset=utf-8'
-                        , dataType: 'json'
-                        , data: JSON.stringify(deleteParam)
-                        , success: function (data) {
-                            switch (data.code) {
-                                case 200:
-                                    refresh();
-                                    layer.msg('删除成功');
-                                    break;
-                            }
+                    ojbk.putAjax('/admin/user/batch_delete', deleteParam, function (data) {
+                        switch (data.code) {
+                            case 200:
+                                refresh();
+                                layer.msg('删除成功');
+                                break;
                         }
                     });
                 }

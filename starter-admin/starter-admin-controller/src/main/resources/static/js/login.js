@@ -3,12 +3,15 @@ layui.config({
     version: '1568076536509' //为了更新 js 缓存，可忽略
 });
 
-layui.extend({
-    validate: '/js/extend/validate'
-}).use(['form', 'layer', 'validate'], function (form, layer) {
+layui.use(['form', 'layer', 'validate', 'ojbk'], function () {
     var $ = layui.jquery,
+        form = layui.form,
+        layer = layui.layer,
         validate = layui.validate,
+        ojbk = layui.ojbk,
         $view = $('#ojbk-login');
+
+    topLocation();
     initPage(form);
     initCode();
 
@@ -64,27 +67,26 @@ layui.extend({
             captcha: verifyCode
         }
 
-        $.ajax({
-            type: 'post'
-            ,url: '/admin/login'
-            ,contentType: 'application/json;charset=utf-8'
-            ,dataType: 'json'
-            ,data: JSON.stringify(postData)
-            ,success: function(data){
-                switch (data.code){
-                    case 200:
-                        layer.msg("登录成功");
-                        loading.hide();
-                        initCode();
-                        location.href = '/admin/index';
-                        break;
-                }
-            }
-            ,error: function (XMLHttpRequest, textStatus, errorThrown) {
-                layer.msg("登录失败");
-                loading.hide();
-                initCode();
+        ojbk.postAjax('/admin/login', postData, function(data){
+            switch (data.code){
+                case 200:
+                    layer.msg("登录成功");
+                    loading.hide();
+                    initCode();
+                    location.href = '/admin/index';
+                    break;
             }
         });
+        /*error: function (XMLHttpRequest, textStatus, errorThrown) {
+            layer.msg("登录失败");
+            loading.hide();
+            initCode();
+        }*/
+    }
+
+    function topLocation() {
+        if (window != top){
+            top.location.href = location.href;
+        }
     }
 });
