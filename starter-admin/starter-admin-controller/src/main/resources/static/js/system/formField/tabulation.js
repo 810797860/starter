@@ -12,6 +12,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         ,postData = {}//分页传参
         ,totalNumber = 0//数据总数
         ,pageCurrent = 1//当前页数
+        ,pageSize = 10
         ,formId = $('#formId').val();//获取url传参
 
     refresh();
@@ -27,7 +28,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
             , contentType: 'application/json'
             , method: 'post'//post请求
             , where: postData
-            , limit: 10
+            , limit: pageSize
             , parseData: function (res) {
                 totalNumber = res.recordsTotal;
                 return {
@@ -89,7 +90,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
     function paginationParameters() {
         var page = {};
         page.current = pageCurrent;
-        page.size = 10;
+        page.size = pageSize;
 
         var sorts = [];
         var defaultSort = {};
@@ -108,12 +109,14 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
         laypage.render({
             elem: 'pagesize'
             ,count: totalNumber
+            ,limit: pageSize
             ,curr: pageCurrent //获取起始页。一定要写这个两个。否则你点击了页面，接口也是访问了指定页的内容，但是页面上效果是选中的还是第一个。
             ,hash: 'fenye' //自定义hash值
-            ,layout: ['count', 'prev', 'page', 'next',  'skip']
+            ,layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
             ,jump: function(obj, first){
                 if(!first){
                     //设置当前页数
+                    pageSize = obj.limit;
                     pageCurrent = obj.curr;
                     paginationParameters();
                     renderTable();
@@ -195,71 +198,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
     table.on('toolbar(test)', function(obj){
         var checkStatus = table.checkStatus(obj.config.id)
             ,data = checkStatus.data; //获取选中的数据
-        switch(obj.event){
-            case 'refresh':
-                refresh();
-                layer.msg('刷新成功');
-                break;
-            case 'add':
-                //跳转到新增页面
-                var index = layer.open({
-                    type: 2
-                    ,title: '新增字段'
-                    ,content: '/admin/formField/' + formId + '/create.html'
-                    ,maxmin: true
-                    ,area: ['550px', '550px']
-                    ,btn: ['确定', '取消']
-                    ,yes: function (index, layro) {
-                        var submit = layro.find('iframe').contents().find('#modifyBtn');
-                        submit.click();
-                        layer.msg("新增成功");
-                    }
-                });
-                //窗口默认最大化
-                layer.full(index);
-                break;
-            case 'update':
-                if(data.length === 0){
-                    layer.msg('请选择一行');
-                } else if(data.length > 1){
-                    layer.msg('只能同时修改一个');
-                } else {
-                    updateOperation(checkStatus.data[0].id);
-                }
-                break;
-            case 'delete':
-                if(data.length === 0){
-                    layer.msg('请选择一行');
-                } else {
-                    //先获取要删除的行
-                    var dataList = checkStatus.data,
-                        deleteParam = [];
-                    for (var i = 0; i < dataList.length; i++){
-                        deleteParam.push(dataList[i].id);
-                    }
-                    //开始删除
-                    $.ajax({
-                        type: 'put'
-                        , url: '/admin/form/batch_delete'
-                        , contentType: 'application/json;charset=utf-8'
-                        , dataType: 'json'
-                        , data: JSON.stringify(deleteParam)
-                        , success: function (data) {
-                            switch (data.code) {
-                                case 200:
-                                    refresh();
-                                    layer.msg('删除成功');
-                                    break;
-                            }
-                        }
-                    });
-                }
-                break;
-            case 'search':
-                //展开搜索项
-                $("#ojbk-search").show();
-                break;
-        };
+        eval(getSwitchStr());
     });
 
     /**
@@ -277,7 +216,7 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
      */
     function updateOperation(id) {
         //跳转到修改页面
-        var index = layer.open({
+        var index = parent.parent.layer.open({
             type: 2
             ,title: '修改字段'
             ,content: '/admin/formField/' + formId + '/' + id + '/update.html'
@@ -291,8 +230,42 @@ layui.use(['laypage', 'layer', 'table', 'element'], function(){
             }
         });
         //窗口默认最大化
-        layer.full(index);
+        parent.parent.layer.full(index);
     }
+
+    function getSwitchStr() {
+        var switchStr = "switch(obj.event){";
+        for (var i = 0; i < buttons.length; i++){
+            switchStr = switchStr + " case '" + buttons[i].icon + "': " + buttons[i].script + "break;";
+        }
+        switchStr = switchStr + "};";
+        console.log(switchStr);
+        return switchStr;
+    }
+
+    //单击行勾选checkbox事件
+    $(document).on("click", ".layui-table-body table.layui-table tbody tr", function () {
+        var index = $(this).attr('data-index');
+        var tableBox = $(this).parents('.layui-table-box');
+        //存在固定列
+        if (tableBox.find(".layui-table-fixed.layui-table-fixed-l").length > 0) {
+            tableDiv = tableBox.find(".layui-table-fixed.layui-table-fixed-l");
+        } else {
+            tableDiv = tableBox.find(".layui-table-body.layui-table-main");
+        }
+        var CheckLength = tableDiv.find("tr[data-index=" + index + "]").find(
+            "td div.layui-form-checked").length;
+
+        var checkCell = tableDiv.find("tr[data-index=" + index + "]").find(
+            "td div.laytable-cell-checkbox div.layui-form-checkbox I");
+        if (checkCell.length > 0) {
+            checkCell.click();
+        }
+    });
+
+    $(document).on("click", "td div.laytable-cell-checkbox div.layui-form-checkbox", function (e) {
+        e.stopPropagation();
+    });
 
     /**
      * 给子页面定义函数

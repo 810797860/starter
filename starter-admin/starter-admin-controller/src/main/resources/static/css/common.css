@@ -116,3 +116,8 @@ th .laytable-cell-1-0-7 {
     padding: 0 15px;
     background-color: #eee;
 }*/
+
+/*弹出框文字居中*/
+.layui-layer-content{
+    text-align:center;
+}

@@ -3,11 +3,12 @@ layui.config({
     version: '1568076536509' //为了更新 js 缓存，可忽略
 });
 
-layui.use(['laypage', 'layer', 'table', 'element'], function(){
+layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
     var laypage = layui.laypage //分页
         ,layer = layui.layer //弹层
         ,table = layui.table //表格
         ,element = layui.element //元素操作
+        ,ojbk = layui.ojbk //自定义模块
         ,$ = layui.jquery//jquery
         ,postData = {}//分页传参
         ,totalNumber = 0//数据总数
