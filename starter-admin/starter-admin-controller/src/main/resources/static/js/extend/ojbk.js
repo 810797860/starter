@@ -85,6 +85,15 @@ layui.define(['jquery'], function(exports){
                 }
             }
             return theRequest;
+        },
+        /**
+         * js 删除数组中指定值
+         * @param arr
+         * @param element
+         */
+        deleteArrElement: function (arr, element) {
+            var index = arr.indexOf(element);
+            arr.splice(index, 1);
         }
     };
     //输出接口

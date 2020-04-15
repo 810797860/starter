@@ -19,7 +19,7 @@ layui.use(['layer', 'form', 'element', 'validate', 'ojbk'], function() {
         var postData = {};
         //获取页面参数
         var userName = $("#userName").val();
-        postData['user_name'] = userName;
+        postData['userName'] = userName;
         var account = $("#account").val();
         postData['account'] = account;
         var password = $("#password").val();
@@ -39,7 +39,12 @@ layui.use(['layer', 'form', 'element', 'validate', 'ojbk'], function() {
         }
 
         //调接口
-        //新增
+        //不传id，为新增
+        //传id，为修改
+        if (userId !== null){
+            postData['id'] = userId;
+        }
+
         ojbk.postAjax('/admin/user/create_update', postData, function (data) {
             switch (data.code) {
                 case 200:
@@ -52,16 +57,4 @@ layui.use(['layer', 'form', 'element', 'validate', 'ojbk'], function() {
             }
         });
     });
-
-    /**
-     * str判空
-     * @param str
-     * @returns {boolean}
-     * @constructor
-     */
-    function StringNoEmpty(str) {
-        if (str != null && str != "" && str != undefined) {
-            return true;
-        } else return false;
-    }
 });

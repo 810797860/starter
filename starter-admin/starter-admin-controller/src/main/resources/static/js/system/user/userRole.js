@@ -8,7 +8,8 @@ layui.use(['layer', 'element', 'tree', 'ojbk'], function(){
         ,element = layui.element //元素操作
         ,tree = layui.tree//树
         ,ojbk = layui.ojbk //自定义模块
-        ,$ = layui.jquery;//jquery
+        ,$ = layui.jquery//jquery
+        ,checkedList = [];
 
     refresh();
 
@@ -18,76 +19,19 @@ layui.use(['layer', 'element', 'tree', 'ojbk'], function(){
             elem: '#demo'
             , showCheckbox: false
             , data: initData()
+            , showCheckbox: true
             , onlyIconControl: true
-            , edit: ['add', 'update', 'del']
             , text: {
                 defaultNodeName: '未命名' //节点默认名称
                 ,none: '无数据' //数据为空时的提示文本
-            }
-            , operate: function (obj) {
-                var type = obj.type; //得到操作类型：add、edit、del
-                var data = obj.data; //得到当前节点的数据
-
-                if (type === 'add'){
-                    //跳转到新增页面
-                    layer.open({
-                        type: 2
-                        ,title: '新增菜单'
-                        ,content: ['/admin/menu/create.html?pid=' + data.id, 'no']
-                        ,maxmin: true
-                        ,area: ['550px', '550px']
-                        ,btn: ['确定', '取消']
-                        ,yes: function (index, layro) {
-                            var submit = layro.find('iframe').contents().find('#modifyBtn');
-                            submit.click();
-                            layer.msg("新增成功");
-                        }
-                        ,cancel: function () {
-                            refresh();
-                        }
-                    });
-                } else if (type === 'update'){
-                    layer.open({
-                        type: 2
-                        ,title: '修改菜单'
-                        ,content: ['/admin/menu/' + data.id + '/update.html?pid=' + data.pid, 'no']
-                        ,maxmin: true
-                        ,area: ['550px', '550px']
-                        ,btn: ['确定', '取消']
-                        ,yes: function (index, layro) {
-                            var submit = layro.find('iframe').contents().find('#modifyBtn');
-                            submit.click();
-                            layer.msg('修改成功');
-                        }
-                    });
-                } else if (type === 'del'){
-                    var deleteParam = [];
-                    deleteParam.push(data.id);
-                    //开始删除
-                    ojbk.putAjax('/admin/menu/batch_delete', deleteParam, function (data) {
-                        switch (data.code) {
-                            case 200:
-                                layer.msg('删除成功');
-                                break;
-                        }
-                    });
+            },oncheck: function (obj) {
+                if (obj.checked === true){
+                    //选中的时候，直接加上去
+                    checkedList.push(obj.data.id)
+                } else {
+                    ojbk.deleteArrElement(checkedList, obj.data.id);
                 }
-            }
-            ,click: function (obj) {
-                var data = obj.data; //得到当前节点的数据
-                layer.open({
-                    type: 2
-                    ,title: '修改菜单'
-                    ,content: ['/admin/menu/' + data.id + '/update.html?pid=' + data.pid, 'no']
-                    ,maxmin: true
-                    ,area: ['550px', '550px']
-                    ,btn: ['确定', '取消']
-                    ,yes: function (index, layro) {
-                        var submit = layro.find('iframe').contents().find('#modifyBtn');
-                        submit.click();
-                        layer.msg('修改成功');
-                    }
-                });
+                console.log(checkedList);
             }
         });
     }
@@ -97,39 +41,8 @@ layui.use(['layer', 'element', 'tree', 'ojbk'], function(){
      */
     function initData() {
         var data = [];
-        //一级菜单
-        for (var i = 0; i < menuList.length; i++){
-            var pid = menuList[i].pid;
-            if (pid === null){
-                var dom = initDom(menuList[i]);
-                data.push(dom);
-            }
-        }
-        //二级菜单
-        for (var i = 0; i < menuList.length; i++){
-            var pid = menuList[i].pid;
-            for (var j = 0; j < data.length; j++){
-                if (pid == data[j].id){
-                    var dom = initDom(menuList[i]);
-                    var domChildren = data[j]['children'];
-                    domChildren.push(dom);
-                }
-            }
-        }
-        //三级菜单
-        for (var i = 0; i < menuList.length; i++){
-            var pid = menuList[i].pid;
-            for (var j = 0; j < data.length; j++){
-                var dataChildren = data[j]['children'];
-                for (var k = 0; k < dataChildren.length; k++){
-                    if (pid == dataChildren[k].id){
-                        var dom = initDom(menuList[i]);
-                        var domChildren = data[j]['children'][k]['children'];
-                        domChildren.push(dom);
-                    }
-                }
-            }
-
+        for (var i = 0; i < allRoleList.length; i++){
+            data.push(initDom(allRoleList[i]));
         }
         return data;
     }
@@ -137,12 +50,13 @@ layui.use(['layer', 'element', 'tree', 'ojbk'], function(){
     function initDom(menuObj) {
         var dom = {};
         dom['id'] = menuObj.id;
-        dom['title'] = menuObj.name;
+        dom['title'] = menuObj.roleDesc;
         dom['href'] = 'javascript:;';
-        dom['spread'] = 'true';
-        dom['children'] = [];
-        if (!!menuObj.pid){
-            dom['pid'] = menuObj.pid;
+        //判断选中状态
+        for (var i = 0; i < selectedRoleList.length; i++){
+            if (selectedRoleList[i].id == menuObj.id){
+                dom['checked'] = true;
+            }
         }
         return dom;
     }
@@ -152,6 +66,19 @@ layui.use(['layer', 'element', 'tree', 'ojbk'], function(){
         renderTree();
         tree.render();
     }
+
+    $("#modifyBtn").click(function () {
+        ojbk.postAjax('/admin/userRole/create_update/' + userId, checkedList , function (data) {
+            switch (data.code) {
+                case 200:
+                    parent.tools.refresh();
+                    //关闭该窗口
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                    break;
+            }
+        });
+    });
 
     /**
      * 给子页面定义函数

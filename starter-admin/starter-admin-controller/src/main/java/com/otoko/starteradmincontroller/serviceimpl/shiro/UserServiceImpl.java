@@ -1,5 +1,6 @@
 package com.otoko.starteradmincontroller.serviceimpl.shiro;
 
+import com.baomidou.mybatisplus.enums.SqlLike;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -127,6 +128,15 @@ public class UserServiceImpl extends BaseServiceImpl<UserMapper, User> implement
     @Cacheable(key = "#p0 + ',' + #p1 + ',' + #p1.sorts")
     public Page<User> mySelectPageWithParam(Page<User> page, User user) {
         Wrapper<User> wrapper = new EntityWrapper<>(user);
+        //字符串模糊匹配
+        wrapper.like("user_name", user.getUserName(), SqlLike.DEFAULT);
+        user.setUserName(null);
+        wrapper.like("account", user.getAccount(), SqlLike.DEFAULT);
+        user.setAccount(null);
+        wrapper.like("phone", user.getPhone(), SqlLike.DEFAULT);
+        user.setPhone(null);
+        wrapper.like("email", user.getEmail(), SqlLike.DEFAULT);
+        user.setEmail(null);
         //遍历排序
         List<Sort> sorts = user.getSorts();
         if (sorts == null) {

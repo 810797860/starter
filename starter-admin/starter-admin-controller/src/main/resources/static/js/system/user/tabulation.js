@@ -16,7 +16,6 @@ layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
 
     refresh();
 
-
     //执行一个 table 实例
     function renderTable() {
         table.render({
@@ -107,81 +106,44 @@ layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
         renderLaypage();
     }
 
+    /**
+     * 搜索按钮
+     */
+    $(".ojbk-search-btn").click(function () {
+        //先获取搜索框的值
+        var userName = $("#searchUserName").val();
+        var account = $("#searchAccount").val();
+        var phone = $("#searchPhone").val();
+        var email = $("#searchEmail").val();
+        if (ojbk.stringNoEmpty(userName)){
+            postData['userName'] = userName;
+        } else {
+            delete postData['userName'];
+        }
+        if (ojbk.stringNoEmpty(account)){
+            postData['account'] = account;
+        } else {
+            delete postData['account'];
+        }
+        if (ojbk.stringNoEmpty(phone)){
+            postData['phone'] = phone;
+        } else {
+            delete postData['phone'];
+        }
+        if (ojbk.stringNoEmpty(email)){
+            postData['email'] = email;
+        } else {
+            delete postData['email'];
+        }
+        refresh();
+        layer.msg('搜索成功');
+    });
+
     //监听头工具栏事件
     table.on('toolbar(test)', function(obj){
         var checkStatus = table.checkStatus(obj.config.id)
             ,data = checkStatus.data; //获取选中的数据
-        switch(obj.event){
-            case 'refresh':
-                refresh();
-                layer.msg('刷新成功');
-                break;
-            case 'add':
-                //跳转到新增页面
-                layer.open({
-                    type: 2
-                    ,title: '新增表单'
-                    ,content: ['/admin/user/create.html?id=', 'no']
-                    ,maxmin: true
-                    ,area: ['550px', '550px']
-                    ,btn: ['确定', '取消']
-                    ,yes: function (index, layro) {
-                        var submit = layro.find('iframe').contents().find('#modifyBtn');
-                        submit.click();
-                    }
-                });
-                break;
-            case 'update':
-                if(data.length === 0){
-                    layer.msg('请选择一行');
-                } else if(data.length > 1){
-                    layer.msg('只能同时修改一个');
-                } else {
-                    //跳转到修改页面
-                    var index = layer.open({
-                        type: 2
-                        ,title: '修改表单'
-                        ,content: '/admin/user/' + checkStatus.data[0].id + '/update.html'
-                        ,maxmin: true
-                        ,area: ['550px', '550px']
-                        ,btn: ['确定', '取消']
-                        ,yes: function (index, layro) {
-                            var submit = layro.find('iframe').contents().find('#modifyBtn');
-                            submit.click();
-                            layer.msg('修改成功');
-                        }
-                    });
-                    //窗口默认最大化
-                    layer.full(index);
-                }
-                break;
-            case 'delete':
-                if(data.length === 0){
-                    layer.msg('请选择一行');
-                } else {
-                    //先获取要删除的行
-                    var dataList = checkStatus.data,
-                        deleteParam = [];
-                    for (var i = 0; i < dataList.length; i++){
-                        deleteParam.push(dataList[i].id);
-                    }
-
-                    //开始删除
-                    ojbk.putAjax('/admin/user/batch_delete', deleteParam, function (data) {
-                        switch (data.code) {
-                            case 200:
-                                refresh();
-                                layer.msg('删除成功');
-                                break;
-                        }
-                    });
-                }
-                break;
-            case 'search':
-                //展开搜索项
-                $("#ojbk-search").show();
-                break;
-        };
+        eval(ojbk.getSwitchStr(buttons));
     });
 
     /**

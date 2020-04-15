@@ -28,49 +28,53 @@ layui.use(['layer', 'element', 'tree', 'ojbk'], function(){
                 var type = obj.type; //得到操作类型：add、edit、del
                 var data = obj.data; //得到当前节点的数据
 
-                if (type === 'add'){
-                    //跳转到新增页面
-                    layer.open({
-                        type: 2
-                        ,title: '新增菜单'
-                        ,content: ['/admin/menu/create.html?pid=' + data.id, 'no']
-                        ,maxmin: true
-                        ,area: ['550px', '550px']
-                        ,btn: ['确定', '取消']
-                        ,yes: function (index, layro) {
-                            var submit = layro.find('iframe').contents().find('#modifyBtn');
-                            submit.click();
-                            layer.msg("新增成功");
-                        }
-                        ,cancel: function () {
-                            refresh();
-                        }
-                    });
-                } else if (type === 'update'){
-                    layer.open({
-                        type: 2
-                        ,title: '修改菜单'
-                        ,content: ['/admin/menu/' + data.id + '/update.html?pid=' + data.pid, 'no']
-                        ,maxmin: true
-                        ,area: ['550px', '550px']
-                        ,btn: ['确定', '取消']
-                        ,yes: function (index, layro) {
-                            var submit = layro.find('iframe').contents().find('#modifyBtn');
-                            submit.click();
-                            layer.msg('修改成功');
-                        }
-                    });
-                } else if (type === 'del'){
-                    var deleteParam = [];
-                    deleteParam.push(data.id);
-                    //开始删除
-                    ojbk.putAjax('/admin/menu/batch_delete', deleteParam, function (data) {
-                        switch (data.code) {
-                            case 200:
-                                layer.msg('删除成功');
-                                break;
-                        }
-                    });
+                switch (type){
+                    case 'add':
+                        //跳转到新增页面
+                        layer.open({
+                            type: 2
+                            ,title: '新增菜单'
+                            ,content: ['/admin/menu/create.html?pid=' + data.id, 'no']
+                            ,maxmin: true
+                            ,area: ['550px', '550px']
+                            ,btn: ['确定', '取消']
+                            ,yes: function (index, layro) {
+                                var submit = layro.find('iframe').contents().find('#modifyBtn');
+                                submit.click();
+                                layer.msg("新增成功");
+                            }
+                            ,cancel: function () {
+                                refresh();
+                            }
+                        });
+                        break;
+                    case 'update':
+                        layer.open({
+                            type: 2
+                            ,title: '修改菜单'
+                            ,content: ['/admin/menu/' + data.id + '/update.html?pid=' + data.pid, 'no']
+                            ,maxmin: true
+                            ,area: ['550px', '550px']
+                            ,btn: ['确定', '取消']
+                            ,yes: function (index, layro) {
+                                var submit = layro.find('iframe').contents().find('#modifyBtn');
+                                submit.click();
+                                layer.msg('修改成功');
+                            }
+                        });
+                        break;
+                    case 'del':
+                        var deleteParam = [];
+                        deleteParam.push(data.id);
+                        //开始删除
+                        ojbk.putAjax('/admin/menu/batch_delete', deleteParam, function (data) {
+                            switch (data.code) {
+                                case 200:
+                                    layer.msg('删除成功');
+                                    break;
+                            }
+                        });
+                        break;
                 }
             }
             ,click: function (obj) {
