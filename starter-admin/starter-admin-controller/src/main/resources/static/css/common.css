@@ -121,3 +121,9 @@ th .laytable-cell-1-0-7 {
 .layui-layer-content{
     text-align:center;
 }
+
+/*修改代码修饰器的样式*/
+.layui-layedit{
+    width: 400px;
+    height: 325px;
+}
