@@ -3,18 +3,13 @@ layui.config({
     version: '1568076536509' //为了更新 js 缓存，可忽略
 });
 
-layui.use(['layer', 'form', 'element', 'validate', 'ojbk', 'layedit'], function() {
+layui.use(['layer', 'form', 'element', 'validate', 'ojbk'], function() {
     var $ = layui.jquery,
         layer = layui.layer,
         form = layui.form,
         element = layui.element,
         validate = layui.validate,
-        ojbk = layui.ojbk,
-        layedit = layui.layedit;
-
-    layedit.build('script', {
-        tool: ['code']
-    })
+        ojbk = layui.ojbk;
 
     form.verify(validate);
     form.render();

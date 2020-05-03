@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.otoko.starteradminentity.entity.admin.shiro.Button;
 import com.otoko.starteradminentity.entity.admin.shiro.RoleButton;
 import com.otoko.startercommon.base.BaseService.BaseService;
+import org.springframework.boot.configurationprocessor.json.JSONException;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -77,7 +78,15 @@ public interface RoleButtonService extends BaseService<RoleButton> {
      * @param roleButton
      * @return
      */
-    Page<Button> mySelectPageWithParam(Page<Button> page, RoleButton roleButton);
+    Page<Button> mySelectPageWithParam(Page<Button> page, Map<String, Object> roleButton) throws IllegalAccessException, JSONException, InstantiationException;
+
+    /**
+     * 分页获取未分配的按钮
+     * @param page
+     * @param roleButton
+     * @return
+     */
+    Page<Button> myAddSelectPageWithParam(Page<Button> page, Map<String, Object> roleButton) throws IllegalAccessException, JSONException, InstantiationException;
 
     /**
      * 分页获取能够增加Button的列表（实体类）
@@ -215,5 +224,5 @@ public interface RoleButtonService extends BaseService<RoleButton> {
      * @param roleId
      * @return
      */
-    List<Button> mySelectSelectedList(Long roleId);
+    List<Object> mySelectSelectedList(Long roleId);
 }

@@ -14,13 +14,13 @@
 <div class="ojbk-modify">
     <div class="layui-form" lay-filter="modify">
         <div class="layui-form-item">
-            <label class="layui-form-label">表单名称</label>
+            <label class="layui-form-label ojbk-required">表单名称</label>
             <div class="layui-input-inline">
                 <input type="text" name="title" id="title" lay-verify="required" placeholder="请输入表单名称" autocomplete="off" class="layui-input" th:value="${form['title']}">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">数据库表名</label>
+            <label class="layui-form-label ojbk-required">数据库表名</label>
             <div class="layui-input-inline">
                 <input type="text" name="collection" id="collection" lay-verify="required" placeholder="请输入数据库表名" autocomplete="off" class="layui-input" th:value="${form['collection']}" th:disabled="${form['id']} != null ? 'true' : 'false'">
             </div>

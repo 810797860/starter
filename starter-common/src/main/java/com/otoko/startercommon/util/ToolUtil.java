@@ -1,6 +1,9 @@
 package com.otoko.startercommon.util;
 
 import com.otoko.startercommon.pojo.MagicalValue;
+import org.springframework.boot.configurationprocessor.json.JSONArray;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -243,5 +246,29 @@ public class ToolUtil {
             return asciiCode;
         }
         return nativeValue;
+    }
+
+    public static <T> List<T> mapObjectToList(Object map, Class<T> clazz) throws JSONException, IllegalAccessException, InstantiationException {
+        if (map == null) {
+            return null;
+        }
+        List<T> list = new ArrayList<>();
+        T obj = clazz.newInstance();
+        Field[] fields = obj.getClass().getDeclaredFields();
+        JSONArray jsonArray = new JSONArray(map.toString());
+        for (int i = 0; i < jsonArray.length(); i++){
+            obj = clazz.newInstance();
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            for (Field field : fields) {
+                int mod = field.getModifiers();
+                if (Modifier.isStatic(mod) || Modifier.isFinal(mod)) {
+                    continue;
+                }
+                field.setAccessible(true);
+                field.set(obj, jsonObject.get(field.getName()));
+            }
+            list.add(obj);
+        }
+        return list;
     }
 }

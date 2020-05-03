@@ -14,7 +14,7 @@
 <div class="ojbk-modify">
     <div class="layui-form" lay-filter="modify">
         <div class="layui-form-item">
-            <label class="layui-form-label">名称</label>
+            <label class="layui-form-label ojbk-required">名称</label>
             <div class="layui-input-inline">
                 <input type="text" name="name" id="name" lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input" th:value="${menu['name']}">
             </div>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">排序</label>
+            <label class="layui-form-label ojbk-required">排序</label>
             <div class="layui-input-inline">
                 <input type="text" name="num" id="num" lay-verify="required" placeholder="请输入排序" autocomplete="off" class="layui-input" th:value="${menu['num']}">
             </div>

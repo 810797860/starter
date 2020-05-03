@@ -122,8 +122,19 @@ th .laytable-cell-1-0-7 {
     text-align:center;
 }
 
-/*修改代码修饰器的样式*/
+/*
+!*修改代码修饰器的样式*!
 .layui-layedit{
     width: 400px;
     height: 325px;
+}*/
+
+
+/*红色必填星号*/
+.ojbk-required:after{
+    content: '*';
+    color: red;
+    position: absolute;
+    top: 11px;
+    right: 8px;
 }

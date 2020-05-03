@@ -1,0 +1,4 @@
+2020-04-28 22:59:51.589 [http-nio-8078-exec-7] ERROR com.otoko.startercommon.redisCache.RedisCache - 缓存对象获取失败java.lang.ClassCastException: org.apache.ibatis.cache.CacheKey cannot be cast to java.lang.String
+2020-04-28 22:59:51.596 [http-nio-8078-exec-7] ERROR com.otoko.startercommon.redisCache.RedisCache - 缓存对象保存失败java.lang.ClassCastException: org.apache.ibatis.cache.CacheKey cannot be cast to java.lang.String
+2020-04-28 22:59:58.070 [http-nio-8078-exec-9] ERROR com.otoko.startercommon.redisCache.RedisCache - 缓存对象获取失败java.lang.ClassCastException: org.apache.ibatis.cache.CacheKey cannot be cast to java.lang.String
+2020-04-28 22:59:58.078 [http-nio-8078-exec-9] ERROR com.otoko.startercommon.redisCache.RedisCache - 缓存对象保存失败java.lang.ClassCastException: org.apache.ibatis.cache.CacheKey cannot be cast to java.lang.String

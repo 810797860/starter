@@ -14,19 +14,19 @@
 <div class="ojbk-modify">
     <div class="layui-form" lay-filter="modify">
         <div class="layui-form-item">
-            <label class="layui-form-label">用户名</label>
+            <label class="layui-form-label ojbk-required">用户名</label>
             <div class="layui-input-inline">
                 <input type="text" name="userName" id="userName" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" th:value="${user['user_name']}">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">账号</label>
+            <label class="layui-form-label ojbk-required">账号</label>
             <div class="layui-input-inline">
                 <input type="text" name="account" id="account" lay-verify="required" placeholder="请输入账号" autocomplete="off" class="layui-input" th:value="${user['account']}">
             </div>
         </div>
         <div th:if="${user['id']}==null" class="layui-form-item">
-            <label class="layui-form-label">密码</label>
+            <label class="layui-form-label ojbk-required">密码</label>
             <div class="layui-input-inline">
                 <input type="password" name="password" id="password" lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input" th:value="${user['password']}">
             </div>

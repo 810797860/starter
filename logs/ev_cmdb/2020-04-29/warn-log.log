@@ -1,0 +1,2 @@
+2020-04-29 22:11:15.417 [http-nio-8078-exec-9] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [CustomizeException{customizeStatus=LOGIN_WRONG_PASSWORD, clazz='LogInController', code=406}]
+2020-04-29 22:33:10.001 [http-nio-8078-exec-10] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [CustomizeException{customizeStatus=LOGIN_VERIFICATION_CODE_ERROR, clazz='LogInController', code=405}]

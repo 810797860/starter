@@ -14,7 +14,7 @@ layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
         ,totalNumber = 0//数据总数
         ,pageCurrent = 1//当前页数
         ,pageSize = 10
-        ,formId = $('#formId').val();//获取url传参
+        ,buttonId = $('#buttonId').val();//获取url传参
 
     refresh();
 
@@ -74,7 +74,6 @@ layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
         defaultSort.field = 'id';
         defaultSort.isAsc = false;
         sorts.push(defaultSort);
-        postData['formId'] = formId;
         postData['page'] = page;
         postData['sorts'] = sorts;
     }
@@ -156,10 +155,10 @@ layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
      */
     function updateOperation(id) {
         //跳转到修改页面
-        var index = parent.layer.open({
+        var index = layer.open({
             type: 2
             ,title: '修改按钮'
-            ,content: '/admin/button/' + formId + '/' + id + '/update.html'
+            ,content: '/admin/button/' + buttonId + '/' + id + '/update.html'
             ,maxmin: true
             ,area: ['550px', '550px']
             ,btn: ['确定', '取消']
@@ -170,7 +169,7 @@ layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
             }
         });
         //窗口默认最大化
-        parent.layer.full(index);
+        layer.full(index);
     }
 
     /**

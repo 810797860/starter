@@ -187,4 +187,10 @@ public interface SelectItemService extends BaseService<SelectItem> {
      * @return
      */
     List<SelectItem> myGetAllItemsByPid(Long pid);
+
+    /**
+     * 搜索所有的枚举
+     * @return
+     */
+    List<SelectItem> mySelectAll();
 }

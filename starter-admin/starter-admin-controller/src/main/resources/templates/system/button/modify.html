@@ -14,7 +14,7 @@
 <div class="ojbk-modify">
     <div class="layui-form" lay-filter="modify">
         <div class="layui-form-item">
-            <label class="layui-form-label">按钮名称</label>
+            <label class="layui-form-label ojbk-required">按钮名称</label>
             <div class="layui-input-inline">
                 <input type="text" name="title" id="title" lay-verify="required" placeholder="请输入按钮名称" autocomplete="off" class="layui-input" th:value="${button['title']}">
             </div>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">显示顺序</label>
+            <label class="layui-form-label ojbk-required">显示顺序</label>
             <div class="layui-input-inline">
                 <input type="text" name="num" id="num" lay-verify="required" placeholder="请输入显示顺序" autocomplete="off" class="layui-input" th:value="${button['num']}">
             </div>
@@ -40,7 +40,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">JS脚本</label>
             <div class="layui-input-inline">
-                <textarea name="script" id="script" placeholder="请点击插入代码键" autocomplete="off" class="layui-textarea" th:text="${button['script']}"></textarea>
+                <textarea name="script" id="script" style="width: 400px; height: 150px;" placeholder="请点击插入代码键" autocomplete="off" class="layui-textarea" th:text="${button['script']}"></textarea>
             </div>
         </div>
         <div class="layui-form-item">

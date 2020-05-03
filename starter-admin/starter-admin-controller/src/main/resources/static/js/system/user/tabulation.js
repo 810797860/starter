@@ -13,6 +13,7 @@ layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
         ,postData = {}//分页传参
         ,totalNumber = 0//数据总数
         ,pageCurrent = 1//当前页数
+        ,pageSize = 10;
 
     refresh();
 
@@ -26,7 +27,7 @@ layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
             , contentType: 'application/json'
             , method: 'post'//post请求
             , where: postData
-            , limit: 10
+            , limit: pageSize
             , parseData: function (res) {
                 totalNumber = res.recordsTotal;
                 return {
@@ -63,7 +64,7 @@ layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
     function paginationParameters() {
         var page = {};
         page.current = pageCurrent;
-        page.size = 10;
+        page.size = pageSize;
 
         var sorts = [];
         var defaultSort = {};
@@ -81,12 +82,14 @@ layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
         laypage.render({
             elem: 'pagesize'
             ,count: totalNumber
+            ,limit: pageSize
             ,curr: pageCurrent //获取起始页。一定要写这个两个。否则你点击了页面，接口也是访问了指定页的内容，但是页面上效果是选中的还是第一个。
             ,hash: 'fenye' //自定义hash值
-            ,layout: ['count', 'prev', 'page', 'next',  'skip']
+            ,layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
             ,jump: function(obj, first){
                 if(!first){
                     //设置当前页数
+                    pageSize = obj.limit;
                     pageCurrent = obj.curr;
                     paginationParameters();
                     renderTable();
@@ -145,6 +148,34 @@ layui.use(['laypage', 'layer', 'table', 'element', 'ojbk'], function(){
             ,data = checkStatus.data; //获取选中的数据
         eval(ojbk.getSwitchStr(buttons));
     });
+
+    /**
+     * 监听行双击事件
+     */
+    table.on('rowDouble(test)', function(obj){
+        //obj 同上
+        var id = obj.data.id; //获取选中的数据
+        updateOperation(id);
+    });
+
+    function updateOperation(id) {
+        //跳转到修改页面
+        var index = layer.open({
+            type: 2
+            ,title: '修改用户'
+            ,content: '/admin/user/' + id + '/update.html'
+            ,maxmin: true
+            ,area: ['550px', '550px']
+            ,btn: ['确定', '取消']
+            ,yes: function (index, layro) {
+                var submit = layro.find('iframe').contents().find('#modifyBtn');
+                submit.click();
+                layer.msg('修改成功');
+            }
+        });
+        //窗口默认最大化
+        layer.full(index);
+    }
 
     /**
      * 给子页面定义函数

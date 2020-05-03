@@ -88,8 +88,10 @@ public class SelectItemServiceImpl extends BaseServiceImpl<SelectItemMapper, Sel
             wrapper.like("id", selectItem.getId().toString(), SqlLike.DEFAULT);
             selectItem.setId(null);
         }
-        wrapper.like("title", selectItem.getTitle(), SqlLike.DEFAULT);
-        selectItem.setTitle(null);
+        if (selectItem.getTitle() != null) {
+            wrapper.like("title", selectItem.getTitle(), SqlLike.DEFAULT);
+            selectItem.setTitle(null);
+        }
         if (selectItem.getPid() != null) {
             wrapper.like("pid", selectItem.getPid().toString(), SqlLike.DEFAULT);
             selectItem.setPid(null);
@@ -218,5 +220,12 @@ public class SelectItemServiceImpl extends BaseServiceImpl<SelectItemMapper, Sel
     @Cacheable(key = "'myGetAllItemsByPid' + #p0")
     public List<SelectItem> myGetAllItemsByPid(Long pid) {
         return selectItemMapper.myGetAllItemsByPid(pid);
+    }
+
+    @Override
+    @Cacheable(key = "'mySelectAll'")
+    public List<SelectItem> mySelectAll() {
+        return selectItemMapper.selectList(new EntityWrapper<SelectItem>()
+                .eq("deleted", false));
     }
 }

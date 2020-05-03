@@ -3,6 +3,7 @@ package com.otoko.starteradmincontroller.controller.admin.shiro;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.otoko.starteradminentity.entity.admin.shiro.Button;
 import com.otoko.starteradminentity.entity.admin.shiro.RoleButton;
+import com.otoko.starteradminservice.service.admin.shiro.MenuButtonService;
 import com.otoko.starteradminservice.service.admin.shiro.RoleButtonService;
 import com.otoko.startercommon.base.BaseController.BaseController;
 import com.otoko.startercommon.jsonResult.JsonResult;
@@ -15,11 +16,13 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,8 +36,12 @@ import java.util.Map;
 @Api(value = "/admin/roleButton", description = "RoleButton 控制器")
 @RequestMapping("/admin/roleButton")
 public class RoleButtonController extends BaseController {
+
     @Autowired
     private RoleButtonService roleButtonService;
+
+    @Autowired
+    private MenuButtonService menuButtonService;
 
     /**
      * @description : 跳转到列表页面
@@ -44,16 +51,50 @@ public class RoleButtonController extends BaseController {
     @GetMapping(value = "/{roleId}/tabulation.html")
     @ApiOperation(value = "/{roleId}/tabulation.html", notes = "跳转到roleButton的列表页面")
     public String toRoleButtonList(@ApiParam(name = "model", value = "Model") Model model,
-                                   @ApiParam(name = "roleId", value = "角色id") @PathVariable("roleId") Long roleId) {
+                                   @ApiParam(name = "roleId", value = "角色id") @PathVariable("roleId") Long roleId,
+                                   @ApiParam(name = "menuId", value = "菜单id") Long menuId,
+                                   @ApiParam(name = "session", value = "客户端会话") HttpSession session) {
 
+        Long userRoleId = Long.valueOf(session.getAttribute(MagicalValue.ROLE_SESSION_ID).toString());
+        //根据菜单id找按钮
+        List<Button> buttons = menuButtonService.mySelectListWithMenuId(menuId, userRoleId);
         //根据所选角色找菜单
-        List<Button> roleButtons = roleButtonService.mySelectSelectedList(roleId);
+        List<Object> roleButtons = roleButtonService.mySelectSelectedList(roleId);
         //静态注入
+        //注入该表单的按钮
+        model.addAttribute("buttons", buttons);
         //静态注入角色id
         model.addAttribute("roleId", roleId);
         //静态注入所选菜单
         model.addAttribute("roleButtons", roleButtons);
         return "system/role/roleButton";
+    }
+
+    /**
+     * @description : 跳转到列按钮分配表页面
+     * @author : zhangjk
+     * @since : Create in 2018-11-11
+     */
+    @GetMapping(value = "/{roleId}/add_tabulation.html")
+    @ApiOperation(value = "/{roleId}/add_tabulation.html", notes = "跳转到按钮分配的列表页面")
+    public String toAddRoleButtonList(@ApiParam(name = "model", value = "Model") Model model,
+                                   @ApiParam(name = "roleId", value = "角色id") @PathVariable("roleId") Long roleId,
+                                   @ApiParam(name = "menuId", value = "菜单id") Long menuId,
+                                   @ApiParam(name = "session", value = "客户端会话") HttpSession session) {
+
+        Long userRoleId = Long.valueOf(session.getAttribute(MagicalValue.ROLE_SESSION_ID).toString());
+        //根据菜单id找按钮
+        List<Button> buttons = menuButtonService.mySelectListWithMenuId(menuId, userRoleId);
+        //根据所选角色找菜单
+        List<Object> roleButtons = roleButtonService.mySelectSelectedList(roleId);
+        //静态注入
+        //注入该表单的按钮
+        model.addAttribute("buttons", buttons);
+        //静态注入角色id
+        model.addAttribute("roleId", roleId);
+        //静态注入所选菜单
+        model.addAttribute("roleButtons", roleButtons);
+        return "system/role/addRoleButton";
     }
 
     /**
@@ -85,11 +126,11 @@ public class RoleButtonController extends BaseController {
     @PostMapping(value = "/query", produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
     @ApiOperation(value = "/query", notes = "获取分页列表")
     @ResponseBody
-    public TableJson<Button> getRoleButtonList(@ApiParam(name = "RoleButton", value = "RoleButton 实体类") @RequestBody RoleButton roleButton) {
+    public TableJson<Button> getRoleButtonList(@ApiParam(name = "RoleButton", value = "RoleButton Map") @RequestBody Map<String, Object> roleButton) throws IllegalAccessException, JSONException, InstantiationException {
         TableJson<Button> resJson = new TableJson<>();
-        Page resPage = roleButton.getPage();
-        Integer current = resPage.getCurrent();
-        Integer size = resPage.getSize();
+        Map<String, Object> resPage = (Map<String, Object>) roleButton.get("page");
+        Integer current = new Integer(resPage.get("current").toString());
+        Integer size = new Integer(resPage.get("size").toString());
         if (current == null || size == null) {
             resJson.setSuccess(false);
             resJson.setMessage("异常信息：页数和页的大小不能为空");
@@ -97,6 +138,32 @@ public class RoleButtonController extends BaseController {
         }
         Page<Button> buttonPage = new Page<Button>(current, size);
         buttonPage = roleButtonService.mySelectPageWithParam(buttonPage, roleButton);
+        resJson.setRecordsTotal(buttonPage.getTotal());
+        resJson.setData(buttonPage.getRecords());
+        resJson.setSuccess(true);
+        return resJson;
+    }
+
+    /**
+     * @description : 获取待新增分页列表
+     * @author : zhangjk
+     * @since : Create in 2018-12-04
+     */
+    @PostMapping(value = "/add_query", produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
+    @ApiOperation(value = "/add_query", notes = "获取分页列表")
+    @ResponseBody
+    public TableJson<Button> getAddRoleButtonList(@ApiParam(name = "RoleButton", value = "RoleButton Map") @RequestBody Map<String, Object> roleButton) throws IllegalAccessException, JSONException, InstantiationException {
+        TableJson<Button> resJson = new TableJson<>();
+        Map<String, Object> resPage = (Map<String, Object>) roleButton.get("page");
+        Integer current = new Integer(resPage.get("current").toString());
+        Integer size = new Integer(resPage.get("size").toString());
+        if (current == null || size == null) {
+            resJson.setSuccess(false);
+            resJson.setMessage("异常信息：页数和页的大小不能为空");
+            return resJson;
+        }
+        Page<Button> buttonPage = new Page<Button>(current, size);
+        buttonPage = roleButtonService.myAddSelectPageWithParam(buttonPage, roleButton);
         resJson.setRecordsTotal(buttonPage.getTotal());
         resJson.setData(buttonPage.getRecords());
         resJson.setSuccess(true);

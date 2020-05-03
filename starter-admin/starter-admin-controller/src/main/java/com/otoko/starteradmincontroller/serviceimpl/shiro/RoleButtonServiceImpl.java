@@ -1,5 +1,6 @@
 package com.otoko.starteradmincontroller.serviceimpl.shiro;
 
+import com.baomidou.mybatisplus.enums.SqlLike;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -12,6 +13,7 @@ import com.otoko.startercommon.base.BaseEntity.Sort;
 import com.otoko.startercommon.base.BaseServiceImpl.BaseServiceImpl;
 import com.otoko.startercommon.util.ToolUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -126,14 +128,14 @@ public class RoleButtonServiceImpl extends BaseServiceImpl<RoleButtonMapper, Rol
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    @Cacheable(key = "'MyButton' + #p0 + ',' + #p1 + ',' + #p1.sorts")
-    public Page<Button> mySelectPageWithParam(Page<Button> page, RoleButton roleButton) {
+    @Cacheable(key = "'MyButton' + #p0 + ',' + #p1")
+    public Page<Button> mySelectPageWithParam(Page<Button> page, Map<String, Object> roleButton) throws IllegalAccessException, JSONException, InstantiationException {
 
         //先找出buttonIds
-        Wrapper<RoleButton> wrapper = new EntityWrapper<>(roleButton);
-        wrapper.setSqlSelect("button_id");
-        //判断是否删除
-        wrapper.where("deleted = {0}", false);
+        Wrapper<RoleButton> wrapper = new EntityWrapper<>();
+        wrapper.setSqlSelect("button_id")
+                .eq("role_id", roleButton.get("roleId"))
+                .eq("deleted", false);
         List<Object> buttonIds = this.selectObjs(wrapper);
         //如果buttonIds为空，返回空的对象
         if (buttonIds.size() == 0) {
@@ -141,11 +143,53 @@ public class RoleButtonServiceImpl extends BaseServiceImpl<RoleButtonMapper, Rol
         }
         //再根据id找buttonPage
         Wrapper<Button> buttonWrapper = new EntityWrapper<>();
-        buttonWrapper.in("id", buttonIds);
-        //判空
-        buttonWrapper.where("deleted = {0}", false);
+        String title = roleButton.containsKey("title") ? roleButton.get("title").toString() : null;
+        String description = roleButton.containsKey("description") ? roleButton.get("description").toString() : null;
+        buttonWrapper.in("id", buttonIds)
+                .where("deleted = {0}", false)
+                .like("title", title, SqlLike.DEFAULT)
+                .like("description", description, SqlLike.DEFAULT);
         //遍历排序
-        List<Sort> sorts = roleButton.getSorts();
+        List<Sort> sorts = ToolUtil.mapObjectToList(roleButton.get("sorts"), Sort.class);
+        if (sorts == null) {
+            //为null时，默认按created_at倒序
+            buttonWrapper.orderBy("id", false);
+        } else {
+            //遍历排序
+            sorts.forEach(sort -> {
+                buttonWrapper.orderBy(sort.getField(), sort.getAsc());
+            });
+        }
+        //这里用service，既能redis又只能用redis
+        return buttonService.selectPage(page, buttonWrapper);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    @Cacheable(key = "'myAddSelectPageWithParam' + #p0 + ',' + #p1")
+    public Page<Button> myAddSelectPageWithParam(Page<Button> page, Map<String, Object> roleButton) throws IllegalAccessException, JSONException, InstantiationException {
+        //先找出buttonIds
+        Wrapper<RoleButton> wrapper = new EntityWrapper<>();
+        wrapper.setSqlSelect("button_id")
+                .eq("role_id", roleButton.get("roleId"))
+                .eq("deleted", false);
+        List<Object> buttonIds = this.selectObjs(wrapper);
+        //如果buttonIds为空，返回空的对象
+        if (buttonIds.size() == 0) {
+            return new Page<>();
+        }
+        //再根据id找buttonPage
+        Wrapper<Button> buttonWrapper = new EntityWrapper<>();
+        String title = roleButton.containsKey("title") ? roleButton.get("title").toString() : null;
+        String description = roleButton.containsKey("description") ? roleButton.get("description").toString() : null;
+        if (!ToolUtil.objIsEmpty(buttonIds)){
+            buttonWrapper.notIn("id", buttonIds);
+        }
+        buttonWrapper.where("deleted = {0}", false)
+                .like("title", title, SqlLike.DEFAULT)
+                .like("description", description, SqlLike.DEFAULT);
+        //遍历排序
+        List<Sort> sorts = ToolUtil.mapObjectToList(roleButton.get("sorts"), Sort.class);
         if (sorts == null) {
             //为null时，默认按created_at倒序
             buttonWrapper.orderBy("id", false);
@@ -296,21 +340,12 @@ public class RoleButtonServiceImpl extends BaseServiceImpl<RoleButtonMapper, Rol
 
     @Override
     @Cacheable(key = "#p0")
-    public List<Button> mySelectSelectedList(Long roleId) {
+    public List<Object> mySelectSelectedList(Long roleId) {
         //找出buttonIds
         Wrapper<RoleButton> wrapper = new EntityWrapper<>();
-        wrapper.setSqlSelect("button_id");
-        wrapper.where("role_id = {0}", roleId);
-        wrapper.where("deleted = {0}", false);
-        List<Object> buttonIds = this.selectObjs(wrapper);
-        //判空
-        if (buttonIds.size() == 0) {
-            return new ArrayList<>();
-        }
-        //再根据buttonIds来找
-        Wrapper<Button> buttonWrapper = new EntityWrapper<>();
-        buttonWrapper.in("id", buttonIds);
-        buttonWrapper.where("deleted = {0}", false);
-        return buttonService.mySelectList(buttonWrapper);
+        wrapper.setSqlSelect("button_id")
+                .where("role_id = {0}", roleId)
+                .where("deleted = {0}", false);
+        return this.selectObjs(wrapper);
     }
 }
