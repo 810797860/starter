@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.otoko.starteradminentity.entity.admin.shiro.Resources;
 import com.otoko.starteradminentity.entity.admin.shiro.RoleResources;
 import com.otoko.startercommon.base.BaseService.BaseService;
+import org.springframework.boot.configurationprocessor.json.JSONException;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -71,14 +72,21 @@ public interface RoleResourcesService extends BaseService<RoleResources> {
     boolean myRoleResourcesBatchCreate(Long roleId, List<Integer> resourcesIds);
 
     /**
-     * 分页获取RoleResources列表数据（实体类）
-     *
+     * 分页获取RoleResources列表数据（Map）
      * @param page
      * @param roleResources
      * @return
      */
-    Page<Resources> mySelectPageWithParam(Page<Resources> page, RoleResources roleResources);
+    Page<Resources> mySelectPageWithParam(Page<Resources> page, Map<String, Object> roleResources) throws IllegalAccessException, JSONException, InstantiationException;
 
+    /**
+     * 分页获取未分配的按钮
+     * @param page
+     * @param roleResources
+     * @return
+     */
+    Page<Resources> myAddSelectPageWithParam(Page<Resources> page, Map<String, Object> roleResources) throws IllegalAccessException, JSONException, InstantiationException;
+    
     /**
      * 分页获取能够增加Resources的列表（实体类）
      *
@@ -215,5 +223,5 @@ public interface RoleResourcesService extends BaseService<RoleResources> {
      * @param roleId
      * @return
      */
-    List<Resources> mySelectSelectedList(Long roleId);
+    List<Object> mySelectSelectedList(Long roleId);
 }

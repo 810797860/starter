@@ -1,6 +1,7 @@
 package com.otoko.starteradmincontroller.controller.admin.shiro;
 
 import com.baomidou.mybatisplus.plugins.Page;
+import com.otoko.starteradminentity.entity.admin.shiro.Button;
 import com.otoko.starteradminentity.entity.admin.shiro.Role;
 import com.otoko.starteradminservice.service.admin.shiro.MenuButtonService;
 import com.otoko.starteradminservice.service.admin.shiro.RoleService;
@@ -49,11 +50,17 @@ public class RoleController extends BaseController {
     @GetMapping(value = "/tabulation.html")
     @ApiOperation(value = "/tabulation.html", notes = "跳转到role的列表页面")
     public String toRoleList(@ApiParam(name = "model", value = "Model") Model model,
-                             @ApiParam(name = "session", value = "客户端会话") HttpSession session) {
+                             @ApiParam(name = "session", value = "客户端会话") HttpSession session,
+                             @ApiParam(name = "menuId", value = "菜单id") Long menuId) {
 
+        Long roleId = Long.valueOf(session.getAttribute(MagicalValue.ROLE_SESSION_ID).toString());
+        //根据菜单id找按钮
+        List<Button> buttons = menuButtonService.mySelectListWithMenuId(menuId, roleId);
         List<Role> roleList = roleService.mySelectAllList();
         Long userId = Long.valueOf(session.getAttribute(MagicalValue.USER_SESSION_ID).toString());
         //静态注入
+        //注入该表单的按钮
+        model.addAttribute("buttons", buttons);
         //静态注入所有的角色
         model.addAttribute("roleList", roleList);
         //注入用户id

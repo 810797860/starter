@@ -1,5 +1,6 @@
 package com.otoko.starteradmincontroller.serviceimpl.shiro;
 
+import com.baomidou.mybatisplus.enums.SqlLike;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -12,6 +13,7 @@ import com.otoko.startercommon.base.BaseEntity.Sort;
 import com.otoko.startercommon.base.BaseServiceImpl.BaseServiceImpl;
 import com.otoko.startercommon.util.ToolUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -155,24 +157,70 @@ public class RoleResourcesServiceImpl extends BaseServiceImpl<RoleResourcesMappe
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    @Cacheable(key = "'MyResources' + #p0 + ',' + #p1 + ',' + #p1.sorts")
-    public Page<Resources> mySelectPageWithParam(Page<Resources> page, RoleResources roleResources) {
+    @Cacheable(key = "'MyResources' + #p0 + ',' + #p1")
+    public Page<Resources> mySelectPageWithParam(Page<Resources> page, Map<String, Object> roleResources) throws IllegalAccessException, JSONException, InstantiationException {
 
         //先找出resourcesIds
-        Wrapper<RoleResources> wrapper = new EntityWrapper<>(roleResources);
-        wrapper.setSqlSelect("resources_id");
+        Wrapper<RoleResources> wrapper = new EntityWrapper<>();
+        wrapper.setSqlSelect("resources_id")
+                .eq("role_id", roleResources.get("roleId"))
+                .eq("deleted", false);
         List<Object> resourcesIds = this.selectObjs(wrapper);
         //如果resourcesIds为空，返回空的对象
         if (resourcesIds.size() == 0) {
-            return new Page<Resources>();
+            return new Page<>();
         }
         //再根据id找resourcesPage
         Wrapper<Resources> resourcesWrapper = new EntityWrapper<>();
-        resourcesWrapper.in("id", resourcesIds);
+        String title = roleResources.containsKey("title") ? roleResources.get("title").toString() : null;
+        String url = roleResources.containsKey("url") ? roleResources.get("url").toString() : null;
+        resourcesWrapper.in("id", resourcesIds)
+                //判空
+                .where("deleted = {0}", false)
+                .like("title", title, SqlLike.DEFAULT)
+                .like("url", url, SqlLike.DEFAULT);
+        //遍历排序
+        List<Sort> sorts = ToolUtil.mapObjectToList(roleResources.get("sorts"), Sort.class);
+        if (sorts == null) {
+            //为null时，默认按created_at倒序
+            resourcesWrapper.orderBy("id", false);
+        } else {
+            //遍历排序
+            sorts.forEach(sort -> {
+                resourcesWrapper.orderBy(sort.getField(), sort.getAsc());
+            });
+        }
+        //这里用service，既能redis又只能用redis
+        return resourcesService.selectPage(page, resourcesWrapper);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    @Cacheable(key = "'myAddSelectPageWithParam' + #p0 + ',' + #p1")
+    public Page<Resources> myAddSelectPageWithParam(Page<Resources> page, Map<String, Object> roleResources) throws IllegalAccessException, JSONException, InstantiationException {
+        //先找出resourcesIds
+        Wrapper<RoleResources> wrapper = new EntityWrapper<>();
+        String title = roleResources.containsKey("title") ? roleResources.get("title").toString() : null;
+        String url = roleResources.containsKey("url") ? roleResources.get("url").toString() : null;
+        wrapper.setSqlSelect("resources_id")
+                .eq("role_id", roleResources.get("roleId"))
+                .eq("deleted", false)
+                .like("title", title, SqlLike.DEFAULT)
+                .like("url", url, SqlLike.DEFAULT);
+        List<Object> resourcesIds = this.selectObjs(wrapper);
+        //如果resourcesIds为空，返回空的对象
+        if (resourcesIds.size() == 0) {
+            return new Page<>();
+        }
+        //再根据id找resourcesPage
+        Wrapper<Resources> resourcesWrapper = new EntityWrapper<>();
         //判空
         resourcesWrapper.where("deleted = {0}", false);
+        if (!ToolUtil.objIsEmpty(resourcesIds)){
+            resourcesWrapper.notIn("id", resourcesIds);
+        }
         //遍历排序
-        List<Sort> sorts = roleResources.getSorts();
+        List<Sort> sorts = ToolUtil.mapObjectToList(roleResources.get("sorts"), Sort.class);
         if (sorts == null) {
             //为null时，默认按created_at倒序
             resourcesWrapper.orderBy("id", false);
@@ -295,22 +343,13 @@ public class RoleResourcesServiceImpl extends BaseServiceImpl<RoleResourcesMappe
 
     @Override
     @Cacheable(key = "#p0")
-    public List<Resources> mySelectSelectedList(Long roleId) {
+    public List<Object> mySelectSelectedList(Long roleId) {
 
         //找出resourcesIds
         Wrapper<RoleResources> wrapper = new EntityWrapper<>();
         wrapper.setSqlSelect("resources_id");
         wrapper.where("role_id = {0}", roleId);
         wrapper.where("deleted = {0}", false);
-        List<Object> resourcesIds = this.selectObjs(wrapper);
-        //判空
-        if (resourcesIds.size() == 0) {
-            return new ArrayList<>();
-        }
-        //再根据resourcesIds来找
-        Wrapper<Resources> resourcesWrapper = new EntityWrapper<>();
-        resourcesWrapper.in("id", resourcesIds);
-        resourcesWrapper.where("deleted = {0}", false);
-        return resourcesService.mySelectList(resourcesWrapper);
+        return this.mySelectObjs(wrapper);
     }
 }

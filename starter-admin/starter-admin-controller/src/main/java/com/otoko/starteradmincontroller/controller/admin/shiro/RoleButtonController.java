@@ -136,7 +136,7 @@ public class RoleButtonController extends BaseController {
             resJson.setMessage("异常信息：页数和页的大小不能为空");
             return resJson;
         }
-        Page<Button> buttonPage = new Page<Button>(current, size);
+        Page<Button> buttonPage = new Page<>(current, size);
         buttonPage = roleButtonService.mySelectPageWithParam(buttonPage, roleButton);
         resJson.setRecordsTotal(buttonPage.getTotal());
         resJson.setData(buttonPage.getRecords());

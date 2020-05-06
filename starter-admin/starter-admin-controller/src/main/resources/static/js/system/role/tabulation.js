@@ -11,6 +11,7 @@ layui.use(['layer', 'element', 'tree', 'ojbk', 'util'], function(){
         ,util = layui.util
         ,$ = layui.jquery;//jquery
 
+    initLayDemo();
     refresh();
 
     //初始化tree
@@ -26,65 +27,12 @@ layui.use(['layer', 'element', 'tree', 'ojbk', 'util'], function(){
                 defaultNodeName: '未命名' //节点默认名称
                 ,none: '无数据' //数据为空时的提示文本
             }
-            , operate: function (obj) {
-                var type = obj.type; //得到操作类型：add、edit、del
-                var data = obj.data; //得到当前节点的数据
-
-                switch (type){
-                    case 'add':
-                        //跳转到新增页面
-                        layer.open({
-                            type: 2
-                            ,title: '新增菜单'
-                            ,content: ['/admin/menu/create.html?pid=' + data.id, 'no']
-                            ,maxmin: true
-                            ,area: ['550px', '550px']
-                            ,btn: ['确定', '取消']
-                            ,yes: function (index, layro) {
-                                var submit = layro.find('iframe').contents().find('#modifyBtn');
-                                submit.click();
-                                layer.msg("新增成功");
-                            }
-                            ,cancel: function () {
-                                refresh();
-                            }
-                        });
-                        break;
-                    case 'update':
-                        layer.open({
-                            type: 2
-                            ,title: '修改菜单'
-                            ,content: ['/admin/menu/' + data.id + '/update.html?pid=' + data.pid, 'no']
-                            ,maxmin: true
-                            ,area: ['550px', '550px']
-                            ,btn: ['确定', '取消']
-                            ,yes: function (index, layro) {
-                                var submit = layro.find('iframe').contents().find('#modifyBtn');
-                                submit.click();
-                                layer.msg('修改成功');
-                            }
-                        });
-                        break;
-                    case 'del':
-                        var deleteParam = [];
-                        deleteParam.push(data.id);
-                        //开始删除
-                        ojbk.putAjax('/admin/menu/batch_delete', deleteParam, function (data) {
-                            switch (data.code) {
-                                case 200:
-                                    layer.msg('删除成功');
-                                    break;
-                            }
-                        });
-                        break;
-                }
-            }
             ,click: function (obj) {
                 var data = obj.data; //得到当前节点的数据
                 layer.open({
                     type: 2
-                    ,title: '修改菜单'
-                    ,content: ['/admin/menu/' + data.id + '/update.html?pid=' + data.pid, 'no']
+                    ,title: '修改角色'
+                    ,content: '/admin/role/' + data.id + '/update.html'
                     ,maxmin: true
                     ,area: ['550px', '550px']
                     ,btn: ['确定', '取消']
@@ -123,49 +71,17 @@ layui.use(['layer', 'element', 'tree', 'ojbk', 'util'], function(){
         tree.render();
     }
 
-    $("#newRole").click(function () {
-        var postData = {};
-        postData['roleDesc'] = '新角色1';
-        ojbk.postAjax('/admin/role/create_update', postData, function (data) {
-            switch (data.code) {
-                case 200:
-                    layer.msg('新增成功');
-                    var dom = {};
-                    dom['id'] = data.data.id;
-                    dom['roleDesc'] = '新角色1';
-                    roleList.push(dom);
-                    refresh();
-                    break;
+    function initLayDemo() {
+        var layDemoStr = "util.event('lay-demo', {";
+        for (var i = 0; i < buttons.length; i++){
+            if (i !== 0){
+                layDemoStr = layDemoStr + " ,";
             }
-        });
-    });
-
-
-    $("#buttonAssignment").click(function () {
-        var checkedData = tree.getChecked('ojbkTree'); //获取选中节点的数据
-        if(checkedData.length === 0){
-            layer.msg('请选择一行');
-        } else if(checkedData.length > 1){
-            layer.msg('只能同时分配一个');
-        } else {
-            //跳转到修改页面
-            var index = layer.open({
-                type: 2
-                ,title: '按钮分配'
-                ,content: '/admin/roleButton/' + checkedData[0].id + '/tabulation.html?menuId=185'
-                ,maxmin: true
-                ,area: ['550px', '550px']
-                ,btn: ['确定', '取消']
-                ,yes: function (index, layro) {
-                    var submit = layro.find('iframe').contents().find('#modifyBtn');
-                    submit.click();
-                    layer.msg('修改成功');
-                }
-            });
-            //窗口默认最大化
-            layer.full(index);
+            layDemoStr = layDemoStr + buttons[i].icon + ": function(){" + buttons[i].script + "}"
         }
-    });
+        layDemoStr = layDemoStr + "});";
+        eval(layDemoStr);
+    }
 
     /**
      * 给子页面定义函数

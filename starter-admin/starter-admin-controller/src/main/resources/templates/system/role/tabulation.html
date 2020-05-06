@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>角色管理</title>
@@ -17,11 +17,7 @@
         <legend>角色列表</legend>
     </fieldset>
     <div class="layui-btn-container">
-        <button type="button" class="layui-btn layui-btn-sm" id="newRole">新增角色</button>
-        <button type="button" class="layui-btn layui-btn-sm" id="buttonAssignment">按钮分配</button>
-        <button type="button" class="layui-btn layui-btn-sm" id="permissionAssignment">权限分配</button>
-        <button type="button" class="layui-btn layui-btn-sm" id="modifyRole">修改角色</button>
-        <button type="button" class="layui-btn layui-btn-sm" id="deleteRole">删除角色</button>
+        <button type="button" th:each="button:${buttons}" th:class="${button['className']}" th:id="${button['icon']}" th:lay-demo="${button['icon']}" th:text="${button['title']}"></button>
     </div>
 
     <div style="display: inline-block; width: auto; height: auto; padding: 10px; border: 1px solid #ddd; overflow: auto;">
@@ -36,6 +32,8 @@
     var roleList = [[${roleList}]];
     // 获取参数
     var userId = [[${userId}]];
+    //静态注入的数据
+    var buttons = [[${buttons}]];
 </script>
 </body>
 </html>

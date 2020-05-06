@@ -1,0 +1,3 @@
+2020-05-05 20:23:47.963 [http-nio-8078-exec-2] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [CustomizeException{customizeStatus=LOGIN_VERIFICATION_CODE_ERROR, clazz='LogInController', code=405}]
+2020-05-05 20:27:04.662 [http-nio-8078-exec-5] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [CustomizeException{customizeStatus=LOGIN_VERIFICATION_CODE_ERROR, clazz='LogInController', code=405}]
+2020-05-05 22:13:02.254 [http-nio-8078-exec-9] WARN  org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - Resolved [CustomizeException{customizeStatus=LOGIN_VERIFICATION_CODE_ERROR, clazz='LogInController', code=405}]
